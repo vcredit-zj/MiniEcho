@@ -29,6 +29,7 @@
 		39120B5F1DD45FE10052A234 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B4F1DD45FE10052A234 /* UIView+Frame.m */; };
 		39120B601DD45FE10052A234 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B511DD45FE10052A234 /* UIView+Toast.m */; };
 		39120B651DD45FE60052A234 /* HYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B641DD45FE60052A234 /* HYFileManager.m */; };
+		3978164D1DD5A51900A698DC /* MEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978164C1DD5A51900A698DC /* MEConst.m */; };
 		6F7B5D9BE19A0EE99EA7B906 /* libPods-MiniEcho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4F0BA9905B6A405F7082C8 /* libPods-MiniEcho.a */; };
 		BAEAC2469244A0E077225F7D /* libPods-MiniEchoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD61098290DFBA8CA2E626F0 /* libPods-MiniEchoTests.a */; };
 		C232F2463DC443BAAA0CBF47 /* libPods-MiniEchoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340B96218A5A8FB7AEDA22FE /* libPods-MiniEchoUITests.a */; };
@@ -103,6 +104,10 @@
 		39120B511DD45FE10052A234 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		39120B631DD45FE60052A234 /* HYFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYFileManager.h; sourceTree = "<group>"; };
 		39120B641DD45FE60052A234 /* HYFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYFileManager.m; sourceTree = "<group>"; };
+		397816411DD5A20700A698DC /* MEMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMacros.h; sourceTree = "<group>"; };
+		397816421DD5A22300A698DC /* MEEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEEnums.h; sourceTree = "<group>"; };
+		3978164B1DD5A51900A698DC /* MEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEConst.h; sourceTree = "<group>"; };
+		3978164C1DD5A51900A698DC /* MEConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEConst.m; sourceTree = "<group>"; };
 		42CEE12E794E47CBEDA884EC /* Pods-MiniEchoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoTests/Pods-MiniEchoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56380AC7F2BB829580B01F5D /* Pods-MiniEchoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoTests/Pods-MiniEchoTests.release.xcconfig"; sourceTree = "<group>"; };
 		68C60E08E09CC6B8C7EE6BDD /* Pods-MiniEcho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEcho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEcho/Pods-MiniEcho.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +176,7 @@
 		39120AFB1DD45F7A0052A234 /* MiniEcho */ = {
 			isa = PBXGroup;
 			children = (
+				397816401DD5A1E400A698DC /* Helper */,
 				F73E10E91DD56AD800EBA25A /* Project */,
 				F73E10F01DD5710C00EBA25A /* Utility */,
 				39120B611DD45FE60052A234 /* 3rdLibrary */,
@@ -272,6 +278,17 @@
 				39120B641DD45FE60052A234 /* HYFileManager.m */,
 			);
 			path = HYFileManager;
+			sourceTree = "<group>";
+		};
+		397816401DD5A1E400A698DC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				397816411DD5A20700A698DC /* MEMacros.h */,
+				397816421DD5A22300A698DC /* MEEnums.h */,
+				3978164B1DD5A51900A698DC /* MEConst.h */,
+				3978164C1DD5A51900A698DC /* MEConst.m */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		702A1A104C483B6960C387FE /* Frameworks */ = {
@@ -671,6 +688,7 @@
 				F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */,
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
+				3978164D1DD5A51900A698DC /* MEConst.m in Sources */,
 				39120B521DD45FE10052A234 /* NSData+Base64.m in Sources */,
 				39120B581DD45FE10052A234 /* UIButton+CountDown.m in Sources */,
 			);
@@ -814,9 +832,8 @@
 			baseConfigurationReference = 68C60E08E09CC6B8C7EE6BDD /* Pods-MiniEcho.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/MiniEcho/MiniEcho/MiniEcho/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = MiniEcho/PrefixHeader.pch;
 				INFOPLIST_FILE = MiniEcho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -830,9 +847,8 @@
 			baseConfigurationReference = 963801D7A1A3122B034E3960 /* Pods-MiniEcho.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/MiniEcho/MiniEcho/MiniEcho/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = MiniEcho/PrefixHeader.pch;
 				INFOPLIST_FILE = MiniEcho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

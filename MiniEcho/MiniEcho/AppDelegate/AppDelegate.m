@@ -22,7 +22,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    METabBarController *rootVC = [[METabBarController alloc] init];
+    METabBarController *rootVC = [[METabBarController alloc] init]; 
+    
 //    rootVC.view.backgroundColor = [UIColor greenColor];
     
     self.window.rootViewController = rootVC;
