@@ -17,7 +17,7 @@
  *  @param title       title
  *  @param waitTitle   计时的时候的副标题<秒>
  *  @param normalColor 正常的背景色
- *  @param enableColor 倒计时状态时的背景色
+ *  @param waitColor 倒计时状态时的背景色
  */
 - (void)startTime:(NSInteger)timeout
             title:(NSString *)title

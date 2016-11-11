@@ -32,6 +32,9 @@
 		6F7B5D9BE19A0EE99EA7B906 /* libPods-MiniEcho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4F0BA9905B6A405F7082C8 /* libPods-MiniEcho.a */; };
 		BAEAC2469244A0E077225F7D /* libPods-MiniEchoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD61098290DFBA8CA2E626F0 /* libPods-MiniEchoTests.a */; };
 		C232F2463DC443BAAA0CBF47 /* libPods-MiniEchoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340B96218A5A8FB7AEDA22FE /* libPods-MiniEchoUITests.a */; };
+		F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F31DD571A800EBA25A /* METabBarController.m */; };
+		F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F61DD5773600EBA25A /* MEUtil.m */; };
+		F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10FA1DD5788700EBA25A /* SafeObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,13 @@
 		6A4F0BA9905B6A405F7082C8 /* libPods-MiniEcho.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniEcho.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		963801D7A1A3122B034E3960 /* Pods-MiniEcho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEcho.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEcho/Pods-MiniEcho.release.xcconfig"; sourceTree = "<group>"; };
 		DD61098290DFBA8CA2E626F0 /* libPods-MiniEchoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniEchoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F73E10F21DD571A800EBA25A /* METabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METabBarController.h; sourceTree = "<group>"; };
+		F73E10F31DD571A800EBA25A /* METabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METabBarController.m; sourceTree = "<group>"; };
+		F73E10F51DD5773600EBA25A /* MEUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEUtil.h; sourceTree = "<group>"; };
+		F73E10F61DD5773600EBA25A /* MEUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEUtil.m; sourceTree = "<group>"; };
+		F73E10F81DD5781000EBA25A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		F73E10F91DD5788700EBA25A /* SafeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeObject.h; sourceTree = "<group>"; };
+		F73E10FA1DD5788700EBA25A /* SafeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +171,8 @@
 		39120AFB1DD45F7A0052A234 /* MiniEcho */ = {
 			isa = PBXGroup;
 			children = (
+				F73E10E91DD56AD800EBA25A /* Project */,
+				F73E10F01DD5710C00EBA25A /* Utility */,
 				39120B611DD45FE60052A234 /* 3rdLibrary */,
 				39120B331DD45FE10052A234 /* Category */,
 				39120B2F1DD45FC20052A234 /* AppDelegate */,
@@ -176,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				39120AFD1DD45F7A0052A234 /* main.m */,
+				F73E10F81DD5781000EBA25A /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -282,6 +295,82 @@
 				06A1F01FE118C6703F1885EF /* Pods-MiniEchoUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F73E10E91DD56AD800EBA25A /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				F73E10EA1DD56C9200EBA25A /* Channel */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		F73E10EA1DD56C9200EBA25A /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				F73E10EB1DD56C9200EBA25A /* Cells */,
+				F73E10EC1DD56C9200EBA25A /* Controllers */,
+				F73E10ED1DD56C9200EBA25A /* Models */,
+				F73E10EE1DD56C9200EBA25A /* Tools */,
+				F73E10EF1DD56C9200EBA25A /* Views */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		F73E10EB1DD56C9200EBA25A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F73E10EC1DD56C9200EBA25A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F73E10ED1DD56C9200EBA25A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F73E10EE1DD56C9200EBA25A /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		F73E10EF1DD56C9200EBA25A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F73E10F01DD5710C00EBA25A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				F73E10F11DD5717900EBA25A /* MECustom */,
+				F73E10F91DD5788700EBA25A /* SafeObject.h */,
+				F73E10FA1DD5788700EBA25A /* SafeObject.m */,
+				F73E10F51DD5773600EBA25A /* MEUtil.h */,
+				F73E10F61DD5773600EBA25A /* MEUtil.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		F73E10F11DD5717900EBA25A /* MECustom */ = {
+			isa = PBXGroup;
+			children = (
+				F73E10F21DD571A800EBA25A /* METabBarController.h */,
+				F73E10F31DD571A800EBA25A /* METabBarController.m */,
+			);
+			path = MECustom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,7 +522,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		1B91C2BDA28867CC75933E1B /* [CP] Copy Pods Resources */ = {
@@ -523,7 +612,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D1A9569A485B259A4BC4E0A7 /* [CP] Embed Pods Frameworks */ = {
@@ -553,7 +642,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -568,6 +657,7 @@
 				39120B5D1DD45FE10052A234 /* UITextView+Placeholder.m in Sources */,
 				39120B541DD45FE10052A234 /* NSUserDefaults+SafeAccess.m in Sources */,
 				39120B5A1DD45FE10052A234 /* UIColor+HEX.m in Sources */,
+				F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */,
 				39120B561DD45FE10052A234 /* UIBarButtonItem+Action.m in Sources */,
 				39120B531DD45FE10052A234 /* NSDate+Extension.m in Sources */,
 				39120B571DD45FE10052A234 /* UIButton+Block.m in Sources */,
@@ -576,7 +666,9 @@
 				39120B5C1DD45FE10052A234 /* UITableViewCell+Nib.m in Sources */,
 				39120B5B1DD45FE10052A234 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				39120B321DD45FC20052A234 /* AppDelegate.m in Sources */,
+				F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */,
 				39120B551DD45FE10052A234 /* UIAlertView+Block.m in Sources */,
+				F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */,
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
 				39120B521DD45FE10052A234 /* NSData+Base64.m in Sources */,
@@ -722,6 +814,9 @@
 			baseConfigurationReference = 68C60E08E09CC6B8C7EE6BDD /* Pods-MiniEcho.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MiniEcho/MiniEcho/MiniEcho/PrefixHeader.pch";
 				INFOPLIST_FILE = MiniEcho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -735,6 +830,9 @@
 			baseConfigurationReference = 963801D7A1A3122B034E3960 /* Pods-MiniEcho.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MiniEcho/MiniEcho/MiniEcho/PrefixHeader.pch";
 				INFOPLIST_FILE = MiniEcho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -812,6 +910,7 @@
 				39120B281DD45F7A0052A234 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39120B291DD45F7A0052A234 /* Build configuration list for PBXNativeTarget "MiniEchoTests" */ = {
 			isa = XCConfigurationList;
@@ -820,6 +919,7 @@
 				39120B2B1DD45F7A0052A234 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39120B2C1DD45F7A0052A234 /* Build configuration list for PBXNativeTarget "MiniEchoUITests" */ = {
 			isa = XCConfigurationList;
@@ -828,6 +928,7 @@
 				39120B2E1DD45F7A0052A234 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

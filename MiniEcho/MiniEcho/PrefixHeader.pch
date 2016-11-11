@@ -1,0 +1,43 @@
+//
+//  PrefixHeader.pch
+//  MiniEcho
+//
+//  Created by vcredit on 16/11/11.
+//  Copyright © 2016年 vcredit. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+/**
+ *  Pod <cocoaPod 安装的第三方库>
+ */
+#import <YYText/YYText.h>
+#import <Masonry/Masonry.h>
+#import <MJRefresh/MJRefresh.h>
+#import <MJExtension/MJExtension.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+/**
+ *   category <类目>
+ */
+#import "UIColor+HEX.h"
+#import "UIView+Toast.h"
+#import "UIButton+Block.h"
+#import "UIAlertView+Block.h"
+#import "UIButton+CountDown.h"
+#import "UITableViewCell+Nib.h"
+#import "UIBarButtonItem+Action.h"
+#import "UICollectionViewCell+Nib.h"
+/**
+ *  自定义的工具
+ */
+#import "MEUtil.h"
+/**
+ *  防止数组，字典的越界
+ */
+#import "SafeObject.h"
+
+#endif /* PrefixHeader_pch */

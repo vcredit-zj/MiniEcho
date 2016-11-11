@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "METabBarController.h"
 @interface AppDelegate ()
 
 @end
@@ -22,8 +22,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    UIViewController *rootVC = [[UIViewController alloc] init];
-    rootVC.view.backgroundColor = [UIColor greenColor];
+    METabBarController *rootVC = [[METabBarController alloc] init];
+//    rootVC.view.backgroundColor = [UIColor greenColor];
     
     self.window.rootViewController = rootVC;
     

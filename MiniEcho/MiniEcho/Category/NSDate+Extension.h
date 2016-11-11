@@ -161,8 +161,6 @@
 /**
  和今天相比是否已过期
 
- @param targetDate 目标日期
-
  @return YES: 未过期<包括今天和未来>, NO: 已过期
  */
 - (BOOL)isExpiredComparedWithToday;
