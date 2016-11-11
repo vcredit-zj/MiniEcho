@@ -30,6 +30,11 @@
 		39120B601DD45FE10052A234 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B511DD45FE10052A234 /* UIView+Toast.m */; };
 		39120B651DD45FE60052A234 /* HYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B641DD45FE60052A234 /* HYFileManager.m */; };
 		3978164D1DD5A51900A698DC /* MEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978164C1DD5A51900A698DC /* MEConst.m */; };
+		397816561DD5C29B00A698DC /* MEPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 397816551DD5C29B00A698DC /* MEPlayer.m */; };
+		397816581DD5C4C400A698DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397816571DD5C4C400A698DC /* AVFoundation.framework */; };
+		3978165A1DD5C4D000A698DC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397816591DD5C4D000A698DC /* CoreMedia.framework */; };
+		3978165C1DD5C4D900A698DC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3978165B1DD5C4D900A698DC /* MediaPlayer.framework */; };
+		3978165E1DD5C4E500A698DC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3978165D1DD5C4E500A698DC /* AudioToolbox.framework */; };
 		6F7B5D9BE19A0EE99EA7B906 /* libPods-MiniEcho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4F0BA9905B6A405F7082C8 /* libPods-MiniEcho.a */; };
 		BAEAC2469244A0E077225F7D /* libPods-MiniEchoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD61098290DFBA8CA2E626F0 /* libPods-MiniEchoTests.a */; };
 		C232F2463DC443BAAA0CBF47 /* libPods-MiniEchoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340B96218A5A8FB7AEDA22FE /* libPods-MiniEchoUITests.a */; };
@@ -109,6 +114,12 @@
 		397816421DD5A22300A698DC /* MEEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEEnums.h; sourceTree = "<group>"; };
 		3978164B1DD5A51900A698DC /* MEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEConst.h; sourceTree = "<group>"; };
 		3978164C1DD5A51900A698DC /* MEConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEConst.m; sourceTree = "<group>"; };
+		397816541DD5C29B00A698DC /* MEPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPlayer.h; sourceTree = "<group>"; };
+		397816551DD5C29B00A698DC /* MEPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEPlayer.m; sourceTree = "<group>"; };
+		397816571DD5C4C400A698DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		397816591DD5C4D000A698DC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		3978165B1DD5C4D900A698DC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		3978165D1DD5C4E500A698DC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		42CEE12E794E47CBEDA884EC /* Pods-MiniEchoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoTests/Pods-MiniEchoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56380AC7F2BB829580B01F5D /* Pods-MiniEchoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoTests/Pods-MiniEchoTests.release.xcconfig"; sourceTree = "<group>"; };
 		68C60E08E09CC6B8C7EE6BDD /* Pods-MiniEcho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEcho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEcho/Pods-MiniEcho.debug.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +142,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3978165E1DD5C4E500A698DC /* AudioToolbox.framework in Frameworks */,
+				3978165C1DD5C4D900A698DC /* MediaPlayer.framework in Frameworks */,
+				3978165A1DD5C4D000A698DC /* CoreMedia.framework in Frameworks */,
+				397816581DD5C4C400A698DC /* AVFoundation.framework in Frameworks */,
 				6F7B5D9BE19A0EE99EA7B906 /* libPods-MiniEcho.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +312,10 @@
 		702A1A104C483B6960C387FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3978165D1DD5C4E500A698DC /* AudioToolbox.framework */,
+				3978165B1DD5C4D900A698DC /* MediaPlayer.framework */,
+				397816591DD5C4D000A698DC /* CoreMedia.framework */,
+				397816571DD5C4C400A698DC /* AVFoundation.framework */,
 				6A4F0BA9905B6A405F7082C8 /* libPods-MiniEcho.a */,
 				DD61098290DFBA8CA2E626F0 /* libPods-MiniEchoTests.a */,
 				340B96218A5A8FB7AEDA22FE /* libPods-MiniEchoUITests.a */,
@@ -382,6 +401,8 @@
 				F73E10FA1DD5788700EBA25A /* SafeObject.m */,
 				F73E10F51DD5773600EBA25A /* MEUtil.h */,
 				F73E10F61DD5773600EBA25A /* MEUtil.m */,
+				397816541DD5C29B00A698DC /* MEPlayer.h */,
+				397816551DD5C29B00A698DC /* MEPlayer.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -694,6 +715,7 @@
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
 				F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
+				397816561DD5C29B00A698DC /* MEPlayer.m in Sources */,
 				3978164D1DD5A51900A698DC /* MEConst.m in Sources */,
 				39120B521DD45FE10052A234 /* NSData+Base64.m in Sources */,
 				39120B581DD45FE10052A234 /* UIButton+CountDown.m in Sources */,
