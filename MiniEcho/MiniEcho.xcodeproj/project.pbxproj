@@ -42,6 +42,10 @@
 		F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F61DD5773600EBA25A /* MEUtil.m */; };
 		F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10FA1DD5788700EBA25A /* SafeObject.m */; };
 		F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */; };
+		F73E11121DD5C48F00EBA25A /* ViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11111DD5C48F00EBA25A /* ViewController1.m */; };
+		F73E11151DD5C49C00EBA25A /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11141DD5C49C00EBA25A /* ViewController2.m */; };
+		F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11171DD5C4A800EBA25A /* ViewController3.m */; };
+		F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E111A1DD5C4B200EBA25A /* ViewController4.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +139,14 @@
 		F73E10FA1DD5788700EBA25A /* SafeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeObject.m; sourceTree = "<group>"; };
 		F73E11011DD5BC7000EBA25A /* MEChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelViewController.h; sourceTree = "<group>"; };
 		F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelViewController.m; sourceTree = "<group>"; };
+		F73E11101DD5C48F00EBA25A /* ViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController1.h; sourceTree = "<group>"; };
+		F73E11111DD5C48F00EBA25A /* ViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController1.m; sourceTree = "<group>"; };
+		F73E11131DD5C49C00EBA25A /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
+		F73E11141DD5C49C00EBA25A /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
+		F73E11161DD5C4A800EBA25A /* ViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
+		F73E11171DD5C4A800EBA25A /* ViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
+		F73E11191DD5C4B200EBA25A /* ViewController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController4.h; sourceTree = "<group>"; };
+		F73E111A1DD5C4B200EBA25A /* ViewController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController4.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +371,8 @@
 		F73E10EB1DD56C9200EBA25A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F73E11101DD5C48F00EBA25A /* ViewController1.h */,
+				F73E11111DD5C48F00EBA25A /* ViewController1.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -375,6 +389,8 @@
 		F73E10ED1DD56C9200EBA25A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F73E11131DD5C49C00EBA25A /* ViewController2.h */,
+				F73E11141DD5C49C00EBA25A /* ViewController2.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -382,6 +398,8 @@
 		F73E10EE1DD56C9200EBA25A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F73E11161DD5C4A800EBA25A /* ViewController3.h */,
+				F73E11171DD5C4A800EBA25A /* ViewController3.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -389,6 +407,8 @@
 		F73E10EF1DD56C9200EBA25A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F73E11191DD5C4B200EBA25A /* ViewController4.h */,
+				F73E111A1DD5C4B200EBA25A /* ViewController4.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -565,7 +585,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		1B91C2BDA28867CC75933E1B /* [CP] Copy Pods Resources */ = {
@@ -655,7 +675,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D1A9569A485B259A4BC4E0A7 /* [CP] Embed Pods Frameworks */ = {
@@ -685,7 +705,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -703,10 +723,13 @@
 				F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */,
 				39120B561DD45FE10052A234 /* UIBarButtonItem+Action.m in Sources */,
 				39120B531DD45FE10052A234 /* NSDate+Extension.m in Sources */,
+				F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */,
 				39120B571DD45FE10052A234 /* UIButton+Block.m in Sources */,
 				39120B601DD45FE10052A234 /* UIView+Toast.m in Sources */,
 				39120B5F1DD45FE10052A234 /* UIView+Frame.m in Sources */,
 				39120B5C1DD45FE10052A234 /* UITableViewCell+Nib.m in Sources */,
+				F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */,
+				F73E11151DD5C49C00EBA25A /* ViewController2.m in Sources */,
 				39120B5B1DD45FE10052A234 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				39120B321DD45FC20052A234 /* AppDelegate.m in Sources */,
 				F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */,
@@ -715,7 +738,9 @@
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
 				F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
+
 				397816561DD5C29B00A698DC /* MEPlayer.m in Sources */,
+				F73E11121DD5C48F00EBA25A /* ViewController1.m in Sources */,
 				3978164D1DD5A51900A698DC /* MEConst.m in Sources */,
 				39120B521DD45FE10052A234 /* NSData+Base64.m in Sources */,
 				39120B581DD45FE10052A234 /* UIButton+CountDown.m in Sources */,
