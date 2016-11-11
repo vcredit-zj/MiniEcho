@@ -30,13 +30,14 @@
 		39120B601DD45FE10052A234 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B511DD45FE10052A234 /* UIView+Toast.m */; };
 		39120B651DD45FE60052A234 /* HYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B641DD45FE60052A234 /* HYFileManager.m */; };
 		3978164D1DD5A51900A698DC /* MEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978164C1DD5A51900A698DC /* MEConst.m */; };
+		397816501DD5BB9500A698DC /* ChannelHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978164F1DD5BB9500A698DC /* ChannelHomeController.m */; };
+		397816531DD5BE0700A698DC /* MEPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 397816521DD5BE0700A698DC /* MEPlayer.m */; };
 		6F7B5D9BE19A0EE99EA7B906 /* libPods-MiniEcho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4F0BA9905B6A405F7082C8 /* libPods-MiniEcho.a */; };
 		BAEAC2469244A0E077225F7D /* libPods-MiniEchoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD61098290DFBA8CA2E626F0 /* libPods-MiniEchoTests.a */; };
 		C232F2463DC443BAAA0CBF47 /* libPods-MiniEchoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340B96218A5A8FB7AEDA22FE /* libPods-MiniEchoUITests.a */; };
 		F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F31DD571A800EBA25A /* METabBarController.m */; };
 		F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F61DD5773600EBA25A /* MEUtil.m */; };
 		F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10FA1DD5788700EBA25A /* SafeObject.m */; };
-		F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,10 @@
 		397816421DD5A22300A698DC /* MEEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEEnums.h; sourceTree = "<group>"; };
 		3978164B1DD5A51900A698DC /* MEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEConst.h; sourceTree = "<group>"; };
 		3978164C1DD5A51900A698DC /* MEConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEConst.m; sourceTree = "<group>"; };
+		3978164E1DD5BB9500A698DC /* ChannelHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelHomeController.h; path = ../../../../../../../../Documents/ChannelHomeController.h; sourceTree = "<group>"; };
+		3978164F1DD5BB9500A698DC /* ChannelHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelHomeController.m; path = ../../../../../../../../Documents/ChannelHomeController.m; sourceTree = "<group>"; };
+		397816511DD5BE0700A698DC /* MEPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPlayer.h; sourceTree = "<group>"; };
+		397816521DD5BE0700A698DC /* MEPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEPlayer.m; sourceTree = "<group>"; };
 		42CEE12E794E47CBEDA884EC /* Pods-MiniEchoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoTests/Pods-MiniEchoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56380AC7F2BB829580B01F5D /* Pods-MiniEchoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoTests/Pods-MiniEchoTests.release.xcconfig"; sourceTree = "<group>"; };
 		68C60E08E09CC6B8C7EE6BDD /* Pods-MiniEcho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEcho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEcho/Pods-MiniEcho.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,8 +127,6 @@
 		F73E10F81DD5781000EBA25A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		F73E10F91DD5788700EBA25A /* SafeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeObject.h; sourceTree = "<group>"; };
 		F73E10FA1DD5788700EBA25A /* SafeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeObject.m; sourceTree = "<group>"; };
-		F73E11011DD5BC7000EBA25A /* MEChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelViewController.h; sourceTree = "<group>"; };
-		F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,8 +350,8 @@
 		F73E10EC1DD56C9200EBA25A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F73E11011DD5BC7000EBA25A /* MEChannelViewController.h */,
-				F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */,
+				3978164E1DD5BB9500A698DC /* ChannelHomeController.h */,
+				3978164F1DD5BB9500A698DC /* ChannelHomeController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -382,6 +385,8 @@
 				F73E10FA1DD5788700EBA25A /* SafeObject.m */,
 				F73E10F51DD5773600EBA25A /* MEUtil.h */,
 				F73E10F61DD5773600EBA25A /* MEUtil.m */,
+				397816511DD5BE0700A698DC /* MEPlayer.h */,
+				397816521DD5BE0700A698DC /* MEPlayer.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -692,9 +697,10 @@
 				39120B551DD45FE10052A234 /* UIAlertView+Block.m in Sources */,
 				F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */,
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
-				F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
 				3978164D1DD5A51900A698DC /* MEConst.m in Sources */,
+				397816531DD5BE0700A698DC /* MEPlayer.m in Sources */,
+				397816501DD5BB9500A698DC /* ChannelHomeController.m in Sources */,
 				39120B521DD45FE10052A234 /* NSData+Base64.m in Sources */,
 				39120B581DD45FE10052A234 /* UIButton+CountDown.m in Sources */,
 			);

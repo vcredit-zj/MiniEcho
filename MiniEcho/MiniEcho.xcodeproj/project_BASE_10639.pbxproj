@@ -36,7 +36,6 @@
 		F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F31DD571A800EBA25A /* METabBarController.m */; };
 		F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F61DD5773600EBA25A /* MEUtil.m */; };
 		F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10FA1DD5788700EBA25A /* SafeObject.m */; };
-		F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,8 +121,6 @@
 		F73E10F81DD5781000EBA25A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		F73E10F91DD5788700EBA25A /* SafeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeObject.h; sourceTree = "<group>"; };
 		F73E10FA1DD5788700EBA25A /* SafeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeObject.m; sourceTree = "<group>"; };
-		F73E11011DD5BC7000EBA25A /* MEChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelViewController.h; sourceTree = "<group>"; };
-		F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,8 +344,6 @@
 		F73E10EC1DD56C9200EBA25A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F73E11011DD5BC7000EBA25A /* MEChannelViewController.h */,
-				F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -692,7 +687,6 @@
 				39120B551DD45FE10052A234 /* UIAlertView+Block.m in Sources */,
 				F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */,
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
-				F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
 				3978164D1DD5A51900A698DC /* MEConst.m in Sources */,
 				39120B521DD45FE10052A234 /* NSData+Base64.m in Sources */,
