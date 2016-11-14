@@ -738,7 +738,6 @@
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
 				F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
-
 				397816561DD5C29B00A698DC /* MEPlayer.m in Sources */,
 				F73E11121DD5C48F00EBA25A /* ViewController1.m in Sources */,
 				3978164D1DD5A51900A698DC /* MEConst.m in Sources */,

@@ -10,6 +10,10 @@
 #import "METabBarController.h"
 @interface AppDelegate ()
 
+{
+    UIImageView *launchImage;
+}
+
 @end
 
 @implementation AppDelegate
@@ -22,13 +26,24 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    METabBarController *rootVC = [[METabBarController alloc] init]; 
-    
-//    rootVC.view.backgroundColor = [UIColor greenColor];
-    
+    METabBarController *rootVC = [[METabBarController alloc] init];
     self.window.rootViewController = rootVC;
     
+    launchImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"launchImage"]];
+    launchImage.backgroundColor = [UIColor whiteColor];
+    launchImage.frame = kScreenBounds;
+    [self.window addSubview:launchImage];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self launchImageDisappear:launchImage];
+    });
+    
     return YES;
+}
+
+-(void)launchImageDisappear:(UIImageView *)launchView
+{
+    [UIView transitionFromView:launchImage toView:self.window.rootViewController.view duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft completion:NULL]; 
 }
 
 
