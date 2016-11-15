@@ -7,7 +7,7 @@
 //
 
 #import "METabBarController.h"
-
+#import "MEChannelViewController.h"
 @interface METabBarController ()
 
 @end
@@ -21,7 +21,7 @@
         NSArray *normalImageNameArray = @[@"icon_feed_normal",@"icon_channel_normal",@"icon_echo_normal",@"icon_live_default",@"icon_famous_normal"];
         NSArray *selectedImageNameArray = @[@"icon_feed_selected",@"icon_channel_selected",@"icon_echo_selected",@"icon_live_selected",@"icon_famous_selected"];
         NSArray *classArray = @[NSStringFromClass([UIViewController class]),
-                                NSStringFromClass([UIViewController class]),
+                                NSStringFromClass([MEChannelViewController class]),
                                 NSStringFromClass([UIViewController class]),
                                 NSStringFromClass([UIViewController class]),
                                 NSStringFromClass([UIViewController class])];

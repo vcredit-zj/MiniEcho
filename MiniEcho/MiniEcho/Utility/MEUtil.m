@@ -20,4 +20,12 @@
     UIGraphicsEndImageContext();
     return image;
 }
++ (CGFloat)widthForSingleLineText:(NSString *)text fontSize:(CGFloat)font
+{
+    NSAssert(text.length > 0, @"被计算的文本不能为空");
+    
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:font]};
+    CGRect textRect = [text boundingRectWithSize:CGSizeMake(MAXFLOAT, 40.f) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+    return ceilf(textRect.size.width);
+}
 @end

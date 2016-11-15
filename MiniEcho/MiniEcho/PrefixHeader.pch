@@ -39,6 +39,7 @@
 #import "MEEnums.h"
 #import "MEConst.h"
 #import "MEMacros.h"
+#import "MEHttpUtil.h"
 /**
  *  防止数组，字典的越界
  */

@@ -10,4 +10,6 @@
 #import <UIKit/UIKit.h>
 @interface MEUtil : NSObject
 + (UIImage *)imageWithColor:(UIColor *)color;
+
++ (CGFloat)widthForSingleLineText:(NSString *)text fontSize:(CGFloat)font ;
 @end

@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 #import "METabBarController.h"
+#import <MMDrawerController.h>
 #import "MEChannelViewController.h"
 #import "MEPlayer.h"
-#import "ViewController1.h"
 #import <MMDrawerController.h> 
 
 #import "MEPlayMusicController.h"
@@ -30,7 +30,7 @@
     // Override point for customization after application launch.
 
     METabBarController *centerVC = [[METabBarController alloc] init];
-    ViewController1 *leftVC = [[ViewController1 alloc] init];
+    UIViewController *leftVC = [[UIViewController alloc] init];
     leftVC.view.backgroundColor = [UIColor yellowColor];
     UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftVC];
     MMDrawerController *rootVC = [[MMDrawerController alloc] initWithCenterViewController:centerVC leftDrawerViewController:leftNav];
