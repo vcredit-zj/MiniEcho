@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "METabBarController.h"
+#import "ViewController1.h"
+#import <MMDrawerController.h>
 @interface AppDelegate ()
 
 @end
@@ -17,17 +19,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    
+    METabBarController *centerVC = [[METabBarController alloc] init];
+    ViewController1 *leftVC = [[ViewController1 alloc] init];
+    leftVC.view.backgroundColor = [UIColor yellowColor];
+    UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftVC];
+    MMDrawerController *rootVC = [[MMDrawerController alloc] initWithCenterViewController:centerVC leftDrawerViewController:leftNav];
+    [rootVC setShowsShadow:NO];
+    [rootVC setMaximumLeftDrawerWidth:200.0];
+    [rootVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [rootVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    self.window.rootViewController = rootVC;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    METabBarController *rootVC = [[METabBarController alloc] init]; 
-    
-//    rootVC.view.backgroundColor = [UIColor greenColor];
-    
-    self.window.rootViewController = rootVC;
-    
     return YES;
 }
 
