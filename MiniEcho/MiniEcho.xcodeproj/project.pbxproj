@@ -31,6 +31,8 @@
 		39120B5F1DD45FE10052A234 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B4F1DD45FE10052A234 /* UIView+Frame.m */; };
 		39120B601DD45FE10052A234 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B511DD45FE10052A234 /* UIView+Toast.m */; };
 		39120B651DD45FE60052A234 /* HYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B641DD45FE60052A234 /* HYFileManager.m */; };
+		396896901DDABAFC0088191A /* MEPlayMusicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968968F1DDABAFC0088191A /* MEPlayMusicController.m */; };
+		396896931DDAE7760088191A /* MEPlayToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896921DDAE7760088191A /* MEPlayToolBar.m */; };
 		3978164D1DD5A51900A698DC /* MEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978164C1DD5A51900A698DC /* MEConst.m */; };
 		397816561DD5C29B00A698DC /* MEPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 397816551DD5C29B00A698DC /* MEPlayer.m */; };
 		397816581DD5C4C400A698DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397816571DD5C4C400A698DC /* AVFoundation.framework */; };
@@ -120,6 +122,10 @@
 		39120B511DD45FE10052A234 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		39120B631DD45FE60052A234 /* HYFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYFileManager.h; sourceTree = "<group>"; };
 		39120B641DD45FE60052A234 /* HYFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYFileManager.m; sourceTree = "<group>"; };
+		3968968E1DDABAFC0088191A /* MEPlayMusicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPlayMusicController.h; sourceTree = "<group>"; };
+		3968968F1DDABAFC0088191A /* MEPlayMusicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEPlayMusicController.m; sourceTree = "<group>"; };
+		396896911DDAE7760088191A /* MEPlayToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPlayToolBar.h; sourceTree = "<group>"; };
+		396896921DDAE7760088191A /* MEPlayToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEPlayToolBar.m; sourceTree = "<group>"; };
 		397816411DD5A20700A698DC /* MEMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMacros.h; sourceTree = "<group>"; };
 		397816421DD5A22300A698DC /* MEEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEEnums.h; sourceTree = "<group>"; };
 		3978164B1DD5A51900A698DC /* MEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEConst.h; sourceTree = "<group>"; };
@@ -433,6 +439,8 @@
 				39106A0A1DD9BB7B008E5CF7 /* MEResult.m */,
 				397816541DD5C29B00A698DC /* MEPlayer.h */,
 				397816551DD5C29B00A698DC /* MEPlayer.m */,
+				3968968E1DDABAFC0088191A /* MEPlayMusicController.h */,
+				3968968F1DDABAFC0088191A /* MEPlayMusicController.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -442,6 +450,8 @@
 			children = (
 				F73E10F21DD571A800EBA25A /* METabBarController.h */,
 				F73E10F31DD571A800EBA25A /* METabBarController.m */,
+				396896911DDAE7760088191A /* MEPlayToolBar.h */,
+				396896921DDAE7760088191A /* MEPlayToolBar.m */,
 			);
 			path = MECustom;
 			sourceTree = "<group>";
@@ -523,6 +533,11 @@
 					39120AF81DD45F7A0052A234 = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					39120B111DD45F7A0052A234 = {
 						CreatedOnToolsVersion = 8.1;
@@ -730,6 +745,7 @@
 				39120B5D1DD45FE10052A234 /* UITextView+Placeholder.m in Sources */,
 				39120B541DD45FE10052A234 /* NSUserDefaults+SafeAccess.m in Sources */,
 				39120B5A1DD45FE10052A234 /* UIColor+HEX.m in Sources */,
+				396896931DDAE7760088191A /* MEPlayToolBar.m in Sources */,
 				F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */,
 				39120B561DD45FE10052A234 /* UIBarButtonItem+Action.m in Sources */,
 				39120B531DD45FE10052A234 /* NSDate+Extension.m in Sources */,
@@ -739,6 +755,7 @@
 				39120B5F1DD45FE10052A234 /* UIView+Frame.m in Sources */,
 				39106A081DD9B9D6008E5CF7 /* MEHttpUtil.m in Sources */,
 				39120B5C1DD45FE10052A234 /* UITableViewCell+Nib.m in Sources */,
+				396896901DDABAFC0088191A /* MEPlayMusicController.m in Sources */,
 				39106A0B1DD9BB7B008E5CF7 /* MEResult.m in Sources */,
 				F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */,
 				F73E11151DD5C49C00EBA25A /* ViewController2.m in Sources */,
