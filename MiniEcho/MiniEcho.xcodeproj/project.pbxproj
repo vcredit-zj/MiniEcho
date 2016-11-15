@@ -44,10 +44,20 @@
 		F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F61DD5773600EBA25A /* MEUtil.m */; };
 		F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10FA1DD5788700EBA25A /* SafeObject.m */; };
 		F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */; };
-		F73E11121DD5C48F00EBA25A /* ViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11111DD5C48F00EBA25A /* ViewController1.m */; };
-		F73E11151DD5C49C00EBA25A /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11141DD5C49C00EBA25A /* ViewController2.m */; };
 		F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11171DD5C4A800EBA25A /* ViewController3.m */; };
 		F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E111A1DD5C4B200EBA25A /* ViewController4.m */; };
+		F78FB4F11DDAAA720080D0CE /* MEChannelCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB4EF1DDAAA720080D0CE /* MEChannelCollectionViewCell.m */; };
+		F78FB4F21DDAAA720080D0CE /* MEChannelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78FB4F01DDAAA720080D0CE /* MEChannelCollectionViewCell.xib */; };
+		F78FB4F61DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB4F41DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.m */; };
+		F78FB4F71DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78FB4F51DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib */; };
+		F78FB5031DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */; };
+		F78FB5041DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78FB5021DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib */; };
+		F78FB5071DDAD6EB0080D0CE /* MEChannelCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5061DDAD6EB0080D0CE /* MEChannelCategoryModel.m */; };
+		F78FB50F1DDADB1F0080D0CE /* MEChannelCategrayBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB50A1DDADB1F0080D0CE /* MEChannelCategrayBaseModel.m */; };
+		F78FB5101DDADB1F0080D0CE /* MEChannelCategrayChildren.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB50C1DDADB1F0080D0CE /* MEChannelCategrayChildren.m */; };
+		F78FB5111DDADB1F0080D0CE /* MEChannelCategrayData.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB50E1DDADB1F0080D0CE /* MEChannelCategrayData.m */; };
+		F78FB5161DDAE4310080D0CE /* MEChannelHotBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5131DDAE4310080D0CE /* MEChannelHotBaseModel.m */; };
+		F78FB5171DDAE4310080D0CE /* MEChannelHotData.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5151DDAE4310080D0CE /* MEChannelHotData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,14 +155,32 @@
 		F73E10FA1DD5788700EBA25A /* SafeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeObject.m; sourceTree = "<group>"; };
 		F73E11011DD5BC7000EBA25A /* MEChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelViewController.h; sourceTree = "<group>"; };
 		F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelViewController.m; sourceTree = "<group>"; };
-		F73E11101DD5C48F00EBA25A /* ViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController1.h; sourceTree = "<group>"; };
-		F73E11111DD5C48F00EBA25A /* ViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController1.m; sourceTree = "<group>"; };
-		F73E11131DD5C49C00EBA25A /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
-		F73E11141DD5C49C00EBA25A /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
 		F73E11161DD5C4A800EBA25A /* ViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
 		F73E11171DD5C4A800EBA25A /* ViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
 		F73E11191DD5C4B200EBA25A /* ViewController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController4.h; sourceTree = "<group>"; };
 		F73E111A1DD5C4B200EBA25A /* ViewController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController4.m; sourceTree = "<group>"; };
+		F78FB4EE1DDAAA720080D0CE /* MEChannelCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCollectionViewCell.h; sourceTree = "<group>"; };
+		F78FB4EF1DDAAA720080D0CE /* MEChannelCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCollectionViewCell.m; sourceTree = "<group>"; };
+		F78FB4F01DDAAA720080D0CE /* MEChannelCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEChannelCollectionViewCell.xib; sourceTree = "<group>"; };
+		F78FB4F31DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEchannelCollectionViewAnotherCell.h; sourceTree = "<group>"; };
+		F78FB4F41DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEchannelCollectionViewAnotherCell.m; sourceTree = "<group>"; };
+		F78FB4F51DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEchannelCollectionViewAnotherCell.xib; sourceTree = "<group>"; };
+		F78FB5001DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCollectionReusableHeaderView.h; sourceTree = "<group>"; };
+		F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCollectionReusableHeaderView.m; sourceTree = "<group>"; };
+		F78FB5021DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEChannelCollectionReusableHeaderView.xib; sourceTree = "<group>"; };
+		F78FB5051DDAD6EB0080D0CE /* MEChannelCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCategoryModel.h; sourceTree = "<group>"; };
+		F78FB5061DDAD6EB0080D0CE /* MEChannelCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCategoryModel.m; sourceTree = "<group>"; };
+		F78FB5081DDADB1F0080D0CE /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		F78FB5091DDADB1F0080D0CE /* MEChannelCategrayBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCategrayBaseModel.h; sourceTree = "<group>"; };
+		F78FB50A1DDADB1F0080D0CE /* MEChannelCategrayBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCategrayBaseModel.m; sourceTree = "<group>"; };
+		F78FB50B1DDADB1F0080D0CE /* MEChannelCategrayChildren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCategrayChildren.h; sourceTree = "<group>"; };
+		F78FB50C1DDADB1F0080D0CE /* MEChannelCategrayChildren.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCategrayChildren.m; sourceTree = "<group>"; };
+		F78FB50D1DDADB1F0080D0CE /* MEChannelCategrayData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCategrayData.h; sourceTree = "<group>"; };
+		F78FB50E1DDADB1F0080D0CE /* MEChannelCategrayData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCategrayData.m; sourceTree = "<group>"; };
+		F78FB5121DDAE4310080D0CE /* MEChannelHotBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelHotBaseModel.h; sourceTree = "<group>"; };
+		F78FB5131DDAE4310080D0CE /* MEChannelHotBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelHotBaseModel.m; sourceTree = "<group>"; };
+		F78FB5141DDAE4310080D0CE /* MEChannelHotData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelHotData.h; sourceTree = "<group>"; };
+		F78FB5151DDAE4310080D0CE /* MEChannelHotData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelHotData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,8 +405,15 @@
 		F73E10EB1DD56C9200EBA25A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F73E11101DD5C48F00EBA25A /* ViewController1.h */,
-				F73E11111DD5C48F00EBA25A /* ViewController1.m */,
+				F78FB4EE1DDAAA720080D0CE /* MEChannelCollectionViewCell.h */,
+				F78FB4EF1DDAAA720080D0CE /* MEChannelCollectionViewCell.m */,
+				F78FB4F01DDAAA720080D0CE /* MEChannelCollectionViewCell.xib */,
+				F78FB4F31DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.h */,
+				F78FB4F41DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.m */,
+				F78FB4F51DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib */,
+				F78FB5001DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.h */,
+				F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */,
+				F78FB5021DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -395,8 +430,19 @@
 		F73E10ED1DD56C9200EBA25A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F73E11131DD5C49C00EBA25A /* ViewController2.h */,
-				F73E11141DD5C49C00EBA25A /* ViewController2.m */,
+				F78FB5081DDADB1F0080D0CE /* DataModels.h */,
+				F78FB5121DDAE4310080D0CE /* MEChannelHotBaseModel.h */,
+				F78FB5131DDAE4310080D0CE /* MEChannelHotBaseModel.m */,
+				F78FB5141DDAE4310080D0CE /* MEChannelHotData.h */,
+				F78FB5151DDAE4310080D0CE /* MEChannelHotData.m */,
+				F78FB5091DDADB1F0080D0CE /* MEChannelCategrayBaseModel.h */,
+				F78FB50A1DDADB1F0080D0CE /* MEChannelCategrayBaseModel.m */,
+				F78FB50B1DDADB1F0080D0CE /* MEChannelCategrayChildren.h */,
+				F78FB50C1DDADB1F0080D0CE /* MEChannelCategrayChildren.m */,
+				F78FB50D1DDADB1F0080D0CE /* MEChannelCategrayData.h */,
+				F78FB50E1DDADB1F0080D0CE /* MEChannelCategrayData.m */,
+				F78FB5051DDAD6EB0080D0CE /* MEChannelCategoryModel.h */,
+				F78FB5061DDAD6EB0080D0CE /* MEChannelCategoryModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -561,7 +607,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F78FB5041DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib in Resources */,
 				39120B0C1DD45F7A0052A234 /* LaunchScreen.storyboard in Resources */,
+				F78FB4F21DDAAA720080D0CE /* MEChannelCollectionViewCell.xib in Resources */,
+				F78FB4F71DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib in Resources */,
 				39120B091DD45F7A0052A234 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,9 +776,12 @@
 			files = (
 				39120B591DD45FE10052A234 /* UICollectionViewCell+Nib.m in Sources */,
 				39120B5E1DD45FE10052A234 /* UIView+ExtentTouchRect.m in Sources */,
+				F78FB4F61DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.m in Sources */,
 				39120B5D1DD45FE10052A234 /* UITextView+Placeholder.m in Sources */,
 				39120B541DD45FE10052A234 /* NSUserDefaults+SafeAccess.m in Sources */,
 				39120B5A1DD45FE10052A234 /* UIColor+HEX.m in Sources */,
+				F78FB50F1DDADB1F0080D0CE /* MEChannelCategrayBaseModel.m in Sources */,
+				F78FB5171DDAE4310080D0CE /* MEChannelHotData.m in Sources */,
 				F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */,
 				39120B561DD45FE10052A234 /* UIBarButtonItem+Action.m in Sources */,
 				39120B531DD45FE10052A234 /* NSDate+Extension.m in Sources */,
@@ -740,21 +792,25 @@
 				39106A081DD9B9D6008E5CF7 /* MEHttpUtil.m in Sources */,
 				39120B5C1DD45FE10052A234 /* UITableViewCell+Nib.m in Sources */,
 				39106A0B1DD9BB7B008E5CF7 /* MEResult.m in Sources */,
+				F78FB5071DDAD6EB0080D0CE /* MEChannelCategoryModel.m in Sources */,
 				F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */,
-				F73E11151DD5C49C00EBA25A /* ViewController2.m in Sources */,
 				39120B5B1DD45FE10052A234 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				F78FB4F11DDAAA720080D0CE /* MEChannelCollectionViewCell.m in Sources */,
 				39120B321DD45FC20052A234 /* AppDelegate.m in Sources */,
 				F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */,
 				39120B551DD45FE10052A234 /* UIAlertView+Block.m in Sources */,
+				F78FB5161DDAE4310080D0CE /* MEChannelHotBaseModel.m in Sources */,
+				F78FB5031DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m in Sources */,
 				F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */,
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
 				F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
 				397816561DD5C29B00A698DC /* MEPlayer.m in Sources */,
-				F73E11121DD5C48F00EBA25A /* ViewController1.m in Sources */,
 				3978164D1DD5A51900A698DC /* MEConst.m in Sources */,
+				F78FB5101DDADB1F0080D0CE /* MEChannelCategrayChildren.m in Sources */,
 				39120B521DD45FE10052A234 /* NSData+Base64.m in Sources */,
 				39120B581DD45FE10052A234 /* UIButton+CountDown.m in Sources */,
+				F78FB5111DDADB1F0080D0CE /* MEChannelCategrayData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
