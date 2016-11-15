@@ -19,7 +19,6 @@
     [self get:URLString parameters:params showLoading:NO success:success failure:failure];
 }
 
-
 + (void)get:(NSString *)URLString parameters:(id)params showLoading:(BOOL)yesOrNo success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     AFHTTPSessionManager *manager = [self defaultManager] ;

@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "METabBarController.h"
+#import "MEChannelViewController.h"
+#import "MEPlayer.h"
 @interface AppDelegate ()
 
 {
@@ -26,7 +28,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    METabBarController *rootVC = [[METabBarController alloc] init];
+    MEChannelViewController *rootVC = [[MEChannelViewController alloc] init];
     self.window.rootViewController = rootVC;
     
     launchImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"launchImage"]];
@@ -37,6 +39,8 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self launchImageDisappear:launchImage];
     });
+
+    
     
     return YES;
 }
