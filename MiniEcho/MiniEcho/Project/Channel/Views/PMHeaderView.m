@@ -46,12 +46,25 @@
 
 - (void)initSubviews
 {
+    self.backgroundColor = [UIColor whiteColor];
+    
     _imageView = [[UIImageView alloc] init];
+    _imageView.clipsToBounds = YES;
+    _imageView.frame = CGRectMake(0.f, 0.f, kScreenWidth, kScreenWidth);
+    _imageView.contentMode = UIViewContentModeScaleAspectFill;
     _imageView.backgroundColor = RandomColor;
     [self addSubview:_imageView];
     [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(self);
         make.height.equalTo(@(kScreenWidth));
+    }];
+    
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor whiteColor];
+    [self addSubview:view];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_top).offset(kScreenWidth);
+        make.left.right.bottom.equalTo(self);
     }];
     
     _slider = [[UISlider alloc] init];
@@ -64,7 +77,7 @@
     [self addSubview:_slider];
     [_slider mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self);
-        make.top.equalTo(_imageView.mas_bottom).offset(-15);
+        make.top.equalTo(self.mas_top).offset(kScreenWidth-15);
         make.height.equalTo(@30);
     }];
     
@@ -160,6 +173,23 @@
         make.top.equalTo(_lineView.mas_bottom);
         make.bottom.equalTo(self.mas_bottom);
     }];
+    
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:@"http://kibey-echo.b0.upaiyun.com/poster/2016/01/05/6p7d8zo74sgdno7a.jpg!/fwfh/500x500/unsharp/true"]];
+}
+
+#pragma mark - Setter
+
+- (void)setOffset:(float)offset
+{
+    _offset = offset;
+    if (_offset > -510.f) return;
+    
+    float delta = (-510.f - offset) * 0.02;
+    
+    CGFloat x = kScreenWidth * -0.5 * delta; 
+    CGFloat width = kScreenWidth * (1.0 + delta);
+    _imageView.frame = CGRectMake(x, x, width, width);
+    
 }
 
 #pragma mark - Action

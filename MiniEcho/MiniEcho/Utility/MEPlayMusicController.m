@@ -27,6 +27,8 @@ static NSString *channelID = @"PMChannelInfoCellID";
 static NSString *soundID = @"PMSoundIntroductionCellID";
 static NSString *recommendID = @"PMRecommendCellID";
 
+#define TopImageHeight  (kScreenWidth + 70.f)
+
 @interface MEPlayMusicController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) PMHeaderView *headerView;
@@ -48,13 +50,11 @@ static NSString *recommendID = @"PMRecommendCellID";
 
 - (void)initSubviews
 {
-    _headerView = [[PMHeaderView alloc] initWithFrame:CGRectMake(0.f, 0.f, kScreenWidth, kScreenWidth + 70.f)];
-    
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.contentInset = UIEdgeInsetsMake(TopImageHeight, 0, 0, 0);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.tableHeaderView = _headerView;
     [self.view addSubview:_tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(self.view);
@@ -64,6 +64,10 @@ static NSString *recommendID = @"PMRecommendCellID";
     [_tableView registerNib:[PMChannelInfoCell nib] forCellReuseIdentifier:channelID];
     [_tableView registerNib:[PMSoundIntroductionCell nib] forCellReuseIdentifier:soundID];
     [_tableView registerNib:[PMRecommendCell nib] forCellReuseIdentifier:recommendID];
+    
+    _headerView = [[PMHeaderView alloc] initWithFrame:CGRectMake(0.f,-TopImageHeight, kScreenWidth, TopImageHeight)];
+    [_tableView addSubview:_headerView];
+    [_tableView insertSubview:_headerView atIndex:0];
     
     MEPlayToolBar *toolBar = [[MEPlayToolBar alloc] init];
     [self.view addSubview:toolBar];
@@ -101,7 +105,16 @@ static NSString *recommendID = @"PMRecommendCellID";
         PMRecommendCell *rCell = [tableView dequeueReusableCellWithIdentifier:recommendID forIndexPath:indexPath];
         cell = rCell;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor whiteColor];
+    cell.contentView.backgroundColor = [UIColor whiteColor];
     return cell;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGPoint point = scrollView.contentOffset;
+    _headerView.offset = point.y;
 }
 
 #pragma mark - Public Methods

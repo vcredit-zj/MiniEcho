@@ -13,4 +13,6 @@
 
 @interface PMHeaderView : UIView
 
+@property (nonatomic, assign) float offset;
+
 @end
