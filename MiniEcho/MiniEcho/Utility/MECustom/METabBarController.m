@@ -52,7 +52,7 @@
         NSString *barTitle = [barTitleArr objectAtIndex:i];
         if (NSClassFromString(str)) {
             UIViewController *vc = [[NSClassFromString(str) alloc] init];
-            
+            vc.view.backgroundColor = [UIColor whiteColor];
             UIImage *normalImage = [UIImage imageNamed:imageNormal[i]] ;
             vc.tabBarItem.image = [normalImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             

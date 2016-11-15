@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39106A081DD9B9D6008E5CF7 /* MEHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 39106A071DD9B9D6008E5CF7 /* MEHttpUtil.m */; };
-		39106A0B1DD9BB7B008E5CF7 /* MEResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 39106A0A1DD9BB7B008E5CF7 /* MEResult.m */; };
 		39120AFE1DD45F7A0052A234 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120AFD1DD45F7A0052A234 /* main.m */; };
 		39120B091DD45F7A0052A234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39120B081DD45F7A0052A234 /* Assets.xcassets */; };
 		39120B0C1DD45F7A0052A234 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39120B0A1DD45F7A0052A234 /* LaunchScreen.storyboard */; };
@@ -71,10 +69,6 @@
 		06A1F01FE118C6703F1885EF /* Pods-MiniEchoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoUITests/Pods-MiniEchoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		340B96218A5A8FB7AEDA22FE /* libPods-MiniEchoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniEchoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		343D25C3601190CF413CB3CC /* Pods-MiniEchoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoUITests/Pods-MiniEchoUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		39106A061DD9B9D6008E5CF7 /* MEHttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEHttpUtil.h; sourceTree = "<group>"; };
-		39106A071DD9B9D6008E5CF7 /* MEHttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEHttpUtil.m; sourceTree = "<group>"; };
-		39106A091DD9BB7B008E5CF7 /* MEResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEResult.h; sourceTree = "<group>"; };
-		39106A0A1DD9BB7B008E5CF7 /* MEResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEResult.m; sourceTree = "<group>"; };
 		39120AF91DD45F7A0052A234 /* MiniEcho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniEcho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39120AFD1DD45F7A0052A234 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		39120B081DD45F7A0052A234 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -427,10 +421,6 @@
 				F73E10FA1DD5788700EBA25A /* SafeObject.m */,
 				F73E10F51DD5773600EBA25A /* MEUtil.h */,
 				F73E10F61DD5773600EBA25A /* MEUtil.m */,
-				39106A061DD9B9D6008E5CF7 /* MEHttpUtil.h */,
-				39106A071DD9B9D6008E5CF7 /* MEHttpUtil.m */,
-				39106A091DD9BB7B008E5CF7 /* MEResult.h */,
-				39106A0A1DD9BB7B008E5CF7 /* MEResult.m */,
 				397816541DD5C29B00A698DC /* MEPlayer.h */,
 				397816551DD5C29B00A698DC /* MEPlayer.m */,
 			);
@@ -737,9 +727,7 @@
 				39120B571DD45FE10052A234 /* UIButton+Block.m in Sources */,
 				39120B601DD45FE10052A234 /* UIView+Toast.m in Sources */,
 				39120B5F1DD45FE10052A234 /* UIView+Frame.m in Sources */,
-				39106A081DD9B9D6008E5CF7 /* MEHttpUtil.m in Sources */,
 				39120B5C1DD45FE10052A234 /* UITableViewCell+Nib.m in Sources */,
-				39106A0B1DD9BB7B008E5CF7 /* MEResult.m in Sources */,
 				F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */,
 				F73E11151DD5C49C00EBA25A /* ViewController2.m in Sources */,
 				39120B5B1DD45FE10052A234 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
@@ -750,8 +738,11 @@
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
 				F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
+<<<<<<< HEAD
 				397816561DD5C29B00A698DC /* MEPlayer.m in Sources */,
+=======
 				F73E11121DD5C48F00EBA25A /* ViewController1.m in Sources */,
+>>>>>>> 28a0a299f22b5c5492d6f004ec7aed8da9b2bc06
 				3978164D1DD5A51900A698DC /* MEConst.m in Sources */,
 				39120B521DD45FE10052A234 /* NSData+Base64.m in Sources */,
 				39120B581DD45FE10052A234 /* UIButton+CountDown.m in Sources */,

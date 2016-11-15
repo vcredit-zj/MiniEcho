@@ -12,6 +12,10 @@
 #import <MMDrawerController.h>
 @interface AppDelegate ()
 
+{
+    UIImageView *launchImage;
+}
+
 @end
 
 @implementation AppDelegate
@@ -20,7 +24,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
-    
     METabBarController *centerVC = [[METabBarController alloc] init];
     ViewController1 *leftVC = [[ViewController1 alloc] init];
     leftVC.view.backgroundColor = [UIColor yellowColor];
@@ -30,13 +33,27 @@
     [rootVC setMaximumLeftDrawerWidth:200.0];
     [rootVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [rootVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    
-    self.window.rootViewController = rootVC;
-    
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = rootVC;
     [self.window makeKeyAndVisible];
+    launchImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"launchImage"]];
+    launchImage.backgroundColor = [UIColor whiteColor];
+    launchImage.frame = kScreenBounds;
+    [self.window addSubview:launchImage];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self launchImageDisappear:launchImage];
+    });
+    
+    
     return YES;
+}
+
+-(void)launchImageDisappear:(UIImageView *)launchView
+{
+    [UIView transitionFromView:launchImage toView:self.window.rootViewController.view duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft completion:NULL]; 
 }
 
 
