@@ -10,6 +10,9 @@
 #import "METabBarController.h"
 #import "MEChannelViewController.h"
 #import "MEPlayer.h"
+#import "ViewController1.h"
+#import <MMDrawerController.h> 
+
 @interface AppDelegate ()
 
 {
@@ -23,14 +26,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+
+    METabBarController *centerVC = [[METabBarController alloc] init];
+    ViewController1 *leftVC = [[ViewController1 alloc] init];
+    leftVC.view.backgroundColor = [UIColor yellowColor];
+    UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftVC];
+    MMDrawerController *rootVC = [[MMDrawerController alloc] initWithCenterViewController:centerVC leftDrawerViewController:leftNav];
+    [rootVC setShowsShadow:NO];
+    [rootVC setMaximumLeftDrawerWidth:200.0];
+    [rootVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [rootVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    MEChannelViewController *rootVC = [[MEChannelViewController alloc] init];
     self.window.rootViewController = rootVC;
-    
+    [self.window makeKeyAndVisible];
     launchImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"launchImage"]];
     launchImage.backgroundColor = [UIColor whiteColor];
     launchImage.frame = kScreenBounds;
@@ -40,6 +51,7 @@
         [self launchImageDisappear:launchImage];
     });
 
+    
     
     
     return YES;
