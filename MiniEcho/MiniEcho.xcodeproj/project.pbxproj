@@ -33,6 +33,15 @@
 		39120B651DD45FE60052A234 /* HYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B641DD45FE60052A234 /* HYFileManager.m */; };
 		396896901DDABAFC0088191A /* MEPlayMusicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968968F1DDABAFC0088191A /* MEPlayMusicController.m */; };
 		396896931DDAE7760088191A /* MEPlayToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896921DDAE7760088191A /* MEPlayToolBar.m */; };
+		396896971DDAF1030088191A /* PMRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896951DDAF1030088191A /* PMRecommendCell.m */; };
+		396896981DDAF1030088191A /* PMRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396896961DDAF1030088191A /* PMRecommendCell.xib */; };
+		3968969C1DDAF1540088191A /* PMChannelInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968969A1DDAF1540088191A /* PMChannelInfoCell.m */; };
+		3968969D1DDAF1540088191A /* PMChannelInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3968969B1DDAF1540088191A /* PMChannelInfoCell.xib */; };
+		396896A11DDAF1970088191A /* PMSoundIntroductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968969F1DDAF1970088191A /* PMSoundIntroductionCell.m */; };
+		396896A21DDAF1970088191A /* PMSoundIntroductionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396896A01DDAF1970088191A /* PMSoundIntroductionCell.xib */; };
+		396896A61DDAF1DB0088191A /* PMUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896A41DDAF1DB0088191A /* PMUserInfoCell.m */; };
+		396896A71DDAF1DB0088191A /* PMUserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396896A51DDAF1DB0088191A /* PMUserInfoCell.xib */; };
+		396896AA1DDAF2990088191A /* PMHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896A91DDAF2990088191A /* PMHeaderView.m */; };
 		3978164D1DD5A51900A698DC /* MEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978164C1DD5A51900A698DC /* MEConst.m */; };
 		397816561DD5C29B00A698DC /* MEPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 397816551DD5C29B00A698DC /* MEPlayer.m */; };
 		397816581DD5C4C400A698DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397816571DD5C4C400A698DC /* AVFoundation.framework */; };
@@ -126,6 +135,20 @@
 		3968968F1DDABAFC0088191A /* MEPlayMusicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEPlayMusicController.m; sourceTree = "<group>"; };
 		396896911DDAE7760088191A /* MEPlayToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPlayToolBar.h; sourceTree = "<group>"; };
 		396896921DDAE7760088191A /* MEPlayToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEPlayToolBar.m; sourceTree = "<group>"; };
+		396896941DDAF1030088191A /* PMRecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMRecommendCell.h; sourceTree = "<group>"; };
+		396896951DDAF1030088191A /* PMRecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMRecommendCell.m; sourceTree = "<group>"; };
+		396896961DDAF1030088191A /* PMRecommendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMRecommendCell.xib; sourceTree = "<group>"; };
+		396896991DDAF1540088191A /* PMChannelInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMChannelInfoCell.h; sourceTree = "<group>"; };
+		3968969A1DDAF1540088191A /* PMChannelInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMChannelInfoCell.m; sourceTree = "<group>"; };
+		3968969B1DDAF1540088191A /* PMChannelInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMChannelInfoCell.xib; sourceTree = "<group>"; };
+		3968969E1DDAF1970088191A /* PMSoundIntroductionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSoundIntroductionCell.h; sourceTree = "<group>"; };
+		3968969F1DDAF1970088191A /* PMSoundIntroductionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSoundIntroductionCell.m; sourceTree = "<group>"; };
+		396896A01DDAF1970088191A /* PMSoundIntroductionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMSoundIntroductionCell.xib; sourceTree = "<group>"; };
+		396896A31DDAF1DB0088191A /* PMUserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUserInfoCell.h; sourceTree = "<group>"; };
+		396896A41DDAF1DB0088191A /* PMUserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUserInfoCell.m; sourceTree = "<group>"; };
+		396896A51DDAF1DB0088191A /* PMUserInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMUserInfoCell.xib; sourceTree = "<group>"; };
+		396896A81DDAF2990088191A /* PMHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMHeaderView.h; sourceTree = "<group>"; };
+		396896A91DDAF2990088191A /* PMHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMHeaderView.m; sourceTree = "<group>"; };
 		397816411DD5A20700A698DC /* MEMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMacros.h; sourceTree = "<group>"; };
 		397816421DD5A22300A698DC /* MEEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEEnums.h; sourceTree = "<group>"; };
 		3978164B1DD5A51900A698DC /* MEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEConst.h; sourceTree = "<group>"; };
@@ -385,6 +408,18 @@
 			children = (
 				F73E11101DD5C48F00EBA25A /* ViewController1.h */,
 				F73E11111DD5C48F00EBA25A /* ViewController1.m */,
+				396896941DDAF1030088191A /* PMRecommendCell.h */,
+				396896951DDAF1030088191A /* PMRecommendCell.m */,
+				396896961DDAF1030088191A /* PMRecommendCell.xib */,
+				396896991DDAF1540088191A /* PMChannelInfoCell.h */,
+				3968969A1DDAF1540088191A /* PMChannelInfoCell.m */,
+				3968969B1DDAF1540088191A /* PMChannelInfoCell.xib */,
+				3968969E1DDAF1970088191A /* PMSoundIntroductionCell.h */,
+				3968969F1DDAF1970088191A /* PMSoundIntroductionCell.m */,
+				396896A01DDAF1970088191A /* PMSoundIntroductionCell.xib */,
+				396896A31DDAF1DB0088191A /* PMUserInfoCell.h */,
+				396896A41DDAF1DB0088191A /* PMUserInfoCell.m */,
+				396896A51DDAF1DB0088191A /* PMUserInfoCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -421,6 +456,8 @@
 			children = (
 				F73E11191DD5C4B200EBA25A /* ViewController4.h */,
 				F73E111A1DD5C4B200EBA25A /* ViewController4.m */,
+				396896A81DDAF2990088191A /* PMHeaderView.h */,
+				396896A91DDAF2990088191A /* PMHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -576,6 +613,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3968969D1DDAF1540088191A /* PMChannelInfoCell.xib in Resources */,
+				396896A71DDAF1DB0088191A /* PMUserInfoCell.xib in Resources */,
+				396896A21DDAF1970088191A /* PMSoundIntroductionCell.xib in Resources */,
+				396896981DDAF1030088191A /* PMRecommendCell.xib in Resources */,
 				39120B0C1DD45F7A0052A234 /* LaunchScreen.storyboard in Resources */,
 				39120B091DD45F7A0052A234 /* Assets.xcassets in Resources */,
 			);
@@ -743,11 +784,13 @@
 				39120B591DD45FE10052A234 /* UICollectionViewCell+Nib.m in Sources */,
 				39120B5E1DD45FE10052A234 /* UIView+ExtentTouchRect.m in Sources */,
 				39120B5D1DD45FE10052A234 /* UITextView+Placeholder.m in Sources */,
+				396896A61DDAF1DB0088191A /* PMUserInfoCell.m in Sources */,
 				39120B541DD45FE10052A234 /* NSUserDefaults+SafeAccess.m in Sources */,
 				39120B5A1DD45FE10052A234 /* UIColor+HEX.m in Sources */,
 				396896931DDAE7760088191A /* MEPlayToolBar.m in Sources */,
 				F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */,
 				39120B561DD45FE10052A234 /* UIBarButtonItem+Action.m in Sources */,
+				396896971DDAF1030088191A /* PMRecommendCell.m in Sources */,
 				39120B531DD45FE10052A234 /* NSDate+Extension.m in Sources */,
 				F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */,
 				39120B571DD45FE10052A234 /* UIButton+Block.m in Sources */,
@@ -755,12 +798,15 @@
 				39120B5F1DD45FE10052A234 /* UIView+Frame.m in Sources */,
 				39106A081DD9B9D6008E5CF7 /* MEHttpUtil.m in Sources */,
 				39120B5C1DD45FE10052A234 /* UITableViewCell+Nib.m in Sources */,
+				3968969C1DDAF1540088191A /* PMChannelInfoCell.m in Sources */,
 				396896901DDABAFC0088191A /* MEPlayMusicController.m in Sources */,
 				39106A0B1DD9BB7B008E5CF7 /* MEResult.m in Sources */,
 				F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */,
 				F73E11151DD5C49C00EBA25A /* ViewController2.m in Sources */,
+				396896AA1DDAF2990088191A /* PMHeaderView.m in Sources */,
 				39120B5B1DD45FE10052A234 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				39120B321DD45FC20052A234 /* AppDelegate.m in Sources */,
+				396896A11DDAF1970088191A /* PMSoundIntroductionCell.m in Sources */,
 				F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */,
 				39120B551DD45FE10052A234 /* UIAlertView+Block.m in Sources */,
 				F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */,

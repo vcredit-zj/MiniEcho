@@ -16,6 +16,9 @@
 #define kScreenWidth    [UIScreen mainScreen].bounds.size.width
 #define kScreenBounds   [UIScreen mainScreen].bounds
 
+// 颜色相关
+#define MEColor(r, g, b)            [UIColor colorWithRed:r/256.0 green:g/256.0 blue:b/256.0 alpha:1.0]
+#define RandomColor                 MEColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
 // 自定义log日志
 #ifdef DEBUG
@@ -25,7 +28,7 @@
 #define DLog(...) do { } while (0)
 #endif
 
-#define kLogFunction  CPLog(@"%s",__FUNCTION__);
+#define kLogFunction  DLog(@"%s",__FUNCTION__);
 
 
 #endif /* MEMacros_h */
