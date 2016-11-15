@@ -7,6 +7,7 @@
 //
 
 #import "MEChannelViewController.h"
+#import "MEPlayer.h"
 
 #import "MEChannelCollectionViewCell.h"
 #import "MEchannelCollectionViewAnotherCell.h"
@@ -93,6 +94,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 #pragma mark UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+
 
     return 2;
 }
