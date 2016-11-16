@@ -13,6 +13,10 @@
 #import "CategoryCollectionReusableView.h"
 #import "MEChannelCollectionViewCell.h"
 
+// model
+#import "DataModels.h"
+
+
 
 static NSString *headerID = @"headerCategoryIdentifier";
 static NSString *fCellID = @"fCellIdentifier";
@@ -20,6 +24,12 @@ static NSString *fCellID = @"fCellIdentifier";
 @interface MEChannelCategoryViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) NSMutableArray *categoryNameArr;
+
+@property (nonatomic, strong) NSString *categoryData;
+
+@property (nonatomic, strong) NSMutableArray *dataArrayM;
 
 @end
 
@@ -30,6 +40,9 @@ static NSString *fCellID = @"fCellIdentifier";
     self.title = @"类别";
     self.view.backgroundColor = [UIColor whiteColor];
     [self initSubviews];
+    
+    _categoryData = [NSString stringWithFormat:@"%zd", (NSInteger)self.model.dataIdentifier];
+    [self requestDataFromServer];
 }
 
 #pragma mark - Initilization
@@ -77,11 +90,11 @@ static NSString *fCellID = @"fCellIdentifier";
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 16;
+    return self.dataArrayM.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MEChannelCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:fCellID forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor orangeColor];
+    cell.model = [self.dataArrayM safeObjectAtIndex:indexPath.item];
     return cell;
 }
 
@@ -92,13 +105,46 @@ static NSString *fCellID = @"fCellIdentifier";
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
+    __weak typeof(self) weakSelf = self;
     if (kind == UICollectionElementKindSectionHeader){
         
         CategoryCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerID forIndexPath:indexPath];
+        headerView.model = self.model;
+        headerView.block = ^(NSString *tag){
+            weakSelf.categoryData = tag;
+            [weakSelf requestDataFromServer];
+        };
         return headerView;
     } else {
     return nil;
     }
+}
+
+- (void)setModel:(MEChannelCategrayData *)model
+{
+    _model = model;
+}
+
+#pragma mark - requestData
+- (void)requestDataFromServer
+{
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *parametDic = @{@"order":@"hot",@"page ":@"1",@"tag":_categoryData,@"with_sound":@"0"};
+    [MEHttpUtil get:ChannerType parameters:parametDic success:^(id result) {
+        NSLog(@"~~~~~~result = %@", result);
+        MEChannelHotBaseModel *baseModel = [MEChannelHotBaseModel modelObjectWithDictionary:result];
+        weakSelf.dataArrayM = [NSMutableArray arrayWithArray:baseModel.data];
+
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+- (void)setDataArrayM:(NSMutableArray *)dataArrayM
+{
+    _dataArrayM = dataArrayM;
+    [_collectionView reloadData];
 }
 
 @end

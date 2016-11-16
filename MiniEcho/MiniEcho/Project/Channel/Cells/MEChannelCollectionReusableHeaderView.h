@@ -15,5 +15,6 @@
 @interface MEChannelCollectionReusableHeaderView : UICollectionReusableView
 + (UINib *)nib;
 
-@property (nonatomic,strong) HeaderModel *model; 
+@property (nonatomic,strong) HeaderModel *model;
+
 @end

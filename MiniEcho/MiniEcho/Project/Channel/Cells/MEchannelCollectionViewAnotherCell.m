@@ -68,7 +68,7 @@ NSString *MEchannelCollectionViewAnotherCellID = @"NSString *MEchannelCollection
 
     NSLog(@"click === %ld",gesture.view.tag);
     if (_callBcak) {
-         MEChannelCategrayChildren *model = [self.dataArray safeObjectAtIndex:gesture.view.tag];
+         MEChannelCategrayData *model = [self.dataArray safeObjectAtIndex:gesture.view.tag];
         if (!model) return;
         _callBcak(model);
     }

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MEChannelCategrayData;
 @interface MEChannelCategoryViewController : UIViewController
+
+@property (nonatomic, strong) MEChannelCategrayData *model;
 
 @end

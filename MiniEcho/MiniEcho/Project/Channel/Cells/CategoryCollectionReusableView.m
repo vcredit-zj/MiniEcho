@@ -8,10 +8,10 @@
 
 #import "CategoryCollectionReusableView.h"
 #import "HXTagsView.h"
+#import "MEChannelCategrayData.h"
+#import "MEChannelCategrayChildren.h"
 #define kScreenHeight   [UIScreen mainScreen].bounds.size.height
 #define kScreenWidth    [UIScreen mainScreen].bounds.size.width
-
-typedef void(^CategoryCollectionDidSelectedBlock)(void);
 
 @interface CategoryCollectionReusableView ()<HXTagsViewDelegate>
 
@@ -20,6 +20,10 @@ typedef void(^CategoryCollectionDidSelectedBlock)(void);
 @property (nonatomic, strong) UILabel *titleLabel;
 
 @property (nonatomic, strong) UILabel *rightLabel;
+
+@property (nonatomic, strong) HXTagsView *tagsView;
+
+@property (nonatomic, strong) NSMutableArray *tagID;
 
 @end
 
@@ -68,12 +72,10 @@ typedef void(^CategoryCollectionDidSelectedBlock)(void);
         make.height.equalTo(@20.f);
     }];
     
-    NSArray *tagAry = @[@"冒险岛",@"反恐精英ol",@"魔域",@"诛仙",@"火影ol",@"问道",@"天龙八部"];
     //多行不滚动,则计算出全部展示的高度,让maxHeight等于计算出的高度即可,初始化不需要设置高度
-    HXTagsView *tagsView = [[HXTagsView alloc] initWithFrame:CGRectMake(0, 60, kScreenWidth, 0)];
-    tagsView.type = 0;
-    [tagsView setTagAry:tagAry delegate:self];
-    [self addSubview:tagsView];
+    _tagsView = [[HXTagsView alloc] initWithFrame:CGRectMake(0, 60, kScreenWidth, 0)];
+    _tagsView.type = 0;
+    [self addSubview:_tagsView];
     
 }
 
@@ -86,7 +88,34 @@ typedef void(^CategoryCollectionDidSelectedBlock)(void);
  *  @param sender   tag:sender.titleLabel.text index:sender.tag
  */
 - (void)tagsViewButtonAction:(HXTagsView *)tagsView button:(UIButton *)sender {
-    NSLog(@"tag:%@ index:%ld",sender.titleLabel.text,(long)sender.tag);
+    NSLog(@"tag:%@ index:%ld",sender.titleLabel.text, sender.tag);
+    if (_block) {
+        _block(_tagID[sender.tag]);
+    }
+}
+
+- (void)setModel:(MEChannelCategrayData *)model
+{
+    _model = model;
+    MEChannelCategrayChildren *childModel;
+    _array = [NSMutableArray array];
+    _tagID = [NSMutableArray array];
+    for (NSInteger i = 0; i < model.children.count; i ++) {
+        childModel = model.children[i];
+        [_array addObject:childModel.name];
+        [_tagID addObject:[NSString stringWithFormat:@"%zd", (NSInteger)childModel.childrenIdentifier]];
+    }
+
+    [_array insertObject:@"全部" atIndex:0];
+    [_tagID safeInsertObject:[NSString stringWithFormat:@"%zd", (NSInteger)model.dataIdentifier] atIndex:0];
+    [_tagsView setTagAry:_array delegate:self];
+    
+    NSURL *url = [NSURL URLWithString:model.icoUrl];
+    [_leftImage sd_setImageWithURL:url];
+    
+    NSString *str = [NSString stringWithFormat:@"共%zd个频道", model.children.count + 1];
+    _rightLabel.text = str;
+    
     
 }
 

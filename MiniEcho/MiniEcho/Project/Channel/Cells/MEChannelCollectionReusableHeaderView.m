@@ -24,26 +24,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(10, 0, 20, 20);
-    [self addSubview:imageView];
     
 }
-- (void)setModel:(HeaderModel *)model {
 
-    _model = model;
-    
-    [_leftImageView setImage:[UIImage imageNamed:model.imageName]];
-    NSInteger index = 1;
-    for (NSString *title in model.titleArray) {
-        UIButton *button = [[UIButton alloc] init];
-        button.tag = index;
-        button.frame = CGRectMake( index * 20, 0, 20, 20);
-        [button setTitle:title forState:UIControlStateNormal];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:12.f]]; 
-        [self addSubview:button];
-        index++;
-    }
-    
-}
 @end
