@@ -40,12 +40,14 @@
         button.tag = index;
         button.frame = CGRectMake( index * 20, 0, 20, 20);
         [button setTitle:title forState:UIControlStateNormal];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:12.f]];
-        [button addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:12.f]]; 
         [self addSubview:button];
         index++;
     }
     
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 27f33c8f06a8f634ae67f488f446558e8d7eca67
 @end

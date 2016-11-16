@@ -34,6 +34,13 @@
 		39120B5F1DD45FE10052A234 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B4F1DD45FE10052A234 /* UIView+Frame.m */; };
 		39120B601DD45FE10052A234 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B511DD45FE10052A234 /* UIView+Toast.m */; };
 		39120B651DD45FE60052A234 /* HYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120B641DD45FE60052A234 /* HYFileManager.m */; };
+		3957F82E1DDBF3AF004D8B5F /* PMSoundCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3957F82C1DDBF3AF004D8B5F /* PMSoundCollectionCell.m */; };
+		3957F82F1DDBF3AF004D8B5F /* PMSoundCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3957F82D1DDBF3AF004D8B5F /* PMSoundCollectionCell.xib */; };
+		3957F8321DDC04F4004D8B5F /* PMRootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3957F8311DDC04F4004D8B5F /* PMRootModel.m */; };
+		3957F8351DDC0827004D8B5F /* MEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3957F8341DDC0827004D8B5F /* MEUser.m */; };
+		3957F8381DDC0CB6004D8B5F /* PMSimilarSubSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 3957F8371DDC0CB6004D8B5F /* PMSimilarSubSound.m */; };
+		3957F83B1DDC0D9B004D8B5F /* PMChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3957F83A1DDC0D9B004D8B5F /* PMChannel.m */; };
+		3957F83E1DDC0FF7004D8B5F /* PMHerderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3957F83D1DDC0FF7004D8B5F /* PMHerderModel.m */; };
 		396896901DDABAFC0088191A /* MEPlayMusicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968968F1DDABAFC0088191A /* MEPlayMusicController.m */; };
 		396896931DDAE7760088191A /* MEPlayToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896921DDAE7760088191A /* MEPlayToolBar.m */; };
 		396896971DDAF1030088191A /* PMRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896951DDAF1030088191A /* PMRecommendCell.m */; };
@@ -150,6 +157,19 @@
 		39120B511DD45FE10052A234 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		39120B631DD45FE60052A234 /* HYFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYFileManager.h; sourceTree = "<group>"; };
 		39120B641DD45FE60052A234 /* HYFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYFileManager.m; sourceTree = "<group>"; };
+		3957F82B1DDBF3AF004D8B5F /* PMSoundCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSoundCollectionCell.h; sourceTree = "<group>"; };
+		3957F82C1DDBF3AF004D8B5F /* PMSoundCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSoundCollectionCell.m; sourceTree = "<group>"; };
+		3957F82D1DDBF3AF004D8B5F /* PMSoundCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMSoundCollectionCell.xib; sourceTree = "<group>"; };
+		3957F8301DDC04F4004D8B5F /* PMRootModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMRootModel.h; sourceTree = "<group>"; };
+		3957F8311DDC04F4004D8B5F /* PMRootModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMRootModel.m; sourceTree = "<group>"; };
+		3957F8331DDC0827004D8B5F /* MEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEUser.h; sourceTree = "<group>"; };
+		3957F8341DDC0827004D8B5F /* MEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEUser.m; sourceTree = "<group>"; };
+		3957F8361DDC0CB6004D8B5F /* PMSimilarSubSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSimilarSubSound.h; sourceTree = "<group>"; };
+		3957F8371DDC0CB6004D8B5F /* PMSimilarSubSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSimilarSubSound.m; sourceTree = "<group>"; };
+		3957F8391DDC0D9B004D8B5F /* PMChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMChannel.h; sourceTree = "<group>"; };
+		3957F83A1DDC0D9B004D8B5F /* PMChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMChannel.m; sourceTree = "<group>"; };
+		3957F83C1DDC0FF7004D8B5F /* PMHerderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMHerderModel.h; sourceTree = "<group>"; };
+		3957F83D1DDC0FF7004D8B5F /* PMHerderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMHerderModel.m; sourceTree = "<group>"; };
 		3968968E1DDABAFC0088191A /* MEPlayMusicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPlayMusicController.h; sourceTree = "<group>"; };
 		3968968F1DDABAFC0088191A /* MEPlayMusicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEPlayMusicController.m; sourceTree = "<group>"; };
 		396896911DDAE7760088191A /* MEPlayToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPlayToolBar.h; sourceTree = "<group>"; };
@@ -443,6 +463,7 @@
 		F73E10EB1DD56C9200EBA25A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+
 				03C6A0D31DDBE9C3000EF49F /* CategoryCollectionReusableView.h */,
 				03C6A0D41DDBE9C3000EF49F /* CategoryCollectionReusableView.m */,
 				396896941DDAF1030088191A /* PMRecommendCell.h */,
@@ -466,6 +487,9 @@
 				F78FB5001DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.h */,
 				F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */,
 				F78FB5021DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib */,
+				3957F82B1DDBF3AF004D8B5F /* PMSoundCollectionCell.h */,
+				3957F82C1DDBF3AF004D8B5F /* PMSoundCollectionCell.m */,
+				3957F82D1DDBF3AF004D8B5F /* PMSoundCollectionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -497,6 +521,16 @@
 				F78FB50E1DDADB1F0080D0CE /* MEChannelCategrayData.m */,
 				F78FB5051DDAD6EB0080D0CE /* MEChannelCategoryModel.h */,
 				F78FB5061DDAD6EB0080D0CE /* MEChannelCategoryModel.m */,
+				3957F8301DDC04F4004D8B5F /* PMRootModel.h */,
+				3957F8311DDC04F4004D8B5F /* PMRootModel.m */,
+				3957F8331DDC0827004D8B5F /* MEUser.h */,
+				3957F8341DDC0827004D8B5F /* MEUser.m */,
+				3957F8361DDC0CB6004D8B5F /* PMSimilarSubSound.h */,
+				3957F8371DDC0CB6004D8B5F /* PMSimilarSubSound.m */,
+				3957F8391DDC0D9B004D8B5F /* PMChannel.h */,
+				3957F83A1DDC0D9B004D8B5F /* PMChannel.m */,
+				3957F83C1DDC0FF7004D8B5F /* PMHerderModel.h */,
+				3957F83D1DDC0FF7004D8B5F /* PMHerderModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -680,6 +714,7 @@
 				396896981DDAF1030088191A /* PMRecommendCell.xib in Resources */,
 				F78FB5041DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib in Resources */,
 				39120B0C1DD45F7A0052A234 /* LaunchScreen.storyboard in Resources */,
+				3957F82F1DDBF3AF004D8B5F /* PMSoundCollectionCell.xib in Resources */,
 				F78FB4F21DDAAA720080D0CE /* MEChannelCollectionViewCell.xib in Resources */,
 				F78FB4F71DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib in Resources */,
 				39120B091DD45F7A0052A234 /* Assets.xcassets in Resources */,
@@ -847,6 +882,7 @@
 			files = (
 				F78FB5191DDAF8840080D0CE /* MEChannelCategrayBaseModel.m in Sources */,
 				F78FB5181DDAF8520080D0CE /* MEChannelHotData.m in Sources */,
+				3957F8321DDC04F4004D8B5F /* PMRootModel.m in Sources */,
 				39120B591DD45FE10052A234 /* UICollectionViewCell+Nib.m in Sources */,
 				39120B5E1DD45FE10052A234 /* UIView+ExtentTouchRect.m in Sources */,
 				F78FB4F61DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.m in Sources */,
@@ -860,6 +896,7 @@
 				39120B561DD45FE10052A234 /* UIBarButtonItem+Action.m in Sources */,
 				396896971DDAF1030088191A /* PMRecommendCell.m in Sources */,
 				39120B531DD45FE10052A234 /* NSDate+Extension.m in Sources */,
+				3957F83B1DDC0D9B004D8B5F /* PMChannel.m in Sources */,
 				F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */,
 				39120B571DD45FE10052A234 /* UIButton+Block.m in Sources */,
 				39120B601DD45FE10052A234 /* UIView+Toast.m in Sources */,
@@ -877,6 +914,7 @@
 				F78FB4F11DDAAA720080D0CE /* MEChannelCollectionViewCell.m in Sources */,
 				39120B321DD45FC20052A234 /* AppDelegate.m in Sources */,
 				396896A11DDAF1970088191A /* PMSoundIntroductionCell.m in Sources */,
+				3957F82E1DDBF3AF004D8B5F /* PMSoundCollectionCell.m in Sources */,
 				03C6A0D81DDBE9E3000EF49F /* HXTagsView.m in Sources */,
 				F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */,
 				39120B551DD45FE10052A234 /* UIAlertView+Block.m in Sources */,
@@ -885,13 +923,16 @@
 				F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */,
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
 				F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */,
+				3957F8351DDC0827004D8B5F /* MEUser.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
 				397816561DD5C29B00A698DC /* MEPlayer.m in Sources */,
 				3978164D1DD5A51900A698DC /* MEConst.m in Sources */,
 				F78FB5101DDADB1F0080D0CE /* MEChannelCategrayChildren.m in Sources */,
 				39120B521DD45FE10052A234 /* NSData+Base64.m in Sources */,
+				3957F83E1DDC0FF7004D8B5F /* PMHerderModel.m in Sources */,
 				39120B581DD45FE10052A234 /* UIButton+CountDown.m in Sources */,
 				F78FB5111DDADB1F0080D0CE /* MEChannelCategrayData.m in Sources */,
+				3957F8381DDC0CB6004D8B5F /* PMSimilarSubSound.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
