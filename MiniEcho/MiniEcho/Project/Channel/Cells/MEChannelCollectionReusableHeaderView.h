@@ -12,8 +12,9 @@
 @property (nonatomic,copy) NSString *imageName;
 @property (nonatomic, strong) NSArray<NSString *> *titleArray;
 @end
-
 @interface MEChannelCollectionReusableHeaderView : UICollectionReusableView
 + (UINib *)nib;
+
+@property (nonatomic,strong) HeaderModel *model;
 
 @end

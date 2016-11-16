@@ -22,6 +22,15 @@
 #import "PMSoundIntroductionCell.h"
 #import "PMRecommendCell.h"
 
+// model
+#import "PMRootModel.h"
+#import "PMHerderModel.h"
+#import "MEUser.h"
+#import "PMChannel.h"
+#import "PMSimilarSubSound.h"
+
+
+
 static NSString *userID = @"PMUserInfoCellID";
 static NSString *channelID = @"PMChannelInfoCellID";
 static NSString *soundID = @"PMSoundIntroductionCellID";
@@ -35,6 +44,14 @@ static NSString *recommendID = @"PMRecommendCellID";
 
 @property (nonatomic, strong) UITableView *tableView;
 
+@property (nonatomic, strong) PMRootModel *rootModel;
+
+@property (nonatomic, strong) PMHerderModel *headerModel;
+
+@property (nonatomic, strong) MEUser *user;
+@property (nonatomic, strong) PMChannel *channel;
+@property (nonatomic,   copy) NSArray *similar;
+
 @end
 
 @implementation MEPlayMusicController
@@ -44,6 +61,7 @@ static NSString *recommendID = @"PMRecommendCellID";
     
     self.automaticallyAdjustsScrollViewInsets = YES;
     [self initSubviews];
+    [self requestSoundInfoFromServer];
 }
 
 #pragma mark - Initialization
@@ -86,6 +104,32 @@ static NSString *recommendID = @"PMRecommendCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat itemWidth = (kScreenWidth - 40.f) / 3;
+    if (indexPath.row == 0) { // 用户
+        
+        return 70.f;
+    } else if (indexPath.row == 1) { // 频道
+        
+        return itemWidth + 110.f;
+    } else if (indexPath.row == 2) { // 歌词
+        
+        if (_rootModel) {
+            NSMutableAttributedString *lyric = [[NSMutableAttributedString alloc] initWithString:_rootModel.info];
+            lyric.yy_font = [UIFont systemFontOfSize:12.0];
+            lyric.yy_color = [UIColor colorWithHexString:@"#333333"];
+            lyric.yy_lineSpacing = 5.f;
+            lyric.yy_alignment = NSTextAlignmentCenter;
+            
+            CGFloat limitWidth = kScreenWidth - 20.f;
+            
+            return [MEUtil heightForAttributedString:lyric constrainedWidth:limitWidth];
+        }
+        
+    } else if (indexPath.row == 3) { // 推荐
+        
+        return itemWidth + 30.f;
+    }
+    
     return 50.f;
 }
 
@@ -94,15 +138,27 @@ static NSString *recommendID = @"PMRecommendCellID";
     UITableViewCell *cell = nil;
     if (indexPath.row == 0) {
         PMUserInfoCell *uCell = [tableView dequeueReusableCellWithIdentifier:userID forIndexPath:indexPath];
+        if (_rootModel) {
+            uCell.user = _rootModel.user;
+        }
         cell = uCell;
     } else if (indexPath.row == 1) {
         PMChannelInfoCell *cCell = [tableView dequeueReusableCellWithIdentifier:channelID forIndexPath:indexPath];
+        if (_rootModel) {
+            cCell.channel = _rootModel.channel;
+        }
         cell = cCell;
     } else if (indexPath.row == 2) {
         PMSoundIntroductionCell *sCell = [tableView dequeueReusableCellWithIdentifier:soundID forIndexPath:indexPath];
+        if (_rootModel) {
+            sCell.lyric = _rootModel.info;
+        }
         cell = sCell;
     } else if (indexPath.row == 3) {
         PMRecommendCell *rCell = [tableView dequeueReusableCellWithIdentifier:recommendID forIndexPath:indexPath];
+        if (_rootModel) {
+            rCell.sounds = _rootModel.similar;
+        }
         cell = rCell;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -144,6 +200,43 @@ static NSString *recommendID = @"PMRecommendCellID";
         //设置锁屏状态下屏幕显示播放音乐信息
         [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
     }  */
+}
+
+#pragma mark - Util
+
+- (void)requestSoundInfoFromServer
+{
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *param = @{@"sound_id" : @"1322743"};
+    [MEHttpUtil get:SoundInfo parameters:param showLoading:YES success:^(id result) {
+
+        
+        weakSelf.rootModel = [PMRootModel mj_objectWithKeyValues:result];
+        weakSelf.user = [MEUser mj_objectWithKeyValues:result[@"user"]];
+        weakSelf.channel = [PMChannel mj_objectWithKeyValues:result[@"channel"]];
+        weakSelf.similar = [PMSimilarSubSound mj_objectArrayWithKeyValuesArray:result[@"similar"]];
+        [weakSelf refreshScreen];
+        
+    } failure:^(NSError *error) {
+        DLog(@"获取歌曲信息失败");
+    }];
+}
+
+- (void)refreshScreen
+{
+    NSString *title = _rootModel.name;
+    self.title = title;
+    
+    if (!_headerModel) {
+        _headerModel = [PMHerderModel new];
+    }
+    _headerModel.picURL = _rootModel.pic_500;
+    _headerModel.view_count = _rootModel.view_count;
+    _headerModel.download_count = _rootModel.download_count;
+    _headerModel.like_count = _rootModel.like_count;
+    _headerView.model = _headerModel;
+    
+    [_tableView reloadData];
 }
 
 @end

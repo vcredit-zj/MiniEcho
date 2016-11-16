@@ -21,4 +21,17 @@
     // Configure the view for the selected state
 }
 
+#pragma mark - Setter
+
+- (void)setLyric:(NSString *)lyric
+{
+    NSMutableAttributedString *lyricAttr = [[NSMutableAttributedString alloc] initWithString:lyric];
+    lyricAttr.yy_font = [UIFont systemFontOfSize:12.0];
+    lyricAttr.yy_color = [UIColor colorWithHexString:@"#333333"];
+    lyricAttr.yy_lineSpacing = 5.f;
+    lyricAttr.yy_alignment = NSTextAlignmentCenter;
+    
+    _lyricLabel.attributedText = lyricAttr;
+}
+
 @end

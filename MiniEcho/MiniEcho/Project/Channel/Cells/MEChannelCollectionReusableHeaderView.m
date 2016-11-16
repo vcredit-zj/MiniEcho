@@ -24,9 +24,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(10, 0, 20, 20);
-    [self addSubview:imageView];
     
 }
+
 @end

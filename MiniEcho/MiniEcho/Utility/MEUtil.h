@@ -12,4 +12,8 @@
 + (UIImage *)imageWithColor:(UIColor *)color;
 
 + (CGFloat)widthForSingleLineText:(NSString *)text fontSize:(CGFloat)font ;
+
++ (CGFloat)heightForText:(NSString *)text fontSize:(CGFloat)font constrainedWidth:(CGFloat)width lineBreakMode:(NSLineBreakMode)lineBreakMode;
+
++ (CGFloat)heightForAttributedString:(NSAttributedString *)string constrainedWidth:(CGFloat)width;
 @end

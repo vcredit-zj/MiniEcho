@@ -13,4 +13,12 @@
 
 @interface PMSoundIntroductionCell : UITableViewCell
 
+
+@property (weak, nonatomic) IBOutlet UILabel *lyricLabel;
+
+
+@property (nonatomic, copy) NSString *lyric;
+
+
+
 @end

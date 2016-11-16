@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class MEChannelCategrayChildren;
+@class MEChannelCategrayData;
 extern NSString *MEchannelCollectionViewAnotherCellID;
 
-typedef void(^CallBackBlock)(MEChannelCategrayChildren *model);
+typedef void(^CallBackBlock)(MEChannelCategrayData *model);
 @interface MEchannelCollectionViewAnotherCell : UICollectionViewCell
 
 @property (nonatomic,strong) NSArray *dataArray;

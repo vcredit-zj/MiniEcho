@@ -7,6 +7,7 @@
 //
 
 #import "PMHeaderView.h"
+#import "PMHerderModel.h"
 
 @interface PMHeaderView ()
 
@@ -84,7 +85,7 @@
     _playTimeLabel = [[UILabel alloc] init];
     _playTimeLabel.backgroundColor = [UIColor whiteColor];
     _playTimeLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-    _playTimeLabel.text = @"01:23";
+    _playTimeLabel.text = @"00:00";
     _playTimeLabel.font = [UIFont systemFontOfSize:12.f];
     [self addSubview:_playTimeLabel];
     [_playTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -98,7 +99,7 @@
     _totalTimeLabel.textAlignment = NSTextAlignmentRight;
     _totalTimeLabel.backgroundColor = [UIColor whiteColor];
     _totalTimeLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-    _totalTimeLabel.text = @"04:23";
+    _totalTimeLabel.text = @"00:00";
     _totalTimeLabel.font = [UIFont systemFontOfSize:12.f];
     [self addSubview:_totalTimeLabel];
     [_totalTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -173,23 +174,34 @@
         make.top.equalTo(_lineView.mas_bottom);
         make.bottom.equalTo(self.mas_bottom);
     }];
-    
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:@"http://kibey-echo.b0.upaiyun.com/poster/2016/01/05/6p7d8zo74sgdno7a.jpg!/fwfh/500x500/unsharp/true"]];
 }
 
 #pragma mark - Setter
 
 - (void)setOffset:(float)offset
 {
+//    DLog(@"%.2f",offset);
+    CGFloat limit = (kScreenWidth + 70.f) * -1;
     _offset = offset;
-    if (_offset > -510.f) return;
+    if (_offset > limit) return;
     
-    float delta = (-510.f - offset) * 0.02;
+    float delta = (limit - offset) * 0.02;
     
     CGFloat x = kScreenWidth * -0.5 * delta; 
     CGFloat width = kScreenWidth * (1.0 + delta);
     _imageView.frame = CGRectMake(x, x, width, width);
     
+}
+
+- (void)setModel:(PMHerderModel *)model
+{
+    _model = model;
+    
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:_model.picURL]];
+    
+    _listenCountLabel.text = [NSString stringWithFormat:@"%zd 次收听", _model.view_count];
+    [_likeBtn setTitle:[NSString stringWithFormat:@"喜欢 %zd",_model.like_count] forState:UIControlStateNormal];
+    [_downloadCountBtn setTitle:[NSString stringWithFormat:@"离线 %zd",_model.download_count] forState:UIControlStateNormal];
 }
 
 #pragma mark - Action

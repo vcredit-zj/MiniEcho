@@ -10,9 +10,14 @@
  *  播放音乐界面HeaderView
  */
 #import <UIKit/UIKit.h>
+@class PMHerderModel;
 
 @interface PMHeaderView : UIView
 
 @property (nonatomic, assign) float offset;
+
+@property (nonatomic, assign) NSInteger totolSeconds;
+
+@property (nonatomic, strong) PMHerderModel *model;
 
 @end
