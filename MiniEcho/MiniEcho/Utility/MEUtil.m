@@ -28,4 +28,22 @@
     CGRect textRect = [text boundingRectWithSize:CGSizeMake(MAXFLOAT, 40.f) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
     return ceilf(textRect.size.width);
 }
+
++ (CGFloat)heightForText:(NSString *)text fontSize:(CGFloat)font constrainedWidth:(CGFloat)width lineBreakMode:(NSLineBreakMode)lineBreakMode
+{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = lineBreakMode;
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:font], NSParagraphStyleAttributeName:paragraphStyle};
+    CGRect boundingRect = [text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+    CGSize textSize = CGSizeMake(ceilf(boundingRect.size.width), ceilf(boundingRect.size.height));
+    return textSize.height;
+}
+
++ (CGFloat)heightForAttributedString:(NSAttributedString *)string constrainedWidth:(CGFloat)width
+{
+    CGSize constrainedSize = CGSizeMake(width, MAXFLOAT);
+    YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:constrainedSize text:string];
+    return layout.textBoundingSize.height;
+}
+
 @end
