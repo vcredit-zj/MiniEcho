@@ -10,7 +10,7 @@
 
 #import "MESingleChannelCollectionCell.h"
 
-
+#import "MEPlayMusicController.h"
 #import "DataModels.h"
 @interface MEChannelSingleViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -140,6 +140,12 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"selected %ld",indexPath.item);
+    MESingleChannelSounds *model = [self.dataArrayM safeObjectAtIndex:indexPath.item];
+    MEPlayMusicController *playVC = [[MEPlayMusicController alloc] init];
+    playVC.index = [model.soundsIdentifier integerValue];
+    playVC.isLocal = NO;
+    [self.navigationController pushViewController:playVC animated:YES];
+    
 }
 
 - (void)requestInitDataFromServer {
