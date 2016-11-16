@@ -18,6 +18,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.avatorImage.layer.cornerRadius = 17.5;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

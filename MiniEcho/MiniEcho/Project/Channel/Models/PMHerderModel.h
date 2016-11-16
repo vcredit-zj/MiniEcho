@@ -20,4 +20,6 @@
 
 @property (nonatomic, assign) NSInteger like_count;
 
+@property (nonatomic, copy) NSString * length;
+
 @end

@@ -202,23 +202,39 @@
     _listenCountLabel.text = [NSString stringWithFormat:@"%zd 次收听", _model.view_count];
     [_likeBtn setTitle:[NSString stringWithFormat:@"喜欢 %zd",_model.like_count] forState:UIControlStateNormal];
     [_downloadCountBtn setTitle:[NSString stringWithFormat:@"离线 %zd",_model.download_count] forState:UIControlStateNormal];
+    
+    int time = [_model.length intValue];
+    int min = time/60;
+    int sec = time%60;
+    _totalTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d",min, sec];
+}
+
+- (UIImage *)image
+{
+    return _imageView.image;
 }
 
 #pragma mark - Action
 
 - (void)downloadImageBtnAction
-{
-    kLogFunction
+{ 
+    if (_action) {
+        _action(0);
+    }
 }
 
 - (void)downloadSoundBtnAction
 {
-    kLogFunction;
+    if (_action) {
+        _action(2);
+    }
 }
 
 - (void)likeBtnAction
 {
-    kLogFunction;
+    if (_action) {
+        _action(1);
+    }
 }
 
 @end

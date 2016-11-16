@@ -41,6 +41,7 @@
 		3957F8381DDC0CB6004D8B5F /* PMSimilarSubSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 3957F8371DDC0CB6004D8B5F /* PMSimilarSubSound.m */; };
 		3957F83B1DDC0D9B004D8B5F /* PMChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3957F83A1DDC0D9B004D8B5F /* PMChannel.m */; };
 		3957F83E1DDC0FF7004D8B5F /* PMHerderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3957F83D1DDC0FF7004D8B5F /* PMHerderModel.m */; };
+		3957F8401DDC3F61004D8B5F /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3957F83F1DDC3F61004D8B5F /* libc++abi.tbd */; };
 		396896901DDABAFC0088191A /* MEPlayMusicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968968F1DDABAFC0088191A /* MEPlayMusicController.m */; };
 		396896931DDAE7760088191A /* MEPlayToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896921DDAE7760088191A /* MEPlayToolBar.m */; };
 		396896971DDAF1030088191A /* PMRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896951DDAF1030088191A /* PMRecommendCell.m */; };
@@ -170,6 +171,7 @@
 		3957F83A1DDC0D9B004D8B5F /* PMChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMChannel.m; sourceTree = "<group>"; };
 		3957F83C1DDC0FF7004D8B5F /* PMHerderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMHerderModel.h; sourceTree = "<group>"; };
 		3957F83D1DDC0FF7004D8B5F /* PMHerderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMHerderModel.m; sourceTree = "<group>"; };
+		3957F83F1DDC3F61004D8B5F /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		3968968E1DDABAFC0088191A /* MEPlayMusicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPlayMusicController.h; sourceTree = "<group>"; };
 		3968968F1DDABAFC0088191A /* MEPlayMusicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEPlayMusicController.m; sourceTree = "<group>"; };
 		396896911DDAE7760088191A /* MEPlayToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPlayToolBar.h; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3957F8401DDC3F61004D8B5F /* libc++abi.tbd in Frameworks */,
 				3978165E1DD5C4E500A698DC /* AudioToolbox.framework in Frameworks */,
 				3978165C1DD5C4D900A698DC /* MediaPlayer.framework in Frameworks */,
 				3978165A1DD5C4D000A698DC /* CoreMedia.framework in Frameworks */,
@@ -416,6 +419,7 @@
 		702A1A104C483B6960C387FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3957F83F1DDC3F61004D8B5F /* libc++abi.tbd */,
 				3978165D1DD5C4E500A698DC /* AudioToolbox.framework */,
 				3978165B1DD5C4D900A698DC /* MediaPlayer.framework */,
 				397816591DD5C4D000A698DC /* CoreMedia.framework */,
@@ -463,7 +467,6 @@
 		F73E10EB1DD56C9200EBA25A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-
 				03C6A0D31DDBE9C3000EF49F /* CategoryCollectionReusableView.h */,
 				03C6A0D41DDBE9C3000EF49F /* CategoryCollectionReusableView.m */,
 				396896941DDAF1030088191A /* PMRecommendCell.h */,

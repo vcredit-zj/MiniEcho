@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *info;
 @property (nonatomic, copy) NSString *source;
+@property (nonatomic, copy) NSString *length; // 歌曲总时长
 @property (nonatomic, copy) NSString *pic_100;
 @property (nonatomic, copy) NSString *pic_200;
 @property (nonatomic, copy) NSString *pic_500;

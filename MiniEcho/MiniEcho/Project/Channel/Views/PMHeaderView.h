@@ -12,12 +12,19 @@
 #import <UIKit/UIKit.h>
 @class PMHerderModel;
 
+typedef void(^HeaderViewTapAction)(NSInteger index);
+
 @interface PMHeaderView : UIView
 
 @property (nonatomic, assign) float offset;
 
-@property (nonatomic, assign) NSInteger totolSeconds;
-
 @property (nonatomic, strong) PMHerderModel *model;
+
+@property (nonatomic, strong) UIImage *image;
+
+
+@property (nonatomic, copy) HeaderViewTapAction action;
+
+
 
 @end

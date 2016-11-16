@@ -32,6 +32,8 @@
 /** 代理 */
 @property (nonatomic, weak) id <MEPlayerDelegate> delegate;
 
+@property (nonatomic, strong) NSMutableArray *onlineMusicData;
+
 /**
  * 单例方法
  */

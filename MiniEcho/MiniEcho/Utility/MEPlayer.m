@@ -37,11 +37,11 @@
     //判断网络music还是本地music
     if ([[url substringToIndex:7] isEqualToString:@"http://"]) {
         musicUrl = [NSURL URLWithString:url];
-        NSLog(@"\n\n\n网路url%@",musicUrl);
+        NSLog(@"网路url--%@",musicUrl);
     }else{
         
         musicUrl = [NSURL fileURLWithPath:url];
-        NSLog(@"\n\n\n本地url%@",musicUrl);
+        NSLog(@"本地url--%@",musicUrl);
     }
     
     AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:musicUrl];
@@ -92,6 +92,8 @@
 {
     self = [super init];
     if (self) {
+        
+        _onlineMusicData = [NSMutableArray array];
         
         //监听并且通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didToStop) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];

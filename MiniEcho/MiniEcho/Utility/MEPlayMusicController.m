@@ -9,7 +9,7 @@
 // tool
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-
+#import "MEPlayer.h"
 
 #import "MEPlayMusicController.h"
 
@@ -38,7 +38,13 @@ static NSString *recommendID = @"PMRecommendCellID";
 
 #define TopImageHeight  (kScreenWidth + 70.f)
 
-@interface MEPlayMusicController ()<UITableViewDelegate, UITableViewDataSource>
+@interface MEPlayMusicController ()<UITableViewDelegate, UITableViewDataSource, MEPlayerDelegate>
+
+{
+    double _currentTime;
+    NSInteger _currentIndex;
+}
+
 
 @property (nonatomic, strong) PMHeaderView *headerView;
 
@@ -52,9 +58,22 @@ static NSString *recommendID = @"PMRecommendCellID";
 @property (nonatomic, strong) PMChannel *channel;
 @property (nonatomic,   copy) NSArray *similar;
 
+
 @end
 
 @implementation MEPlayMusicController
+
+#pragma mark - ViewController LifeCycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (_currentIndex == -1) return;
+    
+    _currentIndex = self.index;
+    [self prepareForPlay];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -62,12 +81,15 @@ static NSString *recommendID = @"PMRecommendCellID";
     self.automaticallyAdjustsScrollViewInsets = YES;
     [self initSubviews];
     [self requestSoundInfoFromServer];
+    [MEPlayer shareMEPlayer].delegate = self;
+    _currentIndex = -1;
 }
 
 #pragma mark - Initialization
 
 - (void)initSubviews
 {
+    __weak typeof(self) weakSelf = self;
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.contentInset = UIEdgeInsetsMake(TopImageHeight, 0, 0, 0);
     _tableView.delegate = self;
@@ -83,7 +105,11 @@ static NSString *recommendID = @"PMRecommendCellID";
     [_tableView registerNib:[PMSoundIntroductionCell nib] forCellReuseIdentifier:soundID];
     [_tableView registerNib:[PMRecommendCell nib] forCellReuseIdentifier:recommendID];
     
+    
     _headerView = [[PMHeaderView alloc] initWithFrame:CGRectMake(0.f,-TopImageHeight, kScreenWidth, TopImageHeight)];
+    _headerView.action = ^(NSInteger idx){
+        [weakSelf herderViewActionAtIndex:idx];
+    };
     [_tableView addSubview:_headerView];
     [_tableView insertSubview:_headerView atIndex:0];
     
@@ -173,33 +199,67 @@ static NSString *recommendID = @"PMRecommendCellID";
     _headerView.offset = point.y;
 }
 
+#pragma mark - HerderView Action
+
+- (void)herderViewActionAtIndex:(NSInteger)index
+{
+    if (index == 0) {
+        DLog(@"下载图片");
+    } else if (index == 1) {
+        DLog(@"点赞");
+    } else if (index == 2) {
+        DLog(@"下载歌曲"); 
+    }
+}
+
 #pragma mark - Public Methods
 
++ (instancetype)sharePlayMusicController
+{
+    static MEPlayMusicController *playVC = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        playVC = [[MEPlayMusicController alloc] init];
+    });
+    return playVC;
+}
+
+- (void)prepareForPlay
+{
+    _currentTime = 0.0;
+    
+    if (self.isLocal) {
+        // 加载本地音乐
+    }
+    
+    [self requestSoundInfoFromServer];
+}
+
 - (void)configLockedScreenPlayingInfo
-{ /*
+{
     if (NSClassFromString(@"MPNowPlayingInfoCenter")) {
         //要一个字典存放要显示的信息
         NSMutableDictionary *musicDict = [[NSMutableDictionary alloc] init];
         
         //歌曲名称
-        [musicDict setObject:@"" forKey:MPMediaItemPropertyTitle];
+        [musicDict setObject:_rootModel.name forKey:MPMediaItemPropertyTitle];
         //演唱者
-        [musicDict setObject:@"" forKey:MPMediaItemPropertyArtist];
+        [musicDict setObject:_user.name forKey:MPMediaItemPropertyArtist];
         //专辑名
-        [musicDict setObject:@"" forKey:MPMediaItemPropertyAlbumTitle];
+        [musicDict setObject:_channel.name forKey:MPMediaItemPropertyAlbumTitle];
         //专辑缩略图
-        if (self.playerImgView.image != nil){
-            UIImage *image = self.playerImgView.image;
+        if (self.headerView.image != nil){
+            UIImage *image = self.headerView.image;
             MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:image];
             [musicDict setObject:artwork forKey:MPMediaItemPropertyArtwork];
         }
         //音乐剩余时长
-        [musicDict setObject:[NSNumber numberWithDouble:[_currentSound.length doubleValue]] forKey:MPMediaItemPropertyPlaybackDuration];
+        [musicDict setObject:[NSNumber numberWithDouble:[_rootModel.length doubleValue]] forKey:MPMediaItemPropertyPlaybackDuration];
         //音乐当前播放时间 在计时器中修改
         [musicDict setObject:[NSNumber numberWithDouble:_currentTime] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
         //设置锁屏状态下屏幕显示播放音乐信息
-        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
-    }  */
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:musicDict];
+    }
 }
 
 #pragma mark - Util
@@ -215,14 +275,15 @@ static NSString *recommendID = @"PMRecommendCellID";
         weakSelf.user = [MEUser mj_objectWithKeyValues:result[@"user"]];
         weakSelf.channel = [PMChannel mj_objectWithKeyValues:result[@"channel"]];
         weakSelf.similar = [PMSimilarSubSound mj_objectArrayWithKeyValuesArray:result[@"similar"]];
-        [weakSelf refreshScreen];
+        [weakSelf refreshScreenAndPlayMusic];
+        [weakSelf configLockedScreenPlayingInfo];
         
     } failure:^(NSError *error) {
         DLog(@"获取歌曲信息失败");
     }];
 }
 
-- (void)refreshScreen
+- (void)refreshScreenAndPlayMusic
 {
     NSString *title = _rootModel.name;
     self.title = title;
@@ -234,9 +295,12 @@ static NSString *recommendID = @"PMRecommendCellID";
     _headerModel.view_count = _rootModel.view_count;
     _headerModel.download_count = _rootModel.download_count;
     _headerModel.like_count = _rootModel.like_count;
+    _headerModel.length = _rootModel.length;
     _headerView.model = _headerModel;
     
     [_tableView reloadData];
+    
+    [[MEPlayer shareMEPlayer] me_playMusicWithOnlineURL:_rootModel.source];
 }
 
 @end

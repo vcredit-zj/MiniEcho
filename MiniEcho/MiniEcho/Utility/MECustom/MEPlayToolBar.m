@@ -31,7 +31,7 @@
     
     NSArray *btnImages = @[[UIImage imageNamed:@"m_normal"],
                            [UIImage imageNamed:@"m_previous"],
-                           [UIImage imageNamed:@"m_play"],
+                           [UIImage imageNamed:@"m_stop"],
                            [UIImage imageNamed:@"m_next"],
                            [UIImage imageNamed:@"m_more"]];
     
@@ -43,7 +43,7 @@
         if (i == 0) {
             [btn setImage:[UIImage imageNamed:@"m_random"] forState:UIControlStateSelected];
         } else if (i == 2) {
-            [btn setImage:[UIImage imageNamed:@"m_stop"] forState:UIControlStateSelected];
+            [btn setImage:[UIImage imageNamed:@"m_play"] forState:UIControlStateSelected];
         }
         btn.tag = i;
         [btn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -58,10 +58,31 @@
 {
     if (btn.tag == 0) {
         btn.selected = !btn.selected;
+        if (btn.selected) {
+            // 随机播放
+            DLog(@"随机播放");
+        } else {
+            // 正常播放
+            DLog(@"正常播放");
+        }
     } else if (btn.tag == 2) {
         btn.selected = !btn.selected;
-    } else {
-    
+        if (btn.selected) {
+            // 暂停
+            DLog(@"暂停");
+        } else {
+            // 播放
+            DLog(@"播放");
+        }
+    } else if (btn.tag == 1) {
+        // 上一曲
+        DLog(@"上一曲");
+    } else if (btn.tag == 3) {
+        // 下一曲
+        DLog(@"下一曲");
+    } else if (btn.tag == 4) {
+        // 更多
+        DLog(@"更多");
     }
 
 }

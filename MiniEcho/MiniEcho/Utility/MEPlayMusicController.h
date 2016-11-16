@@ -16,6 +16,8 @@
 @property (nonatomic, assign) BOOL isLocal;
 
 
++ (instancetype)sharePlayMusicController;
+
 - (void)prepareForPlay;
 
 /** 下一曲 */
