@@ -7,6 +7,7 @@
 //
 
 #import "MEChannelViewController.h"
+#import "MEChannelCategoryViewController.h"
 #import "MEPlayer.h"
 
 #import "MEChannelCollectionViewCell.h"
@@ -117,12 +118,16 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
     return [self.dataArrayM count];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    __weak typeof(self) weakSelf = self;
     if (indexPath.section == 0) {
         MEchannelCollectionViewAnotherCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MEchannelCollectionViewAnotherCellID forIndexPath:indexPath];
         cell.dataArray = self.categrayBaseModel.data;
-        cell.callBcak = ^(MEChannelCategrayChildren *model){
+        cell.callBcak = ^(MEChannelCategrayData *model){
             
+            MEChannelCategoryViewController *meVC = [[MEChannelCategoryViewController alloc] init];
+            meVC.model = model;
+            meVC.hidesBottomBarWhenPushed = YES;
+            [weakSelf.navigationController pushViewController:meVC animated:YES];
         };
         return cell;
     }
@@ -181,7 +186,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 
     __weak typeof(self)WeakSelf = self;
     [MEHttpUtil get:ChannelCategory parameters:nil success:^(id result) {
-        
+//        NSLog(@"result == %@", result);
         MEChannelCategrayBaseModel *baseModel = [MEChannelCategrayBaseModel modelObjectWithDictionary:result];
         WeakSelf.categrayBaseModel = baseModel;
         

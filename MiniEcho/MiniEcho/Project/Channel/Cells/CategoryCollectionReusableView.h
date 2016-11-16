@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void(^CategoryCollectionDidSelectedBlock)(void);
+@class MEChannelCategrayData;
+typedef void(^CategoryCollectionDidSelectedBlock)(NSString *buttonTag);
 
 @interface CategoryCollectionReusableView : UICollectionReusableView
 
 @property (nonatomic, copy) CategoryCollectionDidSelectedBlock block;
+
+@property (nonatomic, strong) NSMutableArray <NSString*>*array;
+
+@property (nonatomic, strong) MEChannelCategrayData *model;
 
 @end

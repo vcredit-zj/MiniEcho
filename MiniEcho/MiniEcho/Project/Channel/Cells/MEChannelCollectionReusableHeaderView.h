@@ -12,10 +12,10 @@
 @property (nonatomic,copy) NSString *imageName;
 @property (nonatomic, strong) NSArray<NSString *> *titleArray;
 @end
-typedef void(^CallBackBlock)(NSInteger index);
+
 @interface MEChannelCollectionReusableHeaderView : UICollectionReusableView
 + (UINib *)nib;
 
 @property (nonatomic,strong) HeaderModel *model;
-@property (nonatomic, copy) CallBackBlock callBcak;
+
 @end

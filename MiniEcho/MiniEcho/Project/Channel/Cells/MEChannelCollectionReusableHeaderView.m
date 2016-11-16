@@ -47,10 +47,5 @@
     }
     
 }
-- (void)btnClick:(UIButton *)btn {
 
-    if (_callBcak) {
-        _callBcak(btn.tag);
-    }
-}
 @end
