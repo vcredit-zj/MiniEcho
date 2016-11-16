@@ -39,7 +39,9 @@
 #import "MEEnums.h"
 #import "MEConst.h"
 #import "MEMacros.h"
+#import "MEPlayer.h"
 #import "MEHttpUtil.h"
+#import "MEPlayMusicController.h"
 /**
  *  防止数组，字典的越界
  */

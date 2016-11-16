@@ -22,6 +22,12 @@ typedef void(^HeaderViewTapAction)(NSInteger index);
 
 @property (nonatomic, strong) UIImage *image;
 
+@property (nonatomic, assign) float playProgress;
+
+
+@property (nonatomic, copy) NSString *currentTime;
+
+
 
 @property (nonatomic, copy) HeaderViewTapAction action;
 

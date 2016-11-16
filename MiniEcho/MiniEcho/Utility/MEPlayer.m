@@ -62,7 +62,7 @@
     [self.player play];
     self.isPlaying = YES;
     
-    if (!self.timer) return;
+    if (self.timer) return;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updatePlayTime) userInfo:nil repeats:YES];
 }
 

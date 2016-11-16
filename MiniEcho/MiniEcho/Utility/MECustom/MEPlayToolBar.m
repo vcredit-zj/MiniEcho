@@ -10,6 +10,7 @@
 
 @interface MEPlayToolBar ()
 
+@property (nonatomic, assign) BOOL isRandomPlayStyle;
 
 
 @end
@@ -20,6 +21,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        _isRandomPlayStyle = NO;
         [self initSubviews];
     }
     return self;
@@ -60,19 +63,23 @@
         btn.selected = !btn.selected;
         if (btn.selected) {
             // 随机播放
+            _isRandomPlayStyle = YES;
             DLog(@"随机播放");
         } else {
             // 正常播放
             DLog(@"正常播放");
+            _isRandomPlayStyle = NO;
         }
     } else if (btn.tag == 2) {
         btn.selected = !btn.selected;
         if (btn.selected) {
             // 暂停
             DLog(@"暂停");
+            [[MEPlayMusicController sharePlayMusicController] pauseMusic];
         } else {
             // 播放
             DLog(@"播放");
+            [[MEPlayMusicController sharePlayMusicController] playMusic];
         }
     } else if (btn.tag == 1) {
         // 上一曲

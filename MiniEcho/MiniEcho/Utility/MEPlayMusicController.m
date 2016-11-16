@@ -69,7 +69,7 @@ static NSString *recommendID = @"PMRecommendCellID";
 {
     [super viewWillAppear:animated];
     
-    if (_currentIndex == -1) return;
+//    if (_currentIndex == -1) return;
     
     _currentIndex = self.index;
     [self prepareForPlay];
@@ -80,9 +80,16 @@ static NSString *recommendID = @"PMRecommendCellID";
     
     self.automaticallyAdjustsScrollViewInsets = YES;
     [self initSubviews];
-    [self requestSoundInfoFromServer];
+//    [self requestSoundInfoFromServer];
     [MEPlayer shareMEPlayer].delegate = self;
     _currentIndex = -1;
+    
+    // 开始接受远程事件<音频中断>
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+    
+    // 监听后台
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionEvent:) name:AVAudioSessionInterruptionNotification object:nil];
 }
 
 #pragma mark - Initialization
@@ -212,6 +219,36 @@ static NSString *recommendID = @"PMRecommendCellID";
     }
 }
 
+#pragma mark - MEPlayerDelegate
+
+- (void)me_endPlay
+{
+    [self nextMusic];
+}
+
+- (void)me_playingWithTime:(NSTimeInterval)time
+{
+    // 更新当前播放的时间
+    _currentTime = time;
+    
+    // 1.更新时间label
+    int min = (int)_currentTime/60;
+    int sec = (int)_currentTime%60;
+    NSString * currentTime = [NSString stringWithFormat:@"%02d:%02d",min, sec];
+    _headerView.currentTime = currentTime;
+    
+    // 2.更新slider的值
+    float currentValue = _currentTime / ([[_rootModel length] doubleValue]);
+    _headerView.playProgress = currentValue;
+}
+
+#pragma mark - NSNotification Method<音频中断暂停播放>
+
+- (void)audioSessionEvent:(NSNotification *)notify
+{
+    [self pauseMusic];
+}
+
 #pragma mark - Public Methods
 
 + (instancetype)sharePlayMusicController
@@ -224,15 +261,40 @@ static NSString *recommendID = @"PMRecommendCellID";
     return playVC;
 }
 
-- (void)prepareForPlay
+- (void)playMusic
 {
-    _currentTime = 0.0;
+    [[MEPlayer shareMEPlayer] me_play];
+}
+
+- (void)pauseMusic
+{
+    [[MEPlayer shareMEPlayer] me_pause];
+}
+
+- (void)nextMusic
+{
+    _currentIndex++;
     
-    if (self.isLocal) {
-        // 加载本地音乐
+    // 防止越界
+    if (_currentIndex >= [[[MEPlayer shareMEPlayer] onlineMusicData] count]) {
+        _currentIndex = 0;
     }
     
-    [self requestSoundInfoFromServer];
+    // 重新加载歌曲信息
+    [self prepareForPlay];
+}
+
+- (void)PreviousMusic
+{
+    _currentIndex--;
+    
+    // 防止越界
+    if (_currentIndex < 0) {
+        _currentIndex = [[[MEPlayer shareMEPlayer] onlineMusicData] count] -1;
+    }
+    
+    // 重新加载歌曲信息
+    [self prepareForPlay];
 }
 
 - (void)configLockedScreenPlayingInfo
@@ -301,6 +363,17 @@ static NSString *recommendID = @"PMRecommendCellID";
     [_tableView reloadData];
     
     [[MEPlayer shareMEPlayer] me_playMusicWithOnlineURL:_rootModel.source];
+}
+
+- (void)prepareForPlay
+{
+    _currentTime = 0.0;
+    
+    if (self.isLocal) {
+        // 加载本地音乐
+    }
+    
+    [self requestSoundInfoFromServer];
 }
 
 @end

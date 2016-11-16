@@ -112,7 +112,7 @@
     _listenCountLabel = [[UILabel alloc] init];
     _listenCountLabel.backgroundColor = [UIColor whiteColor];
     _listenCountLabel.textColor = [UIColor colorWithHexString:@"#333333"];
-    _listenCountLabel.text = @"2345 次试听";
+    _listenCountLabel.text = @"0 次试听";
     _listenCountLabel.font = [UIFont systemFontOfSize:12.f];
     [self addSubview:_listenCountLabel];
     [_listenCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -181,7 +181,7 @@
 - (void)setOffset:(float)offset
 {
 //    DLog(@"%.2f",offset);
-    CGFloat limit = (kScreenWidth + 70.f) * -1;
+    CGFloat limit = (kScreenWidth + 70.f + 64.f) * -1;
     _offset = offset;
     if (_offset > limit) return;
     
@@ -207,6 +207,18 @@
     int min = time/60;
     int sec = time%60;
     _totalTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d",min, sec];
+}
+
+- (void)setPlayProgress:(float)playProgress
+{
+    _playProgress = playProgress;
+    
+    [_slider setValue:_playProgress animated:YES];
+}
+
+- (void)setCurrentTime:(NSString *)currentTime
+{
+    _playTimeLabel.text = currentTime;
 }
 
 - (UIImage *)image
