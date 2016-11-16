@@ -29,28 +29,4 @@
     [self addSubview:imageView];
     
 }
-- (void)setModel:(HeaderModel *)model {
-
-    _model = model;
-    
-    [_leftImageView setImage:[UIImage imageNamed:model.imageName]];
-    NSInteger index = 1;
-    for (NSString *title in model.titleArray) {
-        UIButton *button = [[UIButton alloc] init];
-        button.tag = index;
-        button.frame = CGRectMake( index * 20, 0, 20, 20);
-        [button setTitle:title forState:UIControlStateNormal];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:12.f]];
-        [button addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:button];
-        index++;
-    }
-    
-}
-- (void)btnClick:(UIButton *)btn {
-
-    if (_callBcak) {
-        _callBcak(btn.tag);
-    }
-}
 @end

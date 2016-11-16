@@ -9,6 +9,7 @@
 #import "MEChannelViewController.h"
 #import "MEPlayer.h"
 
+#import "MEChannelSingleViewController.h"
 #import "MEChannelCollectionViewCell.h"
 #import "MEchannelCollectionViewAnotherCell.h"
 #import "MEChannelCollectionReusableHeaderView.h"
@@ -58,9 +59,12 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    __weak typeof(self)WeakSelf = self;
     collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         //Call this Block When enter the refresh status automatically
-        
+        NSString *page = [NSString stringWithFormat:@"%ld",WeakSelf.page];
+        NSDictionary *parametDic = @{@"order":@"hot",@"page ":page,@"with_sound":@"0"};
+        [WeakSelf requestDataFromServerWithParameters:parametDic];
         
     }];
     _collectionView = collectionView;
@@ -73,7 +77,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
     if (indexPath.section == 0) {
         return CGSizeMake(CGRectGetWidth(self.view.frame), 80);
     }
-    return CGSizeMake(CGRectGetWidth(self.view.frame)/2 - 30, 80);
+    return CGSizeMake(CGRectGetWidth(self.view.frame)/2 - 20, 80);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
 
@@ -172,6 +176,11 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
+    MEChannelHotData *model = [self.dataArrayM safeObjectAtIndex:indexPath.item];
+    MEChannelSingleViewController *singleChannelVC = [[MEChannelSingleViewController alloc] init];
+    singleChannelVC.identifi = [NSString stringWithFormat:@"%d",(int)model.dataIdentifier];
+    singleChannelVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:singleChannelVC animated:YES];
     NSLog(@"selected %ld",indexPath.item);
 }
 
@@ -190,14 +199,30 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
     }];
     NSString *page = [NSString stringWithFormat:@"%ld",_page];
     NSDictionary *parametDic = @{@"order":@"hot",@"page ":page,@"with_sound":@"0"};
-    [MEHttpUtil get:ChannerType parameters:parametDic success:^(id result) {
+    [self requestDataFromServerWithParameters:parametDic];
+}
+- (void)requestDataFromServerWithParameters:(id)parame {
+
+    __weak typeof(self)WeakSelf = self;
+    [MEHttpUtil get:ChannerType parameters:parame success:^(id result) {
         MEChannelHotBaseModel *baseModel = [MEChannelHotBaseModel modelObjectWithDictionary:result];
+        if (WeakSelf.page > 1) {
+            [WeakSelf.dataArrayM addObjectsFromArray:baseModel.data];
+        } else {
         WeakSelf.dataArrayM = [NSMutableArray arrayWithArray:baseModel.data];
+            
+        }
+        WeakSelf.page += 1;
+        [WeakSelf.collectionView.mj_footer endRefreshing];
+        [WeakSelf.collectionView reloadData];
+        
         
     } failure:^(NSError *error) {
-        
+        [WeakSelf.collectionView.mj_footer endRefreshing];
     }];
+
 }
+
 - (void)headerViewBtnClick:(UIButton *)btn {
 
     NSLog(@"%ld",btn.tag);
