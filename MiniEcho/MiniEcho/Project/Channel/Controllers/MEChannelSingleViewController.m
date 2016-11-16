@@ -9,14 +9,20 @@
 #import "MEChannelSingleViewController.h"
 
 #import "MESingleChannelCollectionCell.h"
-
+#import "MEPlayer.h"
 #import "MEPlayMusicController.h"
 #import "DataModels.h"
+static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryViewCellID";
+static NSInteger backBtnTag = 110;
+static NSInteger rightBtnTag = 120;
+static NSInteger centerLabelTag = 111;
 @interface MEChannelSingleViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
 
 @property (nonatomic,strong) NSMutableArray *dataArrayM;
+
+@property (nonatomic,strong) UIView *topNavigationBar;
 @end
 
 @implementation MEChannelSingleViewController
@@ -26,10 +32,15 @@
     // Do any additional setup after loading the view.
     [self initWithSubViews];
     [self requestInitDataFromServer];
+    self.navigationController.navigationBar.hidden = YES;
     
 }
+- (void)viewWillDisappear:(BOOL)animated {
+
+    self.navigationController.navigationBar.hidden = NO;
+}
 - (void)initWithSubViews {
-    
+    __weak typeof(self)weakSelf = self;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.minimumLineSpacing = 0.f;
     layout.minimumInteritemSpacing = 0.f;
@@ -39,8 +50,7 @@
     collectionView.dataSource = self;
     collectionView.delegate = self;
     [collectionView registerNib:[MESingleChannelCollectionCell nib] forCellWithReuseIdentifier:MESingleChannelCollectionCellID];
-//    [collectionView registerNib:[MEchannelCollectionViewAnotherCell nib] forCellWithReuseIdentifier:MEchannelCollectionViewAnotherCellID];
-//    [collectionView registerNib:[MEChannelCollectionReusableHeaderView nib] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID];
+    [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID];
     collectionView.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:collectionView];
@@ -50,7 +60,49 @@
 
     _collectionView = collectionView;
     
-    
+    UIView *topNavBar = [[UIView alloc] init];
+    topNavBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 64);
+    topNavBar.backgroundColor = [UIColor redColor];
+    [self.view addSubview:topNavBar];
+    UILabel *centerLabel = [[UILabel alloc] init];
+    [centerLabel setTextColor:[UIColor whiteColor]];
+    [centerLabel setTextAlignment:NSTextAlignmentCenter];
+    centerLabel.tag = centerLabelTag;
+    [topNavBar addSubview:centerLabel];
+    [centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(topNavBar.mas_bottom);
+        make.centerX.equalTo(topNavBar);
+        make.height.equalTo(@34);
+        make.width.equalTo(@200);
+    }];
+    UIButton *BackBtn = [[UIButton alloc] init];
+    BackBtn.tag = backBtnTag;
+    [BackBtn setImage:[UIImage imageNamed:@"back_white"] forState:UIControlStateNormal];
+    [BackBtn addActionHandler:^(NSInteger tag) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
+    [topNavBar addSubview:BackBtn];
+    [BackBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(topNavBar).with.offset(5);
+        make.bottom.equalTo(topNavBar.mas_bottom);
+        make.height.equalTo(@30);
+        make.width.equalTo(@30);
+    }];
+    UIButton *rightBtn = [[UIButton alloc] init];
+    rightBtn.tag = rightBtnTag;
+    [rightBtn setImage:[UIImage imageNamed:@"back_white"] forState:UIControlStateNormal];
+    [rightBtn addActionHandler:^(NSInteger tag) {
+        NSLog(@"rightBtnclick");
+    }];
+    [topNavBar addSubview:rightBtn];
+    [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(topNavBar).with.offset(-5);
+        make.bottom.equalTo(topNavBar.mas_bottom);
+        make.height.equalTo(@30);
+        make.width.equalTo(@30);
+    }];
+
+    _topNavigationBar = topNavBar;
 }
 #pragma mark UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -73,7 +125,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     
 
-    return CGSizeMake(200, 20);
+    return CGSizeMake(CGRectGetWidth(self.view.frame), 200);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     
@@ -99,65 +151,45 @@
     
     return cell;
 }
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-//    
-//    MEChannelCollectionReusableHeaderView *view = (MEChannelCollectionReusableHeaderView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID forIndexPath:indexPath];
-//    for (UIView *obj in view.subviews) {
-//        [obj removeFromSuperview];
-//    }
-//    UIImageView *imageView = [[UIImageView alloc] init];
-//    imageView.frame = CGRectMake(10, 0, 20, 20);
-//    [view addSubview:imageView];
-//    HeaderModel *model = [[HeaderModel alloc] init];
-//    if (indexPath.section == 0) {
-//        model.imageName = @"icon_channel_category";
-//        model.titleArray = @[@"频道分类"];
-//    } else {
-//        
-//        model.imageName = @"icon_channel_follow";
-//        model.titleArray = @[@"最热",@"最新"];
-//        
-//    }
-//    [imageView setImage:[UIImage imageNamed:model.imageName]];
-//    NSInteger index = 1;
-//    CGFloat allX = CGRectGetMaxX(imageView.frame) + 4;
-//    for (NSString *title in model.titleArray) {
-//        UIButton *button = [[UIButton alloc] init];
-//        button.tag = index;
-//        CGFloat titleWidth = [MEUtil widthForSingleLineText:title fontSize:12.f];
-//        button.frame = CGRectMake( allX, 0, titleWidth, 20);
-//        [button setTitle:title forState:UIControlStateNormal];
-//        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//        [button.titleLabel setFont:[UIFont systemFontOfSize:12.f]];
-//        [button addTarget:self action:@selector(headerViewBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [view addSubview:button];
-//        index++;
-//        allX += titleWidth + 4;
-//    }
-//    return view;
-//}
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID forIndexPath:indexPath];
+    for (UIView *obj in view.subviews) {
+        [obj removeFromSuperview];
+    }
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200);
+    [view addSubview:imageView];
+    imageView.backgroundColor = [UIColor yellowColor];
+    
+    return view;
+}
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"selected %ld",indexPath.item);
-    MESingleChannelSounds *model = [self.dataArrayM safeObjectAtIndex:indexPath.item];
+    NSMutableArray *soundsIDArrayM = [NSMutableArray array];
+    for (MESingleChannelSounds *soundModel in self.dataArrayM) {
+        [soundsIDArrayM safeAddObject:soundModel.soundsIdentifier];
+    }
+    [MEPlayer shareMEPlayer].onlineMusicData = soundsIDArrayM;
     MEPlayMusicController *playVC = [[MEPlayMusicController alloc] init];
-    playVC.index = [model.soundsIdentifier integerValue];
+    playVC.index = indexPath.item;
     playVC.isLocal = NO;
     [self.navigationController pushViewController:playVC animated:YES];
     
 }
-
+#pragma mark Helper
 - (void)requestInitDataFromServer {
     
     __weak typeof(self)WeakSelf = self;
-    //id: 1155, page : 1, list_order : recommend , limit : 20
     NSDictionary *parametDic = @{@"id":_identifi,@"page ":@"1",@"list_order":@"recommend",@"with_sound":@"0"};
     [MEHttpUtil get:ChannerInfo parameters:parametDic success:^(id result) {
 
         MESingleChannelBaseModel *baseModel = [MESingleChannelBaseModel modelObjectWithDictionary:result];
         WeakSelf.dataArrayM = [NSMutableArray arrayWithArray:baseModel.data.sounds];
-
+        UILabel *centerLabel = [WeakSelf.topNavigationBar viewWithTag:centerLabelTag];
+        [centerLabel setText:[baseModel.data.channel name] ];
         [WeakSelf.collectionView reloadData];
     } failure:^(NSError *error) {
         

@@ -83,7 +83,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
 
     if (section == 0) {
-        return UIEdgeInsetsMake(10, 0, 10, 0);
+        return UIEdgeInsetsMake(10, 0, 0, 0);
     }
     return UIEdgeInsetsMake(12, 10, 20, 10);
 }
@@ -99,9 +99,9 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
 
     if (section == 0) {
-        return CGSizeMake(200, 20);
+        return CGSizeMake(200, 30);
     }
-    return CGSizeMake(200, 20);
+    return CGSizeMake(200, 30);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
 
@@ -148,7 +148,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
         [obj removeFromSuperview];
     }
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(10, 0, 20, 20);
+    imageView.frame = CGRectMake(10, 10, 20, 20);
     [view addSubview:imageView];
     HeaderModel *model = [[HeaderModel alloc] init];
     if (indexPath.section == 0) {
@@ -167,7 +167,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
         UIButton *button = [[UIButton alloc] init];
         button.tag = index;
         CGFloat titleWidth = [MEUtil widthForSingleLineText:title fontSize:12.f];
-        button.frame = CGRectMake( allX, 0, titleWidth, 20);
+        button.frame = CGRectMake( allX, 10, titleWidth, 20);
         [button setTitle:title forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button.titleLabel setFont:[UIFont systemFontOfSize:12.f]];
