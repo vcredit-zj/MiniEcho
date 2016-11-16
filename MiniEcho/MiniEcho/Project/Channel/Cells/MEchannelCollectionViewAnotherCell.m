@@ -8,6 +8,7 @@
 
 #import "MEchannelCollectionViewAnotherCell.h"
 #import "MEChannelCategrayData.h"
+#import "MEChannelCategrayChildren.h"
 NSString *MEchannelCollectionViewAnotherCellID = @"NSString *MEchannelCollectionViewAnotherCellID";
 
 @interface MEchannelCollectionViewAnotherCell ()
@@ -27,9 +28,10 @@ NSString *MEchannelCollectionViewAnotherCellID = @"NSString *MEchannelCollection
     for (int i = 0; i < [dataArray count]; i++) {
         MEChannelCategrayData *dataModel = [dataArray safeObjectAtIndex:i];
         UIView *view = [[UIView alloc] init];
-        view.backgroundColor = [UIColor orangeColor];
+        view.tag = i;
         view.frame =  CGRectMake(i*(viewWidth + margin) + margin, 0, viewWidth, viewWidth + 20);
         UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.userInteractionEnabled = YES;
         [view addSubview:imageView];
         [imageView sd_setImageWithURL:[NSURL URLWithString:dataModel.icoUrl] placeholderImage:nil];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,6 +45,7 @@ NSString *MEchannelCollectionViewAnotherCellID = @"NSString *MEchannelCollection
         [view addSubview:bottomLabel];
         [bottomLabel setText:dataModel.name];
         [bottomLabel setFont:[UIFont systemFontOfSize:12.f]];
+        [bottomLabel setTextAlignment:NSTextAlignmentCenter];
         [bottomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(imageView.mas_bottom);
             make.bottom.equalTo(view.mas_bottom);
@@ -52,8 +55,22 @@ NSString *MEchannelCollectionViewAnotherCellID = @"NSString *MEchannelCollection
         }];
         [self.scrollView addSubview:view];
         
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] init];
+        
+        [tapGesture addTarget:self action:@selector(tapAction:)];
+        [view addGestureRecognizer:tapGesture];
+        
     }
     self.scrollView.contentSize = CGSizeMake((viewWidth + margin) * [dataArray count], 0);
 
+}
+- (void)tapAction:(UITapGestureRecognizer *)gesture {
+
+    NSLog(@"click === %ld",gesture.view.tag);
+    if (_callBcak) {
+         MEChannelCategrayChildren *model = [self.dataArray safeObjectAtIndex:gesture.view.tag];
+        if (!model) return;
+        _callBcak(model);
+    }
 }
 @end

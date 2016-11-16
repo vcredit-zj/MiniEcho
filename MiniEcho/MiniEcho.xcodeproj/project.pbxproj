@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03C6A0D21DDBE95E000EF49F /* MEChannelCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C6A0D11DDBE95E000EF49F /* MEChannelCategoryViewController.m */; };
+		03C6A0D51DDBE9C3000EF49F /* CategoryCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C6A0D41DDBE9C3000EF49F /* CategoryCollectionReusableView.m */; };
+		03C6A0D81DDBE9E3000EF49F /* HXTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C6A0D71DDBE9E3000EF49F /* HXTagsView.m */; };
 		39106A081DD9B9D6008E5CF7 /* MEHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 39106A071DD9B9D6008E5CF7 /* MEHttpUtil.m */; };
 		39106A0B1DD9BB7B008E5CF7 /* MEResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 39106A0A1DD9BB7B008E5CF7 /* MEResult.m */; };
 		39120AFE1DD45F7A0052A234 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39120AFD1DD45F7A0052A234 /* main.m */; };
@@ -96,6 +99,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03C6A0D01DDBE95E000EF49F /* MEChannelCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCategoryViewController.h; sourceTree = "<group>"; };
+		03C6A0D11DDBE95E000EF49F /* MEChannelCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCategoryViewController.m; sourceTree = "<group>"; };
+		03C6A0D31DDBE9C3000EF49F /* CategoryCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionReusableView.h; sourceTree = "<group>"; };
+		03C6A0D41DDBE9C3000EF49F /* CategoryCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionReusableView.m; sourceTree = "<group>"; };
+		03C6A0D61DDBE9E3000EF49F /* HXTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXTagsView.h; sourceTree = "<group>"; };
+		03C6A0D71DDBE9E3000EF49F /* HXTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXTagsView.m; sourceTree = "<group>"; };
 		06A1F01FE118C6703F1885EF /* Pods-MiniEchoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoUITests/Pods-MiniEchoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		340B96218A5A8FB7AEDA22FE /* libPods-MiniEchoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniEchoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		343D25C3601190CF413CB3CC /* Pods-MiniEchoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoUITests/Pods-MiniEchoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -454,6 +463,9 @@
 		F73E10EB1DD56C9200EBA25A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+
+				03C6A0D31DDBE9C3000EF49F /* CategoryCollectionReusableView.h */,
+				03C6A0D41DDBE9C3000EF49F /* CategoryCollectionReusableView.m */,
 				396896941DDAF1030088191A /* PMRecommendCell.h */,
 				396896951DDAF1030088191A /* PMRecommendCell.m */,
 				396896961DDAF1030088191A /* PMRecommendCell.xib */,
@@ -485,6 +497,8 @@
 		F73E10EC1DD56C9200EBA25A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				03C6A0D01DDBE95E000EF49F /* MEChannelCategoryViewController.h */,
+				03C6A0D11DDBE95E000EF49F /* MEChannelCategoryViewController.m */,
 				F73E11011DD5BC7000EBA25A /* MEChannelViewController.h */,
 				F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */,
 			);
@@ -524,6 +538,8 @@
 		F73E10EE1DD56C9200EBA25A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				03C6A0D61DDBE9E3000EF49F /* HXTagsView.h */,
+				03C6A0D71DDBE9E3000EF49F /* HXTagsView.m */,
 				F73E11161DD5C4A800EBA25A /* ViewController3.h */,
 				F73E11171DD5C4A800EBA25A /* ViewController3.m */,
 			);
@@ -875,6 +891,7 @@
 				39120B541DD45FE10052A234 /* NSUserDefaults+SafeAccess.m in Sources */,
 				39120B5A1DD45FE10052A234 /* UIColor+HEX.m in Sources */,
 				396896931DDAE7760088191A /* MEPlayToolBar.m in Sources */,
+				03C6A0D51DDBE9C3000EF49F /* CategoryCollectionReusableView.m in Sources */,
 				F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */,
 				39120B561DD45FE10052A234 /* UIBarButtonItem+Action.m in Sources */,
 				396896971DDAF1030088191A /* PMRecommendCell.m in Sources */,
@@ -890,6 +907,7 @@
 				396896901DDABAFC0088191A /* MEPlayMusicController.m in Sources */,
 				39106A0B1DD9BB7B008E5CF7 /* MEResult.m in Sources */,
 				F78FB5071DDAD6EB0080D0CE /* MEChannelCategoryModel.m in Sources */,
+				03C6A0D21DDBE95E000EF49F /* MEChannelCategoryViewController.m in Sources */,
 				F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */,
 				396896AA1DDAF2990088191A /* PMHeaderView.m in Sources */,
 				39120B5B1DD45FE10052A234 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
@@ -897,6 +915,7 @@
 				39120B321DD45FC20052A234 /* AppDelegate.m in Sources */,
 				396896A11DDAF1970088191A /* PMSoundIntroductionCell.m in Sources */,
 				3957F82E1DDBF3AF004D8B5F /* PMSoundCollectionCell.m in Sources */,
+				03C6A0D81DDBE9E3000EF49F /* HXTagsView.m in Sources */,
 				F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */,
 				39120B551DD45FE10052A234 /* UIAlertView+Block.m in Sources */,
 				F78FB5161DDAE4310080D0CE /* MEChannelHotBaseModel.m in Sources */,
