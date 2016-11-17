@@ -14,6 +14,8 @@
 
 typedef void(^HeaderViewTapAction)(NSInteger index);
 
+typedef void(^DragSliderAction)(float progress);
+
 @interface PMHeaderView : UIView
 
 @property (nonatomic, assign) float offset;
@@ -26,6 +28,9 @@ typedef void(^HeaderViewTapAction)(NSInteger index);
 
 
 @property (nonatomic, copy) NSString *currentTime;
+
+
+@property (nonatomic, copy) DragSliderAction sliderAction;
 
 
 

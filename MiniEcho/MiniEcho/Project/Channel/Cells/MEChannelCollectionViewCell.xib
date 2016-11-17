@@ -23,6 +23,9 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cn6-L7-7Av">
                         <rect key="frame" x="0.0" y="39" width="120" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Nrg-h0-TJu"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -37,7 +40,6 @@
                 <constraint firstAttribute="trailing" secondItem="cn6-L7-7Av" secondAttribute="trailing" id="WM8-uw-nmR"/>
                 <constraint firstItem="95u-Ma-kap" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="toi-nS-Mtq"/>
                 <constraint firstItem="95u-Ma-kap" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xNf-6z-Yke"/>
-                <constraint firstItem="cn6-L7-7Av" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="39" id="zyl-EI-OUG"/>
             </constraints>
             <connections>
                 <outlet property="imageView" destination="95u-Ma-kap" id="nea-f1-95Q"/>

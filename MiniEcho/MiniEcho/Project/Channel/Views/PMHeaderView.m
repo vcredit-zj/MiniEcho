@@ -75,6 +75,7 @@
     _slider.backgroundColor = [UIColor clearColor];
     _slider.tintColor = [UIColor colorWithHexString:@"#41FFF0"];
     [_slider setThumbImage:[UIImage imageNamed:@"adminOperate"] forState:UIControlStateNormal];
+    [_slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
     [self addSubview:_slider];
     [_slider mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self);
@@ -227,6 +228,13 @@
 }
 
 #pragma mark - Action
+
+- (void)sliderAction:(UISlider *)slider
+{
+    if (_sliderAction) {
+        _sliderAction(slider.value);
+    }
+}
 
 - (void)downloadImageBtnAction
 { 

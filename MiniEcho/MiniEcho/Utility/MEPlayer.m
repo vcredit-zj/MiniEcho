@@ -9,6 +9,7 @@
 #import "MEPlayer.h"
 #import <AVFoundation/AVFoundation.h>
 
+
 @interface MEPlayer ()
 
 @property (nonatomic, strong) AVPlayer *player;
@@ -47,8 +48,15 @@
     AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:musicUrl];
     [self me_pause];
     
-    //切换当前音乐
-    [self.player replaceCurrentItemWithPlayerItem:item];
+    if (!self.player) {
+        // 初始化
+        self.player = [[AVPlayer alloc] initWithPlayerItem:item];
+    } else {
+    
+        //切换当前音乐
+        [self.player replaceCurrentItemWithPlayerItem:item];
+    }
+    
     
     //这样需要加载才会播放  这里有一个更好的方法 看看你能不能看懂 kov 监听 status 新值 这个属性是什么意思 AVPlayerStatus 枚举 代表播放器的状态，
     [self.player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
@@ -63,12 +71,20 @@
     self.isPlaying = YES;
     
     if (self.timer) return;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updatePlayTime) userInfo:nil repeats:YES];
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updatePlayTime) userInfo:nil repeats:YES];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1.0, 1.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        float current = CMTimeGetSeconds(time);
+        if (current) {
+            [weakSelf updatePlayTime:current];
+        }
+    }];
 }
 
 - (void)me_pause
 {
-    if (!self.isPlaying) return;
+    if (!self.isPlaying || !self.player) return;
     
     [self.player pause];
     self.isPlaying = NO;
@@ -126,12 +142,12 @@
 }
 
 // 更新播放时间
-- (void)updatePlayTime
+- (void)updatePlayTime:(float)time
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(me_playingWithTime:)]) {
         
-        NSTimeInterval time = self.player.currentTime.value / self.player.currentTime.timescale;
-        [self.delegate me_playingWithTime:time];
+        NSTimeInterval timeInterval = (NSTimeInterval)time;
+        [self.delegate me_playingWithTime:timeInterval];
     }
 }
 
@@ -149,14 +165,14 @@
 
 #pragma mark - Lazy Load
 
-- (AVPlayer *)player
-{
-    if (!_player) {
-        
-        _player = [[AVPlayer alloc] init];
-    }
-    
-    return _player;
-}
+//- (AVPlayer *)player
+//{
+//    if (!_player) {
+//        
+//        _player = [[AVPlayer alloc] init];
+//    }
+//    
+//    return _player;
+//}
 
 @end
