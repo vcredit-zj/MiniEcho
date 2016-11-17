@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FDg-1r-42m">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FDg-1r-42m">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_likewhite" translatesAutoresizingMaskIntoConstraints="NO" id="yjJ-dZ-vgv" userLabel="xinImage">
@@ -30,7 +30,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRo-L1-xeA">
-                        <rect key="frame" x="169" y="172" width="31" height="21"/>
+                        <rect key="frame" x="39" y="172" width="161" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="bbI-Mq-Brl"/>
                         </constraints>
@@ -56,6 +56,7 @@
                 <constraint firstItem="woc-Es-krq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fCc-6H-wl5"/>
                 <constraint firstItem="woc-Es-krq" firstAttribute="top" secondItem="iRo-L1-xeA" secondAttribute="bottom" constant="8" symbolic="YES" id="fEC-G2-bW5"/>
                 <constraint firstItem="woc-Es-krq" firstAttribute="leading" secondItem="FDg-1r-42m" secondAttribute="leading" id="fem-LM-8ny"/>
+                <constraint firstItem="iRo-L1-xeA" firstAttribute="leading" secondItem="yjJ-dZ-vgv" secondAttribute="trailing" constant="14" id="lwb-j8-ZUH"/>
                 <constraint firstAttribute="trailing" secondItem="iRo-L1-xeA" secondAttribute="trailing" id="mK5-gr-yZ2"/>
                 <constraint firstItem="FDg-1r-42m" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yuh-LU-UmK"/>
             </constraints>

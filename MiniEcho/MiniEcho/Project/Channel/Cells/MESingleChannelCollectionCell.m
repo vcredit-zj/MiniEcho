@@ -39,6 +39,7 @@ NSString *MESingleChannelCollectionCellID = @"MESingleChannelCollectionCellID";
     _describeLabel = describeLabel;
     UILabel *nameLabel = [[UILabel alloc] init];
     [nameLabel setFont:[UIFont systemFontOfSize:12.f]];
+    [nameLabel setTextColor:[UIColor colorWithHexString:@"#999999"]];
     [self.contentView addSubview:nameLabel];
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(describeLabel.mas_bottom);
@@ -57,7 +58,7 @@ NSString *MESingleChannelCollectionCellID = @"MESingleChannelCollectionCellID";
     _model = model;
     
     [_bgImageView sd_setImageWithURL:[NSURL URLWithString:model.pic640] placeholderImage:nil];
-    [_label setText:model.likeCount];
+    [_label setText:[NSString stringWithFormat:@"%d",(int)model.likeCount]];
     
     [_describeLabel setText:model.name];
     [_nameLabel setText:model.user.name];

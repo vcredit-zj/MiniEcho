@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, assign) double translateMask;
 @property (nonatomic, strong) NSString *userId;
-@property (nonatomic, strong) NSString *likeCount;
+@property (nonatomic, assign) double likeCount;
 @property (nonatomic, assign) double isPay;
 @property (nonatomic, assign) double checkVisition;
 @property (nonatomic, strong) NSString *pic200;

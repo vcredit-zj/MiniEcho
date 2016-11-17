@@ -16,7 +16,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 static NSInteger backBtnTag = 110;
 static NSInteger rightBtnTag = 120;
 static NSInteger centerLabelTag = 111;
-static CGFloat headerImageHeight = 300;
+static CGFloat headerImageHeight = 270 ;
 @interface MEChannelSingleViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -87,10 +87,10 @@ static CGFloat headerImageHeight = 300;
     }];
     [topNavBar addSubview:BackBtn];
     [BackBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(topNavBar).with.offset(5);
+        make.left.equalTo(topNavBar).with.offset(15);
         make.centerY.equalTo(centerLabel);
-        make.height.equalTo(@30);
-        make.width.equalTo(@30);
+        make.height.equalTo(@25);
+        make.width.equalTo(@14);
     }];
     UIButton *rightBtn = [[UIButton alloc] init];
     rightBtn.tag = rightBtnTag;
@@ -100,10 +100,10 @@ static CGFloat headerImageHeight = 300;
     }];
     [topNavBar addSubview:rightBtn];
     [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(topNavBar).with.offset(-5);
+        make.right.equalTo(topNavBar).with.offset(-15);
         make.centerY.equalTo(centerLabel);
-        make.height.equalTo(@30);
-        make.width.equalTo(@30);
+        make.height.equalTo(@25);
+        make.width.equalTo(@14);
     }];
 
     _topNavigationBar = topNavBar;
@@ -111,11 +111,11 @@ static CGFloat headerImageHeight = 300;
 #pragma mark UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    return CGSizeMake(CGRectGetWidth(self.view.frame)/2 - 20, CGRectGetWidth(self.view.frame)/2+20);
+    return CGSizeMake((CGRectGetWidth(self.view.frame) - 30)/2, CGRectGetWidth(self.view.frame)/2+20);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
 
-    return UIEdgeInsetsMake(12, 10, 20, 10);
+    return UIEdgeInsetsMake(10, 10, 0, 10);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
@@ -129,7 +129,7 @@ static CGFloat headerImageHeight = 300;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     
 
-    return CGSizeMake(CGRectGetWidth(self.view.frame), headerImageHeight);
+    return CGSizeMake(CGRectGetWidth(self.view.frame), headerImageHeight* kScreenWidth/320.0);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     
@@ -160,7 +160,8 @@ static CGFloat headerImageHeight = 300;
     UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID forIndexPath:indexPath];
     if (!self.topImageView) {
         UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), headerImageHeight);
+        [imageView setContentMode:UIViewContentModeScaleAspectFill];
+        imageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), headerImageHeight* kScreenWidth/320.0);
         [view addSubview:imageView];
         imageView.backgroundColor = [UIColor yellowColor];
         self.topImageView = imageView;
@@ -190,7 +191,7 @@ static CGFloat headerImageHeight = 300;
     CGRect oldRect = self.topImageView.frame;
     oldRect.origin.y = y;
     oldRect.origin.x = y/2;
-    oldRect.size.height = headerImageHeight -y;
+    oldRect.size.height = headerImageHeight* kScreenWidth/320.0 -y;
     oldRect.size.width = CGRectGetWidth(self.view.frame) - y;
     self.topImageView.frame = oldRect;
     
