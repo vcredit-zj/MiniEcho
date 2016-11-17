@@ -164,7 +164,7 @@ static NSString *recommendID = @"PMRecommendCellID";
         
     } else if (indexPath.row == 3) { // 推荐
         
-        return itemWidth + 30.f;
+        return itemWidth + 60.f;
     }
     
     return 50.f;
