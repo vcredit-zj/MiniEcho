@@ -59,6 +59,7 @@
 		3978165A1DD5C4D000A698DC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397816591DD5C4D000A698DC /* CoreMedia.framework */; };
 		3978165C1DD5C4D900A698DC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3978165B1DD5C4D900A698DC /* MediaPlayer.framework */; };
 		3978165E1DD5C4E500A698DC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3978165D1DD5C4E500A698DC /* AudioToolbox.framework */; };
+		39C369881DDD5AA20039D22C /* NavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C369871DDD5AA20039D22C /* NavigationTitleView.m */; };
 		6F7B5D9BE19A0EE99EA7B906 /* libPods-MiniEcho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4F0BA9905B6A405F7082C8 /* libPods-MiniEcho.a */; };
 		BAEAC2469244A0E077225F7D /* libPods-MiniEchoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD61098290DFBA8CA2E626F0 /* libPods-MiniEchoTests.a */; };
 		C232F2463DC443BAAA0CBF47 /* libPods-MiniEchoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340B96218A5A8FB7AEDA22FE /* libPods-MiniEchoUITests.a */; };
@@ -208,6 +209,8 @@
 		397816591DD5C4D000A698DC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		3978165B1DD5C4D900A698DC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		3978165D1DD5C4E500A698DC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		39C369861DDD5AA20039D22C /* NavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationTitleView.h; sourceTree = "<group>"; };
+		39C369871DDD5AA20039D22C /* NavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationTitleView.m; sourceTree = "<group>"; };
 		42CEE12E794E47CBEDA884EC /* Pods-MiniEchoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoTests/Pods-MiniEchoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56380AC7F2BB829580B01F5D /* Pods-MiniEchoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoTests/Pods-MiniEchoTests.release.xcconfig"; sourceTree = "<group>"; };
 		68C60E08E09CC6B8C7EE6BDD /* Pods-MiniEcho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEcho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEcho/Pods-MiniEcho.debug.xcconfig"; sourceTree = "<group>"; };
@@ -414,6 +417,7 @@
 		39120B611DD45FE60052A234 /* 3rdLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				39C369851DDD5AA20039D22C /* NavigationTitleView */,
 				39120B621DD45FE60052A234 /* HYFileManager */,
 			);
 			path = 3rdLibrary;
@@ -437,6 +441,15 @@
 				3978164C1DD5A51900A698DC /* MEConst.m */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		39C369851DDD5AA20039D22C /* NavigationTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				39C369861DDD5AA20039D22C /* NavigationTitleView.h */,
+				39C369871DDD5AA20039D22C /* NavigationTitleView.m */,
+			);
+			path = NavigationTitleView;
 			sourceTree = "<group>";
 		};
 		702A1A104C483B6960C387FE /* Frameworks */ = {
@@ -513,15 +526,12 @@
 				F78FB5001DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.h */,
 				F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */,
 				F78FB5021DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib */,
-
 				F7773D331DDC0A2800F88AEE /* MESingleChannelCollectionCell.h */,
 				F7773D341DDC0A2800F88AEE /* MESingleChannelCollectionCell.m */,
 				F7773D351DDC0A2800F88AEE /* MESingleChannelCollectionCell.xib */,
-
 				3957F82B1DDBF3AF004D8B5F /* PMSoundCollectionCell.h */,
 				3957F82C1DDBF3AF004D8B5F /* PMSoundCollectionCell.m */,
 				3957F82D1DDBF3AF004D8B5F /* PMSoundCollectionCell.xib */,
-
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -974,6 +984,7 @@
 				F7773D421DDC317500F88AEE /* MESingleChannelBaseModel.m in Sources */,
 				F7773D451DDC317500F88AEE /* MESingleChannelSounds.m in Sources */,
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
+				39C369881DDD5AA20039D22C /* NavigationTitleView.m in Sources */,
 				F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */,
 				3957F8351DDC0827004D8B5F /* MEUser.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,

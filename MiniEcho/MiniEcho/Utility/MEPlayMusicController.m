@@ -15,6 +15,7 @@
 
 
 // view
+#import "NavigationTitleView.h"
 #import "MEPlayToolBar.h"
 #import "PMHeaderView.h"
 #import "PMUserInfoCell.h"
@@ -117,6 +118,9 @@ static NSString *recommendID = @"PMRecommendCellID";
     _headerView.action = ^(NSInteger idx){
         [weakSelf herderViewActionAtIndex:idx];
     };
+    _headerView.sliderAction = ^(float progress){
+        [weakSelf dragSliderWithProgress:progress];
+    };
     [_tableView addSubview:_headerView];
     [_tableView insertSubview:_headerView atIndex:0];
     
@@ -217,6 +221,12 @@ static NSString *recommendID = @"PMRecommendCellID";
     } else if (index == 2) {
         DLog(@"下载歌曲"); 
     }
+}
+
+- (void)dragSliderWithProgress:(float)progress
+{
+    float time = [[_rootModel length] doubleValue] * progress;
+    [[MEPlayer shareMEPlayer] me_seekToTime:time];
 }
 
 #pragma mark - MEPlayerDelegate
@@ -348,7 +358,9 @@ static NSString *recommendID = @"PMRecommendCellID";
 - (void)refreshScreenAndPlayMusic
 {
     NSString *title = _rootModel.name;
-    self.title = title;
+    CGRect frame = CGRectMake(30, 100, self.view.frame.size.width - 100, 40);
+    NavigationTitleView * titleView = [[NavigationTitleView alloc] initWithFrame:frame Text:title andTitleFont:nil andTitleColor:[UIColor blackColor]];
+    self.navigationItem.titleView = titleView;
     
     if (!_headerModel) {
         _headerModel = [PMHerderModel new];
