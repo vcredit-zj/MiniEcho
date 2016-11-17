@@ -16,6 +16,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 static NSInteger backBtnTag = 110;
 static NSInteger rightBtnTag = 120;
 static NSInteger centerLabelTag = 111;
+static CGFloat headerImageHeight = 300;
 @interface MEChannelSingleViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -23,6 +24,8 @@ static NSInteger centerLabelTag = 111;
 @property (nonatomic,strong) NSMutableArray *dataArrayM;
 
 @property (nonatomic,strong) UIView *topNavigationBar;
+
+@property (nonatomic,strong) UIImageView *topImageView;
 @end
 
 @implementation MEChannelSingleViewController
@@ -41,6 +44,7 @@ static NSInteger centerLabelTag = 111;
 }
 - (void)initWithSubViews {
     __weak typeof(self)weakSelf = self;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.minimumLineSpacing = 0.f;
     layout.minimumInteritemSpacing = 0.f;
@@ -62,7 +66,7 @@ static NSInteger centerLabelTag = 111;
     
     UIView *topNavBar = [[UIView alloc] init];
     topNavBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 64);
-    topNavBar.backgroundColor = [UIColor redColor];
+    topNavBar.backgroundColor = [UIColor clearColor];
     [self.view addSubview:topNavBar];
     UILabel *centerLabel = [[UILabel alloc] init];
     [centerLabel setTextColor:[UIColor whiteColor]];
@@ -84,7 +88,7 @@ static NSInteger centerLabelTag = 111;
     [topNavBar addSubview:BackBtn];
     [BackBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(topNavBar).with.offset(5);
-        make.bottom.equalTo(topNavBar.mas_bottom);
+        make.centerY.equalTo(centerLabel);
         make.height.equalTo(@30);
         make.width.equalTo(@30);
     }];
@@ -97,7 +101,7 @@ static NSInteger centerLabelTag = 111;
     [topNavBar addSubview:rightBtn];
     [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(topNavBar).with.offset(-5);
-        make.bottom.equalTo(topNavBar.mas_bottom);
+        make.centerY.equalTo(centerLabel);
         make.height.equalTo(@30);
         make.width.equalTo(@30);
     }];
@@ -125,7 +129,7 @@ static NSInteger centerLabelTag = 111;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     
 
-    return CGSizeMake(CGRectGetWidth(self.view.frame), 200);
+    return CGSizeMake(CGRectGetWidth(self.view.frame), headerImageHeight);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     
@@ -154,13 +158,13 @@ static NSInteger centerLabelTag = 111;
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID forIndexPath:indexPath];
-    for (UIView *obj in view.subviews) {
-        [obj removeFromSuperview];
+    if (!self.topImageView) {
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), headerImageHeight);
+        [view addSubview:imageView];
+        imageView.backgroundColor = [UIColor yellowColor];
+        self.topImageView = imageView;
     }
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200);
-    [view addSubview:imageView];
-    imageView.backgroundColor = [UIColor yellowColor];
     
     return view;
 }
@@ -179,17 +183,29 @@ static NSInteger centerLabelTag = 111;
     [self.navigationController pushViewController:playVC animated:YES];
     
 }
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    CGFloat y = scrollView.contentOffset.y;
+    if (y > 0)return;
+    CGRect oldRect = self.topImageView.frame;
+    oldRect.origin.y = y;
+    oldRect.origin.x = y/2;
+    oldRect.size.height = headerImageHeight -y;
+    oldRect.size.width = CGRectGetWidth(self.view.frame) - y;
+    self.topImageView.frame = oldRect;
+    
+}
 #pragma mark Helper
 - (void)requestInitDataFromServer {
     
     __weak typeof(self)WeakSelf = self;
     NSDictionary *parametDic = @{@"id":_identifi,@"page ":@"1",@"list_order":@"recommend",@"with_sound":@"0"};
-    [MEHttpUtil get:ChannerInfo parameters:parametDic success:^(id result) {
-
+    [MEHttpUtil get:ChannerInfo parameters:parametDic showLoading:YES success:^(id result) {
         MESingleChannelBaseModel *baseModel = [MESingleChannelBaseModel modelObjectWithDictionary:result];
         WeakSelf.dataArrayM = [NSMutableArray arrayWithArray:baseModel.data.sounds];
         UILabel *centerLabel = [WeakSelf.topNavigationBar viewWithTag:centerLabelTag];
         [centerLabel setText:[baseModel.data.channel name] ];
+        [WeakSelf.topImageView sd_setImageWithURL:[NSURL URLWithString:baseModel.data.channel.pic640] placeholderImage:nil];
         [WeakSelf.collectionView reloadData];
     } failure:^(NSError *error) {
         

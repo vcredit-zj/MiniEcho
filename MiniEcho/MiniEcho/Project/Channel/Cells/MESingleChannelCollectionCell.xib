@@ -30,7 +30,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRo-L1-xeA">
-                        <rect key="frame" x="35" y="172" width="165" height="21"/>
+                        <rect key="frame" x="169" y="172" width="31" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="bbI-Mq-Brl"/>
                         </constraints>
@@ -45,7 +45,6 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="FDg-1r-42m" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0Qy-o8-cYd"/>
                 <constraint firstAttribute="trailing" secondItem="FDg-1r-42m" secondAttribute="trailing" id="6NZ-IY-f2z"/>
                 <constraint firstItem="yjJ-dZ-vgv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="8Kx-Xc-a0r"/>
                 <constraint firstItem="woc-Es-krq" firstAttribute="width" secondItem="FDg-1r-42m" secondAttribute="height" multiplier="1:1" id="95V-EO-5ul"/>
@@ -57,8 +56,6 @@
                 <constraint firstItem="woc-Es-krq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fCc-6H-wl5"/>
                 <constraint firstItem="woc-Es-krq" firstAttribute="top" secondItem="iRo-L1-xeA" secondAttribute="bottom" constant="8" symbolic="YES" id="fEC-G2-bW5"/>
                 <constraint firstItem="woc-Es-krq" firstAttribute="leading" secondItem="FDg-1r-42m" secondAttribute="leading" id="fem-LM-8ny"/>
-                <constraint firstItem="woc-Es-krq" firstAttribute="top" secondItem="FDg-1r-42m" secondAttribute="bottom" constant="1" id="foa-Ki-dFJ"/>
-                <constraint firstItem="iRo-L1-xeA" firstAttribute="leading" secondItem="yjJ-dZ-vgv" secondAttribute="trailing" constant="10" id="jPX-kE-2X8"/>
                 <constraint firstAttribute="trailing" secondItem="iRo-L1-xeA" secondAttribute="trailing" id="mK5-gr-yZ2"/>
                 <constraint firstItem="FDg-1r-42m" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yuh-LU-UmK"/>
             </constraints>
