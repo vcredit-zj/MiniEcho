@@ -29,6 +29,11 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
  最热、最新展示page
  */
 @property (nonatomic, assign) NSInteger page;
+
+/**
+ 标示选择最热/最新分类
+ */
+@property (nonatomic, assign, getter=isSelectedNew) BOOL selectedNew;
 @end
 
 @implementation MEChannelViewController
@@ -53,7 +58,8 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
     collectionView.delegate = self;
     [collectionView registerNib:[MEChannelCollectionViewCell nib] forCellWithReuseIdentifier:MEChannelCollectionViewCellID];
     [collectionView registerNib:[MEchannelCollectionViewAnotherCell nib] forCellWithReuseIdentifier:MEchannelCollectionViewAnotherCellID];
-    [collectionView registerNib:[MEChannelCollectionReusableHeaderView nib] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID];
+    [collectionView registerClass:[MEChannelCollectionReusableHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID];
+//    [collectionView registerNib:[MEChannelCollectionReusableHeaderView nib] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID];
     collectionView.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:collectionView];
@@ -64,7 +70,8 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
     collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         //Call this Block When enter the refresh status automatically
         NSString *page = [NSString stringWithFormat:@"%ld",WeakSelf.page];
-        NSDictionary *parametDic = @{@"order":@"hot",@"page ":page,@"with_sound":@"0"};
+        NSString *order = WeakSelf.selectedNew?@"new":@"hot";
+        NSDictionary *parametDic = @{@"order":order,@"page ":page,@"with_sound":@"0"};
         [WeakSelf requestDataFromServerWithParameters:parametDic];
         
     }];
@@ -143,40 +150,32 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
 
-    MEChannelCollectionReusableHeaderView *view = (MEChannelCollectionReusableHeaderView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID forIndexPath:indexPath];
-    for (UIView *obj in view.subviews) {
-        [obj removeFromSuperview];
+    __weak typeof(self)weakSelf = self;
+    if (kind == UICollectionElementKindSectionHeader) {
+        MEChannelCollectionReusableHeaderView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID forIndexPath:indexPath];
+        view.model = nil;
+        view.callBlock = nil;
+        HeaderModel *model = [[HeaderModel alloc] init];
+        if (indexPath.section == 0) {
+            model.imageName = @"icon_channel_category";
+            model.titleArray = @[@"频道分类"];
+        } else {
+            
+            model.imageName = @"icon_channel_follow";
+            model.titleArray = @[@"最热",@"最新"];
+            
+        }
+        view.model = model;
+        view.callBlock = ^(NSInteger tag){
+        
+            if (indexPath.section == 1) {
+                weakSelf.selectedNew = tag;
+            }
+        };
+        
+        return view;
     }
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(10, 10, 20, 20);
-    [view addSubview:imageView];
-    HeaderModel *model = [[HeaderModel alloc] init];
-    if (indexPath.section == 0) {
-        model.imageName = @"icon_channel_category";
-        model.titleArray = @[@"频道分类"];
-    } else {
-    
-        model.imageName = @"icon_channel_follow";
-        model.titleArray = @[@"最热",@"最新"];
-
-    }
-    [imageView setImage:[UIImage imageNamed:model.imageName]];
-    NSInteger index = 1;
-    CGFloat allX = CGRectGetMaxX(imageView.frame) + 4;
-    for (NSString *title in model.titleArray) {
-        UIButton *button = [[UIButton alloc] init];
-        button.tag = index;
-        CGFloat titleWidth = [MEUtil widthForSingleLineText:title fontSize:12.f];
-        button.frame = CGRectMake( allX, 10, titleWidth, 20);
-        [button setTitle:title forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:12.f]];
-        [button addTarget:self action:@selector(headerViewBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:button];
-        index++;
-        allX += titleWidth + 4;
-    }
-    return view;
+    return nil;
 }
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -209,28 +208,21 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 - (void)requestDataFromServerWithParameters:(id)parame {
 
     __weak typeof(self)WeakSelf = self;
-    [MEHttpUtil get:ChannerType parameters:parame success:^(id result) {
+    [MEHttpUtil get:ChannerType parameters:parame showLoading:YES success:^(id result) {
         MEChannelHotBaseModel *baseModel = [MEChannelHotBaseModel modelObjectWithDictionary:result];
         if (WeakSelf.page > 1) {
             [WeakSelf.dataArrayM addObjectsFromArray:baseModel.data];
         } else {
-        WeakSelf.dataArrayM = [NSMutableArray arrayWithArray:baseModel.data];
+            WeakSelf.dataArrayM = [NSMutableArray arrayWithArray:baseModel.data];
             
         }
         WeakSelf.page += 1;
         [WeakSelf.collectionView.mj_footer endRefreshing];
         [WeakSelf.collectionView reloadData];
-        
-        
     } failure:^(NSError *error) {
         [WeakSelf.collectionView.mj_footer endRefreshing];
     }];
 
-}
-
-- (void)headerViewBtnClick:(UIButton *)btn {
-
-    NSLog(@"%ld",btn.tag);
 }
 - (void)setCategrayBaseModel:(MEChannelCategrayBaseModel *)categrayBaseModel {
 
@@ -241,5 +233,15 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 
     _dataArrayM = dataArrayM;
     [self.collectionView reloadData];
+}
+- (void)setSelectedNew:(BOOL)selectedNew {
+
+    if (self.isSelectedNew == selectedNew) return;
+    _selectedNew = selectedNew;
+    _page = 1;
+    NSString *page = [NSString stringWithFormat:@"%ld",_page];
+    NSString *order = selectedNew?@"new":@"hot";
+    NSDictionary *parametDic = @{@"order":order,@"page ":page,@"with_sound":@"0"};
+    [self requestDataFromServerWithParameters:parametDic];
 }
 @end

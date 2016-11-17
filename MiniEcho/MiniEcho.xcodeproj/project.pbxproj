@@ -81,7 +81,6 @@
 		F78FB4F61DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB4F41DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.m */; };
 		F78FB4F71DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78FB4F51DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib */; };
 		F78FB5031DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */; };
-		F78FB5041DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78FB5021DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib */; };
 		F78FB5071DDAD6EB0080D0CE /* MEChannelCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5061DDAD6EB0080D0CE /* MEChannelCategoryModel.m */; };
 		F78FB5101DDADB1F0080D0CE /* MEChannelCategrayChildren.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB50C1DDADB1F0080D0CE /* MEChannelCategrayChildren.m */; };
 		F78FB5111DDADB1F0080D0CE /* MEChannelCategrayData.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB50E1DDADB1F0080D0CE /* MEChannelCategrayData.m */; };
@@ -250,7 +249,6 @@
 		F78FB4F51DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEchannelCollectionViewAnotherCell.xib; sourceTree = "<group>"; };
 		F78FB5001DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCollectionReusableHeaderView.h; sourceTree = "<group>"; };
 		F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCollectionReusableHeaderView.m; sourceTree = "<group>"; };
-		F78FB5021DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEChannelCollectionReusableHeaderView.xib; sourceTree = "<group>"; };
 		F78FB5051DDAD6EB0080D0CE /* MEChannelCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCategoryModel.h; sourceTree = "<group>"; };
 		F78FB5061DDAD6EB0080D0CE /* MEChannelCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCategoryModel.m; sourceTree = "<group>"; };
 		F78FB5081DDADB1F0080D0CE /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
@@ -512,16 +510,12 @@
 				F78FB4F51DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib */,
 				F78FB5001DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.h */,
 				F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */,
-				F78FB5021DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib */,
-
 				F7773D331DDC0A2800F88AEE /* MESingleChannelCollectionCell.h */,
 				F7773D341DDC0A2800F88AEE /* MESingleChannelCollectionCell.m */,
 				F7773D351DDC0A2800F88AEE /* MESingleChannelCollectionCell.xib */,
-
 				3957F82B1DDBF3AF004D8B5F /* PMSoundCollectionCell.h */,
 				3957F82C1DDBF3AF004D8B5F /* PMSoundCollectionCell.m */,
 				3957F82D1DDBF3AF004D8B5F /* PMSoundCollectionCell.xib */,
-
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -757,7 +751,6 @@
 				396896A71DDAF1DB0088191A /* PMUserInfoCell.xib in Resources */,
 				396896A21DDAF1970088191A /* PMSoundIntroductionCell.xib in Resources */,
 				396896981DDAF1030088191A /* PMRecommendCell.xib in Resources */,
-				F78FB5041DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib in Resources */,
 				39120B0C1DD45F7A0052A234 /* LaunchScreen.storyboard in Resources */,
 				3957F82F1DDBF3AF004D8B5F /* PMSoundCollectionCell.xib in Resources */,
 				F78FB4F21DDAAA720080D0CE /* MEChannelCollectionViewCell.xib in Resources */,

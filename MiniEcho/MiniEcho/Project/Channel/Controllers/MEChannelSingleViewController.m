@@ -35,11 +35,15 @@ static CGFloat headerImageHeight = 270 ;
     // Do any additional setup after loading the view.
     [self initWithSubViews];
     [self requestInitDataFromServer];
+}
+- (void)viewWillAppear:(BOOL)animated {
+
+    [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-    
 }
 - (void)viewWillDisappear:(BOOL)animated {
 
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
 }
 - (void)initWithSubViews {

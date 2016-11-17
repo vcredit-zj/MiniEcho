@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^HeaderBtnClickBlock)(NSInteger btnTag);
 @interface HeaderModel : NSObject
 @property (nonatomic,copy) NSString *imageName;
 @property (nonatomic, strong) NSArray<NSString *> *titleArray;
@@ -17,4 +18,5 @@
 
 @property (nonatomic,strong) HeaderModel *model;
 
+@property (nonatomic,copy) HeaderBtnClickBlock callBlock;
 @end

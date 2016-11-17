@@ -19,10 +19,11 @@ NSString *MEchannelCollectionViewAnotherCellID = @"NSString *MEchannelCollection
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    }
+}
 - (void)setDataArray:(NSArray *)dataArray {
 
     _dataArray = dataArray;
+    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     CGFloat viewWidth = 55;
     CGFloat margin = 10;
     for (int i = 0; i < [dataArray count]; i++) {
