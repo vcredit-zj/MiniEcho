@@ -78,30 +78,30 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
     if (indexPath.section == 0) {
         return CGSizeMake(CGRectGetWidth(self.view.frame), 80);
     }
-    return CGSizeMake(CGRectGetWidth(self.view.frame)/2 - 20, 80);
+    return CGSizeMake((CGRectGetWidth(self.view.frame) - 24)/2, 80 * kScreenWidth/320);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
 
     if (section == 0) {
-        return UIEdgeInsetsMake(10, 0, 0, 0);
+        return UIEdgeInsetsMake(15, 0, 0, 0);
     }
-    return UIEdgeInsetsMake(12, 10, 20, 10);
+    return UIEdgeInsetsMake(20, 8, 0, 8);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 
-    return 10.f;
+    return 14.f;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
 
-    return 10.f;
+    return 8.f;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
 
     if (section == 0) {
-        return CGSizeMake(200, 30);
+        return CGSizeMake(kScreenWidth, 30);
     }
-    return CGSizeMake(200, 30);
+    return CGSizeMake(kScreenWidth, 30);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
 
