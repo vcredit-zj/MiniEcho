@@ -8,12 +8,16 @@
 
 #import "MEPlayer.h"
 #import <AVFoundation/AVFoundation.h>
+#import <AFNetworking/AFNetworking.h>
+#import "HYFileManager.h"
 
+static NSString *musicDirectory = @"/localmusic/";
 
 @interface MEPlayer ()
 
 @property (nonatomic, strong) AVPlayer *player;
-@property (nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
 
 @end
 
@@ -70,9 +74,6 @@
     [self.player play];
     self.isPlaying = YES;
     
-    if (self.timer) return;
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updatePlayTime) userInfo:nil repeats:YES];
-    
     __weak typeof(self) weakSelf = self;
     [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1.0, 1.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         float current = CMTimeGetSeconds(time);
@@ -90,8 +91,8 @@
     self.isPlaying = NO;
     
     // 停止定时器
-    [self.timer invalidate];
-    self.timer = nil;
+    // [self.timer invalidate];
+    // self.timer = nil;
 }
 
 - (void)me_seekToTime:(float)time
@@ -99,6 +100,54 @@
     [self.player seekToTime:CMTimeMakeWithSeconds(time, self.player.currentTime.timescale) completionHandler:^(BOOL finished) {
         [self me_play];
     }];
+}
+
+- (void)me_downloadMusicWithURL:(NSString *)url
+{
+    NSString *urlStr = [[url componentsSeparatedByString:@"?"] firstObject];
+    
+    [SVProgressHUD show];
+    NSURL *URL = [NSURL URLWithString:urlStr];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:config];
+    
+    NSURLRequest *req = [NSURLRequest requestWithURL:URL];
+    
+    _downloadTask = [manager downloadTaskWithRequest:req progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        // 获取下载进度
+        float progress = downloadProgress.completedUnitCount / downloadProgress.totalUnitCount;
+        DLog(@"下载进度:%.4f", progress);
+        
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        
+        // 返回下载文件的本地文件路径
+        NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+        // [HYFileManager createDirectoryAtPath:cachesPath];
+        
+        NSString *fileName = [NSString stringWithFormat:@"%@%@.mp3",musicDirectory,[MEUtil md5String:url]];
+        NSString *filePath =  [cachesPath stringByAppendingPathComponent:fileName];
+        DLog(@"filePath:%@",filePath);
+        
+        
+        return [NSURL URLWithString:filePath];
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        
+        if (error) {
+            DLog(@"下载音乐发生错误:%@",error);
+        } else {
+        
+            // 下载完成
+            DLog(@"下载完成filePath:%@",filePath);
+            [SVProgressHUD dismiss];
+        }
+        
+    }];
+    
+    [_downloadTask resume];
 }
 
 #pragma mark - Private Methods
@@ -164,16 +213,5 @@
     return self.player.volume;
 }
 
-#pragma mark - Lazy Load
-
-//- (AVPlayer *)player
-//{
-//    if (!_player) {
-//        
-//        _player = [[AVPlayer alloc] init];
-//    }
-//    
-//    return _player;
-//}
 
 @end

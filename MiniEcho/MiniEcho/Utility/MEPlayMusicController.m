@@ -242,12 +242,9 @@ static NSString *recommendID = @"PMRecommendCellID";
 
 - (void)herderViewActionAtIndex:(NSInteger)index
 {
-    if (index == 0) {
-        DLog(@"下载图片");
-    } else if (index == 1) {
-        DLog(@"点赞");
-    } else if (index == 2) {
-        DLog(@"下载歌曲"); 
+    if (index == 2) {
+        DLog(@"下载歌曲");
+        [[MEPlayer shareMEPlayer] me_downloadMusicWithURL:_rootModel.source];
     }
 }
 

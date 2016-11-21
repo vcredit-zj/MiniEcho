@@ -67,4 +67,9 @@ typedef NS_ENUM(NSInteger, MEPlayMode) {
  */
 - (void)me_seekToTime:(float)time;
 
+/**
+ * 根据音乐在线链接下载歌曲
+ */
+- (void)me_downloadMusicWithURL:(NSString *)url;
+
 @end

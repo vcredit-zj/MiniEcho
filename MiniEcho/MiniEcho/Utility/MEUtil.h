@@ -16,4 +16,6 @@
 + (CGFloat)heightForText:(NSString *)text fontSize:(CGFloat)font constrainedWidth:(CGFloat)width lineBreakMode:(NSLineBreakMode)lineBreakMode;
 
 + (CGFloat)heightForAttributedString:(NSAttributedString *)string constrainedWidth:(CGFloat)width;
+
++ (NSString*)md5String:(NSString *)str;
 @end
