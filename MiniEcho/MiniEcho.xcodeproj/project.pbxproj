@@ -69,6 +69,7 @@
 		F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */; };
 		F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11171DD5C4A800EBA25A /* ViewController3.m */; };
 		F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E111A1DD5C4B200EBA25A /* ViewController4.m */; };
+		F76C0EC81DE297810072BEC3 /* MENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76C0EC71DE297810072BEC3 /* MENavigationController.m */; };
 		F7773D2C1DDBF82500F88AEE /* MEChannelSingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7773D2B1DDBF82500F88AEE /* MEChannelSingleViewController.m */; };
 		F7773D361DDC0A2800F88AEE /* MESingleChannelCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7773D341DDC0A2800F88AEE /* MESingleChannelCollectionCell.m */; };
 		F7773D371DDC0A2800F88AEE /* MESingleChannelCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7773D351DDC0A2800F88AEE /* MESingleChannelCollectionCell.xib */; };
@@ -88,6 +89,7 @@
 		F78FB5161DDAE4310080D0CE /* MEChannelHotBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5131DDAE4310080D0CE /* MEChannelHotBaseModel.m */; };
 		F78FB5181DDAF8520080D0CE /* MEChannelHotData.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5151DDAE4310080D0CE /* MEChannelHotData.m */; };
 		F78FB5191DDAF8840080D0CE /* MEChannelCategrayBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB50A1DDADB1F0080D0CE /* MEChannelCategrayBaseModel.m */; };
+		F7A3429E1DDDC78700DEB06B /* MEUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A3429D1DDDC78700DEB06B /* MEUserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +231,8 @@
 		F73E11171DD5C4A800EBA25A /* ViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
 		F73E11191DD5C4B200EBA25A /* ViewController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController4.h; sourceTree = "<group>"; };
 		F73E111A1DD5C4B200EBA25A /* ViewController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController4.m; sourceTree = "<group>"; };
+		F76C0EC61DE297810072BEC3 /* MENavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MENavigationController.h; sourceTree = "<group>"; };
+		F76C0EC71DE297810072BEC3 /* MENavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MENavigationController.m; sourceTree = "<group>"; };
 		F7773D2A1DDBF82500F88AEE /* MEChannelSingleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelSingleViewController.h; sourceTree = "<group>"; };
 		F7773D2B1DDBF82500F88AEE /* MEChannelSingleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelSingleViewController.m; sourceTree = "<group>"; };
 		F7773D331DDC0A2800F88AEE /* MESingleChannelCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MESingleChannelCollectionCell.h; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 		F78FB5131DDAE4310080D0CE /* MEChannelHotBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelHotBaseModel.m; sourceTree = "<group>"; };
 		F78FB5141DDAE4310080D0CE /* MEChannelHotData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelHotData.h; sourceTree = "<group>"; };
 		F78FB5151DDAE4310080D0CE /* MEChannelHotData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelHotData.m; sourceTree = "<group>"; };
+		F7A3429C1DDDC78700DEB06B /* MEUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEUserViewController.h; sourceTree = "<group>"; };
+		F7A3429D1DDDC78700DEB06B /* MEUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEUserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -481,6 +487,7 @@
 		F73E10E91DD56AD800EBA25A /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				F7A3429A1DDDC76500DEB06B /* User */,
 				F73E10EA1DD56C9200EBA25A /* Channel */,
 			);
 			path = Project;
@@ -523,8 +530,6 @@
 				F78FB4F51DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib */,
 				F78FB5001DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.h */,
 				F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */,
-
-				F78FB5021DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.xib */,
 				F7773D331DDC0A2800F88AEE /* MESingleChannelCollectionCell.h */,
 				F7773D341DDC0A2800F88AEE /* MESingleChannelCollectionCell.m */,
 				F7773D351DDC0A2800F88AEE /* MESingleChannelCollectionCell.xib */,
@@ -637,8 +642,27 @@
 				F73E10F31DD571A800EBA25A /* METabBarController.m */,
 				396896911DDAE7760088191A /* MEPlayToolBar.h */,
 				396896921DDAE7760088191A /* MEPlayToolBar.m */,
+				F76C0EC61DE297810072BEC3 /* MENavigationController.h */,
+				F76C0EC71DE297810072BEC3 /* MENavigationController.m */,
 			);
 			path = MECustom;
+			sourceTree = "<group>";
+		};
+		F7A3429A1DDDC76500DEB06B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F7A3429B1DDDC76500DEB06B /* Conttollers */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		F7A3429B1DDDC76500DEB06B /* Conttollers */ = {
+			isa = PBXGroup;
+			children = (
+				F7A3429C1DDDC78700DEB06B /* MEUserViewController.h */,
+				F7A3429D1DDDC78700DEB06B /* MEUserViewController.m */,
+			);
+			path = Conttollers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -717,6 +741,7 @@
 				TargetAttributes = {
 					39120AF81DD45F7A0052A234 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3H4XGK9972;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -934,6 +959,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F78FB5191DDAF8840080D0CE /* MEChannelCategrayBaseModel.m in Sources */,
+				F76C0EC81DE297810072BEC3 /* MENavigationController.m in Sources */,
 				F78FB5181DDAF8520080D0CE /* MEChannelHotData.m in Sources */,
 				3957F8321DDC04F4004D8B5F /* PMRootModel.m in Sources */,
 				39120B591DD45FE10052A234 /* UICollectionViewCell+Nib.m in Sources */,
@@ -976,6 +1002,7 @@
 				F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */,
 				39120B551DD45FE10052A234 /* UIAlertView+Block.m in Sources */,
 				F7773D361DDC0A2800F88AEE /* MESingleChannelCollectionCell.m in Sources */,
+				F7A3429E1DDDC78700DEB06B /* MEUserViewController.m in Sources */,
 				F78FB5161DDAE4310080D0CE /* MEChannelHotBaseModel.m in Sources */,
 				F78FB5031DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m in Sources */,
 				F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */,
@@ -1135,12 +1162,13 @@
 			baseConfigurationReference = 68C60E08E09CC6B8C7EE6BDD /* Pods-MiniEcho.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3H4XGK9972;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = MiniEcho/PrefixHeader.pch;
 				INFOPLIST_FILE = MiniEcho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vcredit.MiniEcho;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chao.MiniEcho;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1150,12 +1178,13 @@
 			baseConfigurationReference = 963801D7A1A3122B034E3960 /* Pods-MiniEcho.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3H4XGK9972;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = MiniEcho/PrefixHeader.pch;
 				INFOPLIST_FILE = MiniEcho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vcredit.MiniEcho;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chao.MiniEcho;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -10,6 +10,7 @@
 #import "METabBarController.h"
 #import <MMDrawerController.h>
 #import "MEChannelViewController.h"
+#import "MEUserViewController.h"
 #import "MEPlayer.h"
 #import <MMDrawerController.h> 
 
@@ -30,12 +31,11 @@
     // Override point for customization after application launch.
 
     METabBarController *centerVC = [[METabBarController alloc] init];
-    UIViewController *leftVC = [[UIViewController alloc] init];
+    MEUserViewController *leftVC = [[MEUserViewController alloc] init];
     leftVC.view.backgroundColor = [UIColor yellowColor];
-    UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftVC];
-    MMDrawerController *rootVC = [[MMDrawerController alloc] initWithCenterViewController:centerVC leftDrawerViewController:leftNav];
+    MMDrawerController *rootVC = [[MMDrawerController alloc] initWithCenterViewController:centerVC leftDrawerViewController:leftVC];
     [rootVC setShowsShadow:NO];
-    [rootVC setMaximumLeftDrawerWidth:200.0];
+    [rootVC setMaximumLeftDrawerWidth:300.0];
     [rootVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [rootVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
 

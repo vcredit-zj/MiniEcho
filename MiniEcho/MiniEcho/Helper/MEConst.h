@@ -25,4 +25,7 @@ extern NSString *const ChannerInfo;
 
 /** 单个歌曲的信息 */
 extern NSString *const SoundInfo;
+/** 用户基本信息*/
+extern NSString *const UserInfo;
 
+//echo ios 5.7.3 2016102902;(iPhone,iPhone OS10.1.1);IDFA 7A28AF26-2BC8-4CE9-BC54-F6E453CD3F37

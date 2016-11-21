@@ -7,7 +7,7 @@
 //
 
 #import "MEChannelCollectionViewCell.h"
-NSString *MEChannelCollectionViewCellID = @"NSString *MEChannelCollectionViewCellID";
+NSString *MEChannelCollectionViewCellID = @"MEChannelCollectionViewCellID";
 
 @interface MEChannelCollectionViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *label;
