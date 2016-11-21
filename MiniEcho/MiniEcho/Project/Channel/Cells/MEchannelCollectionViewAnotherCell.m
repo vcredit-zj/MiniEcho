@@ -34,7 +34,7 @@ NSString *MEchannelCollectionViewAnotherCellID = @"NSString *MEchannelCollection
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.userInteractionEnabled = YES;
         [view addSubview:imageView];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:dataModel.icoUrl] placeholderImage:nil];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:dataModel.icoUrl] placeholderImage:[MEUtil imageWithColor:[UIColor yellowColor]]];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(view.mas_top);
             make.left.equalTo(view.mas_left);

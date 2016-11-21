@@ -71,7 +71,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
         //Call this Block When enter the refresh status automatically
         NSString *page = [NSString stringWithFormat:@"%ld",WeakSelf.page];
         NSString *order = WeakSelf.selectedNew?@"new":@"hot";
-        NSDictionary *parametDic = @{@"order":order,@"page ":page,@"with_sound":@"0"};
+        NSDictionary *parametDic = @{@"order":order,@"page":page,@"with_sound":@"0"};
         [WeakSelf requestDataFromServerWithParameters:parametDic];
         
     }];
@@ -146,6 +146,10 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
     cell.model = [self.dataArrayM safeObjectAtIndex:indexPath.item];
     cell.backgroundColor = [UIColor yellowColor];
 
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(5, 5)];
+    CAShapeLayer *shapeLayer = [[CAShapeLayer alloc] init];
+    shapeLayer.path = path.CGPath;
+    cell.layer.mask = shapeLayer;
     return cell;
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -202,7 +206,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
         
     }];
     NSString *page = [NSString stringWithFormat:@"%ld",_page];
-    NSDictionary *parametDic = @{@"order":@"hot",@"page ":page,@"with_sound":@"0"};
+    NSDictionary *parametDic = @{@"order":@"hot",@"page":page,@"with_sound":@"0"};
     [self requestDataFromServerWithParameters:parametDic];
 }
 - (void)requestDataFromServerWithParameters:(id)parame {
