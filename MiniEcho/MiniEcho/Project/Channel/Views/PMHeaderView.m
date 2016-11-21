@@ -237,7 +237,11 @@
 }
 
 - (void)downloadImageBtnAction
-{ 
+{
+    if (self.imageView.image) {
+        UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
+    
     if (_action) {
         _action(0);
     }
@@ -255,6 +259,18 @@
     if (_action) {
         _action(1);
     }
+}
+
+#pragma mark - Util
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error == nil) {
+        [SVProgressHUD showSuccessWithStatus:@"图片保存成功"];
+    }else{
+        [SVProgressHUD showErrorWithStatus:@"图片保存失败"];
+    }
+    
 }
 
 @end

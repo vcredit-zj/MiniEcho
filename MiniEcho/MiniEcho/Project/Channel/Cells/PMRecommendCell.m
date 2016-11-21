@@ -61,6 +61,17 @@ static NSString *cellID = @"PMSoundCollectionCellIdentifier";
     return soundCell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PMSimilarSubSound *sound = _sounds[indexPath.item]; 
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didTapSoundWithID:)])
+    {
+        [self.delegate didTapSoundWithID:sound.sound_id];
+    }
+}
+
+#pragma mark - Setter
+
 - (void)setSounds:(NSArray *)sounds
 {
     _sounds = [PMSimilarSubSound mj_objectArrayWithKeyValuesArray:sounds];

@@ -64,11 +64,13 @@
         if (btn.selected) {
             // 随机播放
             _isRandomPlayStyle = YES;
+            [MEPlayer shareMEPlayer].playMode = MEPlayModeRandom;
             DLog(@"随机播放");
         } else {
             // 正常播放
             DLog(@"正常播放");
             _isRandomPlayStyle = NO;
+            [MEPlayer shareMEPlayer].playMode = MEPlayModeDefault;
         }
     } else if (btn.tag == 2) {
         btn.selected = !btn.selected;
@@ -84,9 +86,11 @@
     } else if (btn.tag == 1) {
         // 上一曲
         DLog(@"上一曲");
+        [[MEPlayMusicController sharePlayMusicController] previousMusic];
     } else if (btn.tag == 3) {
         // 下一曲
         DLog(@"下一曲");
+        [[MEPlayMusicController sharePlayMusicController] nextMusic];
     } else if (btn.tag == 4) {
         // 更多
         DLog(@"更多");

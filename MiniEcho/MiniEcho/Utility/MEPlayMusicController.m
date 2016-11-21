@@ -12,7 +12,7 @@
 #import "MEPlayer.h"
 
 #import "MEPlayMusicController.h"
-
+#import "MEChannelSingleViewController.h"
 
 // view
 #import "NavigationTitleView.h"
@@ -39,7 +39,11 @@ static NSString *recommendID = @"PMRecommendCellID";
 
 #define TopImageHeight  (kScreenWidth + 70.f)
 
-@interface MEPlayMusicController ()<UITableViewDelegate, UITableViewDataSource, MEPlayerDelegate>
+@interface MEPlayMusicController ()<UITableViewDelegate,
+                                    UITableViewDataSource,
+                                    MEPlayerDelegate,
+                                    PMRecommendCellDelegate,
+                                    PMChannelInfoCellDelegate>
 
 {
     double _currentTime;
@@ -70,10 +74,10 @@ static NSString *recommendID = @"PMRecommendCellID";
 {
     [super viewWillAppear:animated];
     
-//    if (_currentIndex == -1) return;
-    
     _currentIndex = self.index;
-    [self prepareForPlay];
+    NSString *sound_id = [MEPlayer shareMEPlayer].onlineMusicData[_currentIndex];
+    // 加载歌曲信息
+    [self prepareForPlayWithID:sound_id];
 }
 
 - (void)viewDidLoad {
@@ -181,6 +185,7 @@ static NSString *recommendID = @"PMRecommendCellID";
         cell = uCell;
     } else if (indexPath.row == 1) {
         PMChannelInfoCell *cCell = [tableView dequeueReusableCellWithIdentifier:channelID forIndexPath:indexPath];
+        cCell.delegate = self;
         if (_rootModel) {
             cCell.channel = _rootModel.channel;
         }
@@ -193,6 +198,7 @@ static NSString *recommendID = @"PMRecommendCellID";
         cell = sCell;
     } else if (indexPath.row == 3) {
         PMRecommendCell *rCell = [tableView dequeueReusableCellWithIdentifier:recommendID forIndexPath:indexPath];
+        rCell.delegate = self;
         if (_rootModel) {
             rCell.sounds = _rootModel.similar;
         }
@@ -208,6 +214,28 @@ static NSString *recommendID = @"PMRecommendCellID";
 {
     CGPoint point = scrollView.contentOffset;
     _headerView.offset = point.y;
+}
+
+#pragma mark - Cell Delegate Method
+
+/** 推荐cell点击对应的歌曲的事件处理 */
+- (void)didTapSoundWithID:(NSString *)sound_id
+{
+    [self requestSoundInfoFromServerWithID:sound_id];
+}
+
+/** 频道cell点击频道图片的事件处理 */
+- (void)channelCellDidTapChannelWithID:(NSString *)channel_id
+{
+    MEChannelSingleViewController *channelVC = [[MEChannelSingleViewController alloc] init];
+    channelVC.identifi = channel_id;
+    [self.navigationController pushViewController:channelVC animated:YES];
+}
+
+/** 频道cell点击对应的歌曲的事件处理 */
+- (void)channelCellDidTapSoundWithID:(NSString *)sound_id
+{
+    [self requestSoundInfoFromServerWithID:sound_id];
 }
 
 #pragma mark - HerderView Action
@@ -283,28 +311,43 @@ static NSString *recommendID = @"PMRecommendCellID";
 
 - (void)nextMusic
 {
-    _currentIndex++;
+    // 判断播放模式, 选择播放哪一首歌曲
+    MEPlayMode mode = [MEPlayer shareMEPlayer].playMode;
+    if (mode == MEPlayModeDefault) {
+        _currentIndex++;
+    } else if (mode == MEPlayModeRandom) {
+        NSInteger idx = arc4random() % ([MEPlayer shareMEPlayer].onlineMusicData.count);
+        _currentIndex = idx;
+    }
     
     // 防止越界
     if (_currentIndex >= [[[MEPlayer shareMEPlayer] onlineMusicData] count]) {
         _currentIndex = 0;
     }
     
+    NSString *sound_id = [MEPlayer shareMEPlayer].onlineMusicData[_currentIndex];
     // 重新加载歌曲信息
-    [self prepareForPlay];
+    [self prepareForPlayWithID:sound_id];
 }
 
-- (void)PreviousMusic
+- (void)previousMusic
 {
-    _currentIndex--;
+    // 判断播放模式, 选择播放哪一首歌曲
+    MEPlayMode mode = [MEPlayer shareMEPlayer].playMode;
+    if (mode == MEPlayModeDefault) {
+        _currentIndex--;
+    } else if (mode == MEPlayModeRandom) {
+        NSInteger idx = arc4random() % ([MEPlayer shareMEPlayer].onlineMusicData.count);
+        _currentIndex = idx;
+    }
     
     // 防止越界
     if (_currentIndex < 0) {
         _currentIndex = [[[MEPlayer shareMEPlayer] onlineMusicData] count] -1;
     }
-    
+    NSString *sound_id = [MEPlayer shareMEPlayer].onlineMusicData[_currentIndex];
     // 重新加载歌曲信息
-    [self prepareForPlay];
+    [self prepareForPlayWithID:sound_id];
 }
 
 - (void)configLockedScreenPlayingInfo
@@ -336,10 +379,24 @@ static NSString *recommendID = @"PMRecommendCellID";
 
 #pragma mark - Util
 
-- (void)requestSoundInfoFromServer
+- (void)prepareForPlayWithID:(NSString *)sound_id
 {
+    _currentTime = 0.0;
+    
+    if (self.isLocal) {
+        // 加载本地音乐
+    }
+    
+    [self requestSoundInfoFromServerWithID:sound_id];
+}
+
+- (void)requestSoundInfoFromServerWithID:(NSString *)sound_id
+{
+    // 播放进度条重置为0
+    _headerView.playProgress = .0;
+    
     __weak typeof(self) weakSelf = self;
-    NSDictionary *param = @{@"sound_id" : @"1322743"};
+    NSDictionary *param = @{@"sound_id" : sound_id};
     [MEHttpUtil get:SoundInfo parameters:param showLoading:YES success:^(id result) {
 
         
@@ -377,15 +434,6 @@ static NSString *recommendID = @"PMRecommendCellID";
     [[MEPlayer shareMEPlayer] me_playMusicWithOnlineURL:_rootModel.source];
 }
 
-- (void)prepareForPlay
-{
-    _currentTime = 0.0;
-    
-    if (self.isLocal) {
-        // 加载本地音乐
-    }
-    
-    [self requestSoundInfoFromServer];
-}
+
 
 @end

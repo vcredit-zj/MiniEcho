@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, MEPlayMode) {
+ 
+    MEPlayModeDefault = 0, // 默认播放模式
+    MEPlayModeRandom = 1   // 随机播放模式
+};
+
 @protocol MEPlayerDelegate;
 @protocol MEPlayerDelegate <NSObject>
 
@@ -29,9 +35,11 @@
 @property (nonatomic, assign) BOOL isPlaying;
 /** 音量 */
 @property (nonatomic, assign) float soundValue;
+/** 播放模式,默认为正常播放 */
+@property (nonatomic, assign) MEPlayMode playMode;
 /** 代理 */
 @property (nonatomic, weak) id <MEPlayerDelegate> delegate;
-
+/** 在线音乐的(sound_id)数据集合 */
 @property (nonatomic, strong) NSMutableArray *onlineMusicData;
 
 /**

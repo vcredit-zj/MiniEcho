@@ -11,11 +11,18 @@
 #import <UIKit/UIKit.h>
 #import "PMSimilarSubSound.h"
 
+@protocol PMRecommendCellDelegate <NSObject>
+
+- (void)didTapSoundWithID:(NSString *)sound_id;
+
+@end
+
 @interface PMRecommendCell : UITableViewCell
 
 
 @property (nonatomic, copy) NSArray *sounds;
 
+@property (nonatomic, weak) id <PMRecommendCellDelegate> delegate;
 
 
 @end

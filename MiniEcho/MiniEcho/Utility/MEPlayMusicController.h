@@ -4,8 +4,10 @@
 //
 //  Created by ALittleNasty on 16/11/15.
 //  Copyright © 2016年 vcredit. All rights reserved.
-//
 
+/**
+ *  播放音乐的单例界面
+ */
 #import <UIKit/UIKit.h>
 
 @interface MEPlayMusicController : UIViewController
@@ -18,13 +20,11 @@
 
 + (instancetype)sharePlayMusicController;
 
-- (void)prepareForPlay;
-
 /** 下一曲 */
 - (void)nextMusic;
 
 /** 上一曲 */
-- (void)PreviousMusic;
+- (void)previousMusic;
 
 /** 播放 */
 - (void)playMusic;

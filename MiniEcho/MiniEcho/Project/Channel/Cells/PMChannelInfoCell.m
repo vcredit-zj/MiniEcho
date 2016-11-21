@@ -34,6 +34,11 @@ static NSString *cellID = @"PMSoundCollectionCellIdentifier";
     
     CGFloat itemWidth = (kScreenWidth - 40.f) / 3;
     self.posterImageWidthCons.constant = itemWidth;
+    
+    // add tapGesture on channel image
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(channelImagetapAction:)];
+    _posterImage.userInteractionEnabled = YES;
+    [_posterImage addGestureRecognizer:tapGesture];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -65,6 +70,25 @@ static NSString *cellID = @"PMSoundCollectionCellIdentifier";
     PMSoundCollectionCell *soundCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     soundCell.sound = _hotSounds[indexPath.item];
     return soundCell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PMSimilarSubSound *sound = _hotSounds[indexPath.item];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(channelCellDidTapSoundWithID:)])
+    {
+        [self.delegate channelCellDidTapSoundWithID:sound.sound_id];
+    }
+}
+
+#pragma mark - Action
+
+- (void)channelImagetapAction:(UITapGestureRecognizer *)tap
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(channelCellDidTapChannelWithID:)])
+    {
+        [self.delegate channelCellDidTapChannelWithID:_channel.channel_id];
+    }
 }
 
 #pragma mark - Setter

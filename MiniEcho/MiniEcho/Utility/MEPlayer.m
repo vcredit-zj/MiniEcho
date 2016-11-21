@@ -110,6 +110,7 @@
     if (self) {
         
         _onlineMusicData = [NSMutableArray array];
+        _playMode = MEPlayModeDefault;
         
         //监听并且通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didToStop) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
