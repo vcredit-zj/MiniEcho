@@ -17,6 +17,22 @@ static NSInteger backBtnTag = 110;
 static NSInteger rightBtnTag = 120;
 static NSInteger centerLabelTag = 111;
 static CGFloat headerImageHeight = 270 ;
+
+@interface BottomBtnModel : NSObject
+@property (nonatomic,copy) NSString *title;
+@property (nonatomic,assign) NSInteger tag;
+@property (nonatomic,copy) NSString *order;
++ (instancetype)modelWithDic:(NSDictionary<NSString *, id> *)dic;
+@end
+@implementation BottomBtnModel
++ (instancetype)modelWithDic:(NSDictionary<NSString *, id> *)dic {
+    BottomBtnModel *model = [[BottomBtnModel alloc] init];
+    [model setValuesForKeysWithDictionary:dic];
+    return model;
+}
+@end
+
+
 @interface MEChannelSingleViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -26,13 +42,29 @@ static CGFloat headerImageHeight = 270 ;
 @property (nonatomic,strong) UIView *topNavigationBar;
 
 @property (nonatomic,strong) UIImageView *topImageView;
+
+@property (nonatomic,strong) UIView *bottomView;
+
+@property (nonatomic,strong) NSArray<BottomBtnModel *> *bottomBtnModelArray;
+
+@property (nonatomic,copy) NSString *order;
+/**
+ 最热、最新展示page
+ */
+@property (nonatomic, assign) NSInteger page;
+//滑动结束Y
+@property (nonatomic, assign) CGFloat oldContentOffsetY;
+//滑动开始Y
+@property (nonatomic, assign) CGFloat newContentOffsetY;
 @end
 
 @implementation MEChannelSingleViewController
-
+#pragma mark ViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.page = 1;
+    self.order = @"recommend";
     [self initWithSubViews];
     [self requestInitDataFromServer];
 }
@@ -46,6 +78,7 @@ static CGFloat headerImageHeight = 270 ;
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
 }
+#pragma mark INIT
 - (void)initWithSubViews {
     __weak typeof(self)weakSelf = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -60,12 +93,16 @@ static CGFloat headerImageHeight = 270 ;
     [collectionView registerNib:[MESingleChannelCollectionCell nib] forCellWithReuseIdentifier:MESingleChannelCollectionCellID];
     [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MEChannelSupplementaryViewCellID];
     collectionView.backgroundColor = [UIColor whiteColor];
-    
     [self.view addSubview:collectionView];
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
 
+    collectionView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        NSString *page = [NSString stringWithFormat:@"%ld",weakSelf.page];
+        NSDictionary *dic = @{@"id":weakSelf.identifi,@"page":page,@"list_order":weakSelf.order,@"with_sound":@"0"};
+        [weakSelf requestDataFromServerWithParameters:dic];
+    }];
     _collectionView = collectionView;
     
     UIView *topNavBar = [[UIView alloc] init];
@@ -109,8 +146,39 @@ static CGFloat headerImageHeight = 270 ;
         make.height.equalTo(@25);
         make.width.equalTo(@14);
     }];
-
     _topNavigationBar = topNavBar;
+    
+    UIView *bottomView = [[UIView alloc] init];
+    bottomView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:bottomView];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+        make.height.equalTo(@49);
+    }];
+    
+    CGFloat btnWidth = kScreenWidth/3;
+    NSInteger index = 0;
+    for (BottomBtnModel *model in self.bottomBtnModelArray) {
+        UIButton *bottomBtn = [[UIButton alloc] init];
+        bottomBtn.tag = model.tag;
+        bottomBtn.selected = index == 0 ? YES:NO;
+        [bottomBtn setTitle:model.title forState:UIControlStateNormal];
+        [bottomBtn setTitleColor:[UIColor greenColor] forState:UIControlStateSelected];
+        [bottomBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [bottomBtn.titleLabel setFont:[UIFont systemFontOfSize:14.f]];
+        [bottomBtn addTarget:self action:@selector(bottomBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [bottomView addSubview:bottomBtn];
+        [bottomBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(bottomView).with.offset(btnWidth*index);
+            make.bottom.equalTo(bottomView);
+            make.top.equalTo(bottomView).with.offset(0);
+            make.width.equalTo(@(btnWidth));
+        }];
+        index++;
+    }
+    _bottomView = bottomView;
 }
 #pragma mark UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -188,8 +256,37 @@ static CGFloat headerImageHeight = 270 ;
     [self.navigationController pushViewController:playVC animated:YES];
     
 }
+#pragma mark UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+
+    self.newContentOffsetY = scrollView.contentOffset.y;
+    
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
+    CGFloat currentContentOffsetY = scrollView.contentOffset.y;
+    if (currentContentOffsetY > _oldContentOffsetY && _oldContentOffsetY > _newContentOffsetY) { // 向上滚动
+        
+    } else if (currentContentOffsetY < _oldContentOffsetY && _oldContentOffsetY < _newContentOffsetY) {// 向下滚动
+
+    } else {
+
+    }
+    if (scrollView.dragging) { // 拖拽
+
+        if ((scrollView.contentOffset.y - _newContentOffsetY) > 15.0f) {
+            // 向上拖拽
+            self.bottomView.alpha = 0;
+            // 隐藏
+        }
+        else if ((_newContentOffsetY - scrollView.contentOffset.y) > 15.0f)
+        {   // 向下拖拽
+            // 显示
+            self.bottomView.alpha = 1;
+        } else {
+            self.bottomView.alpha = (_newContentOffsetY - scrollView.contentOffset.y) / 15;
+        }
+    }
     CGFloat y = scrollView.contentOffset.y;
     if (y > 0)return;
     CGRect oldRect = self.topImageView.frame;
@@ -200,11 +297,36 @@ static CGFloat headerImageHeight = 270 ;
     self.topImageView.frame = oldRect;
     
 }
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+
+    self.oldContentOffsetY = scrollView.contentOffset.y;
+    NSLog(@"end");
+}
+#pragma mark ButtonAction
+- (void)bottomBtnClick:(UIButton *)sender {
+
+    self.page = 1;
+    for (BottomBtnModel *model in self.bottomBtnModelArray) {
+        UIView *subView = [self.bottomView viewWithTag:model.tag];
+        if ([subView isKindOfClass:[UIButton class] ]) {
+            UIButton *btn = (UIButton *)subView;
+            btn.selected = NO;
+        }
+        if (model.tag == sender.tag) {
+            sender.selected = YES;
+            self.order = model.order;
+            NSString *page = [NSString stringWithFormat:@"%ld",_page];
+            NSDictionary *dic = @{@"id":_identifi,@"page":page,@"list_order":model.order,@"with_sound":@"0"};
+            [self requestDataFromServerWithParameters:dic];
+        }
+    }
+    
+}
 #pragma mark Helper
 - (void)requestInitDataFromServer {
     
     __weak typeof(self)WeakSelf = self;
-    NSDictionary *parametDic = @{@"id":_identifi,@"page ":@"1",@"list_order":@"recommend",@"with_sound":@"0"};
+    NSDictionary *parametDic = @{@"id":_identifi,@"page":@"1",@"list_order":@"recommend",@"with_sound":@"0"};
     [MEHttpUtil get:ChannerInfo parameters:parametDic showLoading:YES success:^(id result) {
         MESingleChannelBaseModel *baseModel = [MESingleChannelBaseModel modelObjectWithDictionary:result];
         WeakSelf.dataArrayM = [NSMutableArray arrayWithArray:baseModel.data.sounds];
@@ -217,5 +339,33 @@ static CGFloat headerImageHeight = 270 ;
     }];
 
 }
+- (void)requestDataFromServerWithParameters:(id)parame {
+    
+    __weak typeof(self)WeakSelf = self;
+    [MEHttpUtil get:ChannerInfo parameters:parame showLoading:YES success:^(id result) {
+        MESingleChannelBaseModel *baseModel = [MESingleChannelBaseModel modelObjectWithDictionary:result];
+        if (WeakSelf.page > 1) {
+            [WeakSelf.dataArrayM addObjectsFromArray:[NSMutableArray arrayWithArray:baseModel.data.sounds] ];
+        } else {
+        
+            WeakSelf.dataArrayM = [NSMutableArray arrayWithArray:baseModel.data.sounds];
+        }
+        WeakSelf.page ++;
+        [WeakSelf.collectionView.mj_footer endRefreshing];
+        [WeakSelf.collectionView reloadData];
+    } failure:^(NSError *error) {
+        [WeakSelf.collectionView.mj_footer endRefreshing];
+    }];
+}
+#pragma mark Lazy Inint
+- (NSArray<BottomBtnModel *> *)bottomBtnModelArray {
 
+    if (!_bottomBtnModelArray) {
+        BottomBtnModel *model0 = [BottomBtnModel modelWithDic:@{@"title":@"推荐",@"tag":@(10),@"order":@"recommend"}];
+        BottomBtnModel *model1 = [BottomBtnModel modelWithDic:@{@"title":@"最热",@"tag":@(11),@"order":@"hot"}];
+        BottomBtnModel *model2 = [BottomBtnModel modelWithDic:@{@"title":@"最新",@"tag":@(12),@"order":@"new"}];
+        _bottomBtnModelArray = @[model0,model1,model2];
+    }
+    return _bottomBtnModelArray;
+}
 @end

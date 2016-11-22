@@ -19,4 +19,4 @@ NSString *const ChannerInfo = @"channel/info";
 
 NSString *const SoundInfo = @"sound/info";
 
-
+NSString *const UserInfo = @"user/info";

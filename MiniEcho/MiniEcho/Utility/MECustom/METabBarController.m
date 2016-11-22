@@ -8,6 +8,7 @@
 
 #import "METabBarController.h"
 #import "MEChannelViewController.h"
+#import "MENavigationController.h"
 @interface METabBarController ()
 
 @end
@@ -63,7 +64,7 @@
             
             [vc.tabBarItem titleTextAttributesForState:UIControlStateNormal];
             
-            UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:vc];
+            MENavigationController *navi = [[MENavigationController alloc]initWithRootViewController:vc];
             [array addObject:navi];
         }
     }
