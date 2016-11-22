@@ -14,7 +14,7 @@
 #import "MEChannelCollectionViewCell.h"
 #import "MEchannelCollectionViewAnotherCell.h"
 #import "MEChannelCollectionReusableHeaderView.h"
-
+#import "MERefreshHeader.h"
 #import "DataModels.h"
 static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryViewCellID";
 @interface MEChannelViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -75,11 +75,17 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
         [WeakSelf requestDataFromServerWithParameters:parametDic];
         
     }];
+    collectionView.mj_header = [MERefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
     _collectionView = collectionView;
-    
-    
 }
-#pragma mark UICollectionViewDelegateFlowLayout 
+- (void)headerRefresh {
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.collectionView.mj_header endRefreshing];
+    });
+
+}
+#pragma mark UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     if (indexPath.section == 0) {
