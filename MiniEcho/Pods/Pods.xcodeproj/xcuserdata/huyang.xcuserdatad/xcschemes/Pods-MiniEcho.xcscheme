@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '07664459A7373C43FFCE0C3D5E58BFF0'
+               BlueprintIdentifier = '300C5A172BB61DA3FC345307D0BFD728'
                BlueprintName = 'Pods-MiniEcho'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-MiniEcho.a'>
