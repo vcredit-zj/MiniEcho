@@ -31,4 +31,7 @@
 #define kLogFunction  DLog(@"%s",__FUNCTION__);
 
 
+#define MESoundsInfoFileName [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"soundsInfo.data"]
+
+
 #endif /* MEMacros_h */

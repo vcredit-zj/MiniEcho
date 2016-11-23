@@ -53,6 +53,9 @@
 		396896A61DDAF1DB0088191A /* PMUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896A41DDAF1DB0088191A /* PMUserInfoCell.m */; };
 		396896A71DDAF1DB0088191A /* PMUserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396896A51DDAF1DB0088191A /* PMUserInfoCell.xib */; };
 		396896AA1DDAF2990088191A /* PMHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 396896A91DDAF2990088191A /* PMHeaderView.m */; };
+		396C4EC21DE436B400E470FC /* LocalSoundsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 396C4EC11DE436B400E470FC /* LocalSoundsInfo.m */; };
+		396C4EC51DE4374F00E470FC /* MESoundsDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 396C4EC41DE4374F00E470FC /* MESoundsDownloader.m */; };
+		396C4EC81DE4415500E470FC /* MELocalSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 396C4EC71DE4415500E470FC /* MELocalSound.m */; };
 		3978164D1DD5A51900A698DC /* MEConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978164C1DD5A51900A698DC /* MEConst.m */; };
 		397816561DD5C29B00A698DC /* MEPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 397816551DD5C29B00A698DC /* MEPlayer.m */; };
 		397816581DD5C4C400A698DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397816571DD5C4C400A698DC /* AVFoundation.framework */; };
@@ -200,6 +203,12 @@
 		396896A51DDAF1DB0088191A /* PMUserInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMUserInfoCell.xib; sourceTree = "<group>"; };
 		396896A81DDAF2990088191A /* PMHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMHeaderView.h; sourceTree = "<group>"; };
 		396896A91DDAF2990088191A /* PMHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMHeaderView.m; sourceTree = "<group>"; };
+		396C4EC01DE436B400E470FC /* LocalSoundsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalSoundsInfo.h; sourceTree = "<group>"; };
+		396C4EC11DE436B400E470FC /* LocalSoundsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalSoundsInfo.m; sourceTree = "<group>"; };
+		396C4EC31DE4374F00E470FC /* MESoundsDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MESoundsDownloader.h; sourceTree = "<group>"; };
+		396C4EC41DE4374F00E470FC /* MESoundsDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MESoundsDownloader.m; sourceTree = "<group>"; };
+		396C4EC61DE4415500E470FC /* MELocalSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MELocalSound.h; sourceTree = "<group>"; };
+		396C4EC71DE4415500E470FC /* MELocalSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MELocalSound.m; sourceTree = "<group>"; };
 		397816411DD5A20700A698DC /* MEMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMacros.h; sourceTree = "<group>"; };
 		397816421DD5A22300A698DC /* MEEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEEnums.h; sourceTree = "<group>"; };
 		3978164B1DD5A51900A698DC /* MEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEConst.h; sourceTree = "<group>"; };
@@ -589,6 +598,8 @@
 				3957F83A1DDC0D9B004D8B5F /* PMChannel.m */,
 				3957F83C1DDC0FF7004D8B5F /* PMHerderModel.h */,
 				3957F83D1DDC0FF7004D8B5F /* PMHerderModel.m */,
+				396C4EC61DE4415500E470FC /* MELocalSound.h */,
+				396C4EC71DE4415500E470FC /* MELocalSound.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -631,6 +642,10 @@
 				397816551DD5C29B00A698DC /* MEPlayer.m */,
 				3968968E1DDABAFC0088191A /* MEPlayMusicController.h */,
 				3968968F1DDABAFC0088191A /* MEPlayMusicController.m */,
+				396C4EC31DE4374F00E470FC /* MESoundsDownloader.h */,
+				396C4EC41DE4374F00E470FC /* MESoundsDownloader.m */,
+				396C4EC01DE436B400E470FC /* LocalSoundsInfo.h */,
+				396C4EC11DE436B400E470FC /* LocalSoundsInfo.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -976,6 +991,7 @@
 				F7773D441DDC317500F88AEE /* MESingleChannelData.m in Sources */,
 				39120B561DD45FE10052A234 /* UIBarButtonItem+Action.m in Sources */,
 				396896971DDAF1030088191A /* PMRecommendCell.m in Sources */,
+				396C4EC51DE4374F00E470FC /* MESoundsDownloader.m in Sources */,
 				39120B531DD45FE10052A234 /* NSDate+Extension.m in Sources */,
 				3957F83B1DDC0D9B004D8B5F /* PMChannel.m in Sources */,
 				F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */,
@@ -989,10 +1005,12 @@
 				396896901DDABAFC0088191A /* MEPlayMusicController.m in Sources */,
 				39106A0B1DD9BB7B008E5CF7 /* MEResult.m in Sources */,
 				F78FB5071DDAD6EB0080D0CE /* MEChannelCategoryModel.m in Sources */,
+				396C4EC21DE436B400E470FC /* LocalSoundsInfo.m in Sources */,
 				03C6A0D21DDBE95E000EF49F /* MEChannelCategoryViewController.m in Sources */,
 				F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */,
 				396896AA1DDAF2990088191A /* PMHeaderView.m in Sources */,
 				39120B5B1DD45FE10052A234 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				396C4EC81DE4415500E470FC /* MELocalSound.m in Sources */,
 				F78FB4F11DDAAA720080D0CE /* MEChannelCollectionViewCell.m in Sources */,
 				39120B321DD45FC20052A234 /* AppDelegate.m in Sources */,
 				F7773D461DDC317500F88AEE /* MESingleChannelUser.m in Sources */,
