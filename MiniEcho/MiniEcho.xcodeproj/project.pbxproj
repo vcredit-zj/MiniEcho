@@ -72,6 +72,8 @@
 		F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */; };
 		F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11171DD5C4A800EBA25A /* ViewController3.m */; };
 		F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E111A1DD5C4B200EBA25A /* ViewController4.m */; };
+		F75A32A21DE3D6D300E38AAF /* MERefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = F75A32A11DE3D6D300E38AAF /* MERefreshHeader.m */; };
+		F75A33191DE4444800E38AAF /* headerloading.gif in Resources */ = {isa = PBXBuildFile; fileRef = F75A33181DE4444800E38AAF /* headerloading.gif */; };
 		F76C0EC81DE297810072BEC3 /* MENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76C0EC71DE297810072BEC3 /* MENavigationController.m */; };
 		F7773D2C1DDBF82500F88AEE /* MEChannelSingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7773D2B1DDBF82500F88AEE /* MEChannelSingleViewController.m */; };
 		F7773D361DDC0A2800F88AEE /* MESingleChannelCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7773D341DDC0A2800F88AEE /* MESingleChannelCollectionCell.m */; };
@@ -240,6 +242,9 @@
 		F73E11171DD5C4A800EBA25A /* ViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
 		F73E11191DD5C4B200EBA25A /* ViewController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController4.h; sourceTree = "<group>"; };
 		F73E111A1DD5C4B200EBA25A /* ViewController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController4.m; sourceTree = "<group>"; };
+		F75A32A01DE3D6D300E38AAF /* MERefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERefreshHeader.h; sourceTree = "<group>"; };
+		F75A32A11DE3D6D300E38AAF /* MERefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERefreshHeader.m; sourceTree = "<group>"; };
+		F75A33181DE4444800E38AAF /* headerloading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = headerloading.gif; sourceTree = "<group>"; };
 		F76C0EC61DE297810072BEC3 /* MENavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MENavigationController.h; sourceTree = "<group>"; };
 		F76C0EC71DE297810072BEC3 /* MENavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MENavigationController.m; sourceTree = "<group>"; };
 		F7773D2A1DDBF82500F88AEE /* MEChannelSingleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelSingleViewController.h; sourceTree = "<group>"; };
@@ -357,6 +362,7 @@
 		39120AFC1DD45F7A0052A234 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F75A33181DE4444800E38AAF /* headerloading.gif */,
 				39120AFD1DD45F7A0052A234 /* main.m */,
 				F73E10F81DD5781000EBA25A /* PrefixHeader.pch */,
 			);
@@ -659,6 +665,8 @@
 				396896921DDAE7760088191A /* MEPlayToolBar.m */,
 				F76C0EC61DE297810072BEC3 /* MENavigationController.h */,
 				F76C0EC71DE297810072BEC3 /* MENavigationController.m */,
+				F75A32A01DE3D6D300E38AAF /* MERefreshHeader.h */,
+				F75A32A11DE3D6D300E38AAF /* MERefreshHeader.m */,
 			);
 			path = MECustom;
 			sourceTree = "<group>";
@@ -756,7 +764,6 @@
 				TargetAttributes = {
 					39120AF81DD45F7A0052A234 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3H4XGK9972;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -809,6 +816,7 @@
 				39120B0C1DD45F7A0052A234 /* LaunchScreen.storyboard in Resources */,
 				3957F82F1DDBF3AF004D8B5F /* PMSoundCollectionCell.xib in Resources */,
 				F78FB4F21DDAAA720080D0CE /* MEChannelCollectionViewCell.xib in Resources */,
+				F75A33191DE4444800E38AAF /* headerloading.gif in Resources */,
 				F78FB4F71DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib in Resources */,
 				39120B091DD45F7A0052A234 /* Assets.xcassets in Resources */,
 			);
@@ -996,6 +1004,7 @@
 				3957F83B1DDC0D9B004D8B5F /* PMChannel.m in Sources */,
 				F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */,
 				39120B571DD45FE10052A234 /* UIButton+Block.m in Sources */,
+				F75A32A21DE3D6D300E38AAF /* MERefreshHeader.m in Sources */,
 				39120B601DD45FE10052A234 /* UIView+Toast.m in Sources */,
 				F7773D431DDC317500F88AEE /* MESingleChannelChannel.m in Sources */,
 				39120B5F1DD45FE10052A234 /* UIView+Frame.m in Sources */,
@@ -1180,7 +1189,8 @@
 			baseConfigurationReference = 68C60E08E09CC6B8C7EE6BDD /* Pods-MiniEcho.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3H4XGK9972;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = MiniEcho/PrefixHeader.pch;
 				INFOPLIST_FILE = MiniEcho/Info.plist;
@@ -1196,7 +1206,8 @@
 			baseConfigurationReference = 963801D7A1A3122B034E3960 /* Pods-MiniEcho.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3H4XGK9972;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = MiniEcho/PrefixHeader.pch;
 				INFOPLIST_FILE = MiniEcho/Info.plist;
