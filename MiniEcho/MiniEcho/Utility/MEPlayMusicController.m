@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "MEPlayer.h"
+#import "MESoundsDownloader.h"
 
 #import "MEPlayMusicController.h"
 #import "MEChannelSingleViewController.h"
@@ -244,7 +245,20 @@ static NSString *recommendID = @"PMRecommendCellID";
 {
     if (index == 2) {
         DLog(@"下载歌曲");
-        [[MEPlayer shareMEPlayer] me_downloadMusicWithURL:_rootModel.source];
+        
+        [[MESoundsDownloader shareMusicDownloader] downloadSoundWithModel:_rootModel withDownloadProgress:^(float progress) {
+           
+            [SVProgressHUD showProgress:progress status:@"正在下载..."];
+            
+        } downloadCompletion:^(BOOL flag) {
+            
+            if (flag) { // 下载成功
+                [SVProgressHUD showSuccessWithStatus:@"下载完成!"];
+            } else {    // 下载失败
+                [SVProgressHUD showErrorWithStatus:@"下载失败"];
+            }
+            
+        }];
     }
 }
 

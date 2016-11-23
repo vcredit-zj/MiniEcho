@@ -8,6 +8,9 @@
 
 #import "MESoundsDownloader.h"
 #import "LocalSoundsInfo.h"
+#import "PMRootModel.h"
+#import "MELocalSound.h"
+#import <Realm/Realm.h>
 
 static NSString *localMusicDirectory = @"/LocalMusic";
 
@@ -16,7 +19,7 @@ static NSString *localMusicDirectory = @"/LocalMusic";
 
 @property (nonatomic, copy) NSString *musicPath;
 
-@property (nonatomic, copy) NSString *currentURL;
+@property (nonatomic, strong) PMRootModel *currentSound;
 
 @property (nonatomic, copy) DownloadCompletion completion;
 
@@ -53,9 +56,9 @@ static NSString *localMusicDirectory = @"/LocalMusic";
     return self;
 }
 
-- (void)downloadSoundWithURL:(NSString *)url withDownloadProgress:(DownloadProgressCallback)progress downloadCompletion:(DownloadCompletion)completion
+- (void)downloadSoundWithModel:(PMRootModel *)model withDownloadProgress:(DownloadProgressCallback)progress downloadCompletion:(DownloadCompletion)completion
 {
-    _currentURL = url;
+    _currentSound = model;
     _progressCallback =  progress;
     _completion = completion;
     
@@ -63,7 +66,7 @@ static NSString *localMusicDirectory = @"/LocalMusic";
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[[NSOperationQueue alloc] init]];
     
-    NSURL *URL = [NSURL URLWithString:url];
+    NSURL *URL = [NSURL URLWithString:model.source];
     
     NSURLSessionDownloadTask *task = [session downloadTaskWithURL:URL];
     
@@ -74,8 +77,12 @@ static NSString *localMusicDirectory = @"/LocalMusic";
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
-    if (error) {
+    if (error && _completion) {
         NSLog(@"下载出现错误:%@",error);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _completion(NO);
+        });
     }
 }
 
@@ -96,7 +103,11 @@ static NSString *localMusicDirectory = @"/LocalMusic";
     //    NSLog(@"--------%f", 1.0 * totalBytesWritten / totalBytesExpectedToWrite);
     float progress = 1.0 * totalBytesWritten / totalBytesExpectedToWrite;
     if (_progressCallback) {
-        _progressCallback(progress);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            _progressCallback(progress);
+        });
     }
 }
 
@@ -117,13 +128,21 @@ static NSString *localMusicDirectory = @"/LocalMusic";
     [mgr moveItemAtURL:location toURL:localURL error:nil];
     
     LocalSoundsInfo *info = [self getLocalSoundsInfo];
-    [info.soundsInfo setObject:localURL forKey:_currentURL];
+    [info.soundsInfo setObject:localURL forKey:_currentSound.source];
     info.totalSoundsCount = info.soundsInfo.count;
     [self saveLocalSoundsInfoWith:info];
     
-    if (_completion) {
-        _completion(localURL);
-    }
+    MELocalSound *localSound = [MELocalSound localSoundWithModel:_currentSound];
+    // 数据持久化操作十分简单
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm transactionWithBlock:^{
+        [realm addObject:localSound];
+    }];
+    NSLog(@"realm path-%@",[RLMRealmConfiguration defaultConfiguration].fileURL.absoluteString);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _completion(YES);
+    });
 }
 
 - (LocalSoundsInfo *)getLocalSoundsInfo

@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-@class LocalSoundsInfo;
+@class LocalSoundsInfo, PMRootModel;
 
 typedef void(^DownloadProgressCallback)(float progress);
-typedef void(^DownloadCompletion)(NSURL *fileURL);
+typedef void(^DownloadCompletion)(BOOL flag);
 
 @interface MESoundsDownloader : NSObject
 
@@ -20,11 +20,11 @@ typedef void(^DownloadCompletion)(NSURL *fileURL);
 /**
  根据链接下载MP3文件
 
- @param url 下载连接
+ @param model sound model
  @param progress 下载进度回调<会调用多次>
  @param completion 下载完成的回调
  */
-- (void)downloadSoundWithURL:(NSString *)url withDownloadProgress:(DownloadProgressCallback)progress downloadCompletion:(DownloadCompletion)completion;
+- (void)downloadSoundWithModel:(PMRootModel *)model withDownloadProgress:(DownloadProgressCallback)progress downloadCompletion:(DownloadCompletion)completion;
 
 /** 获取本地歌曲信息 */
 - (LocalSoundsInfo *)getLocalSoundsInfo;
