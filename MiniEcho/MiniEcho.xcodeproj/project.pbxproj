@@ -66,6 +66,9 @@
 		6F7B5D9BE19A0EE99EA7B906 /* libPods-MiniEcho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4F0BA9905B6A405F7082C8 /* libPods-MiniEcho.a */; };
 		BAEAC2469244A0E077225F7D /* libPods-MiniEchoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD61098290DFBA8CA2E626F0 /* libPods-MiniEchoTests.a */; };
 		C232F2463DC443BAAA0CBF47 /* libPods-MiniEchoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340B96218A5A8FB7AEDA22FE /* libPods-MiniEchoUITests.a */; };
+		F718EBFA1DE5820400E0E742 /* MEOffLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F718EBF91DE5820400E0E742 /* MEOffLineViewController.m */; };
+		F718EC021DE597E700E0E742 /* MEOffLineSongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F718EC001DE597E700E0E742 /* MEOffLineSongTableViewCell.m */; };
+		F718EC031DE597E700E0E742 /* MEOffLineSongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F718EC011DE597E700E0E742 /* MEOffLineSongTableViewCell.xib */; };
 		F73E10F41DD571A800EBA25A /* METabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F31DD571A800EBA25A /* METabBarController.m */; };
 		F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F61DD5773600EBA25A /* MEUtil.m */; };
 		F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10FA1DD5788700EBA25A /* SafeObject.m */; };
@@ -229,6 +232,11 @@
 		6A4F0BA9905B6A405F7082C8 /* libPods-MiniEcho.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniEcho.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		963801D7A1A3122B034E3960 /* Pods-MiniEcho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEcho.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEcho/Pods-MiniEcho.release.xcconfig"; sourceTree = "<group>"; };
 		DD61098290DFBA8CA2E626F0 /* libPods-MiniEchoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniEchoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F718EBF81DE5820300E0E742 /* MEOffLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEOffLineViewController.h; sourceTree = "<group>"; };
+		F718EBF91DE5820400E0E742 /* MEOffLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEOffLineViewController.m; sourceTree = "<group>"; };
+		F718EBFF1DE597E700E0E742 /* MEOffLineSongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEOffLineSongTableViewCell.h; sourceTree = "<group>"; };
+		F718EC001DE597E700E0E742 /* MEOffLineSongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEOffLineSongTableViewCell.m; sourceTree = "<group>"; };
+		F718EC011DE597E700E0E742 /* MEOffLineSongTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEOffLineSongTableViewCell.xib; sourceTree = "<group>"; };
 		F73E10F21DD571A800EBA25A /* METabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METabBarController.h; sourceTree = "<group>"; };
 		F73E10F31DD571A800EBA25A /* METabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METabBarController.m; sourceTree = "<group>"; };
 		F73E10F51DD5773600EBA25A /* MEUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEUtil.h; sourceTree = "<group>"; };
@@ -499,6 +507,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F718EBFB1DE5976400E0E742 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F718EBFF1DE597E700E0E742 /* MEOffLineSongTableViewCell.h */,
+				F718EC001DE597E700E0E742 /* MEOffLineSongTableViewCell.m */,
+				F718EC011DE597E700E0E742 /* MEOffLineSongTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F73E10E91DD56AD800EBA25A /* Project */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,6 +692,7 @@
 		F7A3429A1DDDC76500DEB06B /* User */ = {
 			isa = PBXGroup;
 			children = (
+				F718EBFB1DE5976400E0E742 /* Cells */,
 				F7A3429B1DDDC76500DEB06B /* Conttollers */,
 			);
 			path = User;
@@ -684,6 +703,8 @@
 			children = (
 				F7A3429C1DDDC78700DEB06B /* MEUserViewController.h */,
 				F7A3429D1DDDC78700DEB06B /* MEUserViewController.m */,
+				F718EBF81DE5820300E0E742 /* MEOffLineViewController.h */,
+				F718EBF91DE5820400E0E742 /* MEOffLineViewController.m */,
 			);
 			path = Conttollers;
 			sourceTree = "<group>";
@@ -818,6 +839,7 @@
 				F78FB4F21DDAAA720080D0CE /* MEChannelCollectionViewCell.xib in Resources */,
 				F75A33191DE4444800E38AAF /* headerloading.gif in Resources */,
 				F78FB4F71DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib in Resources */,
+				F718EC031DE597E700E0E742 /* MEOffLineSongTableViewCell.xib in Resources */,
 				39120B091DD45F7A0052A234 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -851,7 +873,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		1B91C2BDA28867CC75933E1B /* [CP] Copy Pods Resources */ = {
@@ -941,7 +963,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D1A9569A485B259A4BC4E0A7 /* [CP] Embed Pods Frameworks */ = {
@@ -971,7 +993,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -981,6 +1003,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F718EBFA1DE5820400E0E742 /* MEOffLineViewController.m in Sources */,
 				F78FB5191DDAF8840080D0CE /* MEChannelCategrayBaseModel.m in Sources */,
 				F76C0EC81DE297810072BEC3 /* MENavigationController.m in Sources */,
 				F78FB5181DDAF8520080D0CE /* MEChannelHotData.m in Sources */,
@@ -1003,6 +1026,7 @@
 				39120B531DD45FE10052A234 /* NSDate+Extension.m in Sources */,
 				3957F83B1DDC0D9B004D8B5F /* PMChannel.m in Sources */,
 				F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */,
+				F718EC021DE597E700E0E742 /* MEOffLineSongTableViewCell.m in Sources */,
 				39120B571DD45FE10052A234 /* UIButton+Block.m in Sources */,
 				F75A32A21DE3D6D300E38AAF /* MERefreshHeader.m in Sources */,
 				39120B601DD45FE10052A234 /* UIView+Toast.m in Sources */,

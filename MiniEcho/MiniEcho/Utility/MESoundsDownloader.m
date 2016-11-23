@@ -128,7 +128,7 @@ static NSString *localMusicDirectory = @"/LocalMusic";
     [mgr moveItemAtURL:location toURL:localURL error:nil];
     
     LocalSoundsInfo *info = [self getLocalSoundsInfo];
-    [info.soundsInfo setObject:localURL forKey:_currentSound.source];
+    [info.soundsInfo setObject:destinationPath forKey:_currentSound.source];
     info.totalSoundsCount = info.soundsInfo.count;
     [self saveLocalSoundsInfoWith:info];
     
@@ -139,6 +139,8 @@ static NSString *localMusicDirectory = @"/LocalMusic";
         [realm addObject:localSound];
     }];
     NSLog(@"realm path-%@",[RLMRealmConfiguration defaultConfiguration].fileURL.absoluteString);
+    
+
     
     dispatch_async(dispatch_get_main_queue(), ^{
         _completion(YES);
