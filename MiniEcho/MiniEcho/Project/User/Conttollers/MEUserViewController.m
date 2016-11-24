@@ -8,6 +8,7 @@
 
 #import "MEUserViewController.h"
 #import "MEOffLineViewController.h"
+#import <MMDrawerController.h>
 static NSString *MEUserViewCellId = @"MEUserViewControllerID";
 @interface UserCellModel : NSObject
 @property (nonatomic, copy) NSString *imageName;
@@ -150,7 +151,15 @@ static NSString *MEUserViewCellId = @"MEUserViewControllerID";
     }
     if (indexPath.row == 0) {
         MEOffLineViewController *VC = [[MEOffLineViewController alloc] init];
-        [self.navigationController pushViewController:VC animated:YES];
+        VC.hidesBottomBarWhenPushed = YES;
+        MMDrawerController *rootVC = (MMDrawerController *)[[[UIApplication sharedApplication].delegate window] rootViewController];
+        [rootVC closeDrawerAnimated:YES completion:^(BOOL finished) {
+            
+        }];
+        UITabBarController *tabBarVC = (UITabBarController *)rootVC.centerViewController;
+        
+        UINavigationController *firstVC = [tabBarVC.viewControllers objectAtIndex:tabBarVC.selectedIndex];
+        [firstVC pushViewController:VC animated:YES];
     }
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MELocalSound;
 extern NSString *MEOffLineSongTableViewCellID;
 @interface MEOffLineSongTableViewCell : UITableViewCell
-
+@property (nonatomic, strong) MELocalSound *model;
 @end

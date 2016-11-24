@@ -12,8 +12,7 @@
 #import "MEChannelViewController.h"
 #import "MEUserViewController.h"
 #import "MEPlayer.h"
-#import <MMDrawerController.h> 
-#import "MENavigationController.h"
+#import <MMDrawerController.h>
 #import "MEPlayMusicController.h"
 
 @interface AppDelegate ()
@@ -33,8 +32,7 @@
     METabBarController *centerVC = [[METabBarController alloc] init];
     MEUserViewController *leftVC = [[MEUserViewController alloc] init];
     leftVC.view.backgroundColor = [UIColor yellowColor];
-    MENavigationController *leftNav = [[MENavigationController alloc] initWithRootViewController:leftVC];
-    MMDrawerController *rootVC = [[MMDrawerController alloc] initWithCenterViewController:centerVC leftDrawerViewController:leftNav];
+    MMDrawerController *rootVC = [[MMDrawerController alloc] initWithCenterViewController:centerVC leftDrawerViewController:leftVC];
     [rootVC setShowsShadow:NO];
     [rootVC setMaximumLeftDrawerWidth:300.0];
     [rootVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];

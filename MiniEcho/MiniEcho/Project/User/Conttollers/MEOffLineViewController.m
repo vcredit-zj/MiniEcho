@@ -10,12 +10,14 @@
 #import "MELocalSound.h"
 #import "MESoundsDownloader.h"
 #import "LocalSoundsInfo.h"
-
+#import "MEOffLinePlayMusicController.h"
+#import "MEPlayMusicController.h"
 #import "MEOffLineSongTableViewCell.h"
 
 @interface MEOffLineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *mainTableView;
 @property (nonatomic,strong) NSArray *dataArray;
+@property (nonatomic,strong) NSMutableArray *offLineMusicData;
 @end
 
 @implementation MEOffLineViewController
@@ -23,16 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    RLMResults<MELocalSound *> *results = [MELocalSound allObjects];
-        for (MELocalSound *localSound in results) {
-            NSLog(@"%@",localSound.name);
-            NSLog(@"%@",localSound.singer);
-            NSLog(@"%@",localSound.source);
-            LocalSoundsInfo *soundInfo = [[MESoundsDownloader shareMusicDownloader] getLocalSoundsInfo];
-            
-            id obj = [soundInfo.soundsInfo objectForKey:localSound.source];
-            NSLog(@"%@--class= %@",obj,[obj class]);
-    }
     [self initSubViews];
 }
 
@@ -56,21 +48,46 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MEOffLineSongTableViewCellID];
+    MEOffLineSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MEOffLineSongTableViewCellID];
+    cell.model = [self.dataArray safeObjectAtIndex:indexPath.row];
     return cell;
 }
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    [MEPlayer shareMEPlayer].onlineMusicData = self.offLineMusicData;
+    MEOffLinePlayMusicController *playVC = [[MEOffLinePlayMusicController alloc] init];
+    playVC.index = indexPath.row;
+    [self.navigationController pushViewController:playVC animated:YES];
 }
-
 - (NSArray *)dataArray {
     
     if (!_dataArray) {
-        _dataArray = @[@"",@"",@"",@""];
+        NSMutableArray *tempArrayM = [NSMutableArray array];
+        RLMResults<MELocalSound *> *results = [MELocalSound allObjects];
+        for (MELocalSound *localSound in results) {
+            NSLog(@"%@",localSound.name);
+            NSLog(@"%@",localSound.singer);
+            NSLog(@"%@",localSound.source);
+            
+            [tempArrayM safeAddObject:localSound];
+        }
+        _dataArray = [NSArray arrayWithArray:tempArrayM];
+
     }
     return _dataArray;
 }
+- (NSMutableArray *)offLineMusicData {
 
+    if (!_offLineMusicData) {
+        NSMutableArray *tempArrayM = [NSMutableArray array];
+        for (MELocalSound *localSound in self.dataArray) {
+
+            [tempArrayM safeAddObject:localSound.source];
+        }
+        _offLineMusicData = tempArrayM;
+    }
+    return _offLineMusicData;
+}
 @end
