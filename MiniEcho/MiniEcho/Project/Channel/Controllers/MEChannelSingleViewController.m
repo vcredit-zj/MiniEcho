@@ -12,6 +12,7 @@
 #import "MEPlayer.h"
 #import "MEPlayMusicController.h"
 #import "DataModels.h"
+#import "MEOffLineViewController.h"
 static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryViewCellID";
 static NSInteger backBtnTag = 110;
 static NSInteger rightBtnTag = 120;
@@ -135,16 +136,17 @@ static CGFloat headerImageHeight = 270 ;
     }];
     UIButton *rightBtn = [[UIButton alloc] init];
     rightBtn.tag = rightBtnTag;
-    [rightBtn setImage:[UIImage imageNamed:@"back_white"] forState:UIControlStateNormal];
+    [rightBtn setImage:[UIImage imageNamed:@"disk_w"] forState:UIControlStateNormal];
     [rightBtn addActionHandler:^(NSInteger tag) {
-        NSLog(@"rightBtnclick");
+        MEOffLineViewController *offLineVC = [[MEOffLineViewController alloc] init];
+        [weakSelf.navigationController pushViewController:offLineVC animated:YES];
     }];
     [topNavBar addSubview:rightBtn];
     [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(topNavBar).with.offset(-15);
         make.centerY.equalTo(centerLabel);
         make.height.equalTo(@25);
-        make.width.equalTo(@14);
+        make.width.equalTo(@25);
     }];
     _topNavigationBar = topNavBar;
     

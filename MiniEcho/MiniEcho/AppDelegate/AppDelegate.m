@@ -12,8 +12,7 @@
 #import "MEChannelViewController.h"
 #import "MEUserViewController.h"
 #import "MEPlayer.h"
-#import <MMDrawerController.h> 
-
+#import <MMDrawerController.h>
 #import "MEPlayMusicController.h"
 
 @interface AppDelegate ()

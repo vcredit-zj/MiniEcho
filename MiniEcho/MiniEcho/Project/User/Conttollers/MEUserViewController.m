@@ -7,12 +7,31 @@
 //
 
 #import "MEUserViewController.h"
+#import "MEOffLineViewController.h"
+#import <MMDrawerController.h>
+static NSString *MEUserViewCellId = @"MEUserViewControllerID";
+@interface UserCellModel : NSObject
+@property (nonatomic, copy) NSString *imageName;
+@property (nonatomic, copy) NSString *title;
++ (instancetype)modelWithDic:(NSDictionary<NSString * ,id> *)dic;
+@end
+@implementation UserCellModel
++ (instancetype)modelWithDic:(NSDictionary<NSString *,id> *)dic {
+    UserCellModel *model = [[self alloc] init];
+    [model setValuesForKeysWithDictionary:dic];
+    return model;
+}
+@end
+
+
 @interface MEUserViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *mainTableView;
 
 @property (nonatomic,weak) UIImageView *headerBGImagView;
 
 @property (nonatomic,weak) UIVisualEffectView *effectView;
+
+@property (nonatomic,strong) NSArray *dataArray;
 @end
 
 @implementation MEUserViewController
@@ -22,6 +41,14 @@
     // Do any additional setup after loading the view.
     [self initSubViews];
     [self requestDataFromServer];
+    self.navigationController.navigationBarHidden = YES;
+}
+- (void)viewWillAppear:(BOOL)animated {
+
+    [super viewWillAppear:animated];
+    [self.mainTableView reloadData];
+    
+    
 }
 - (void)initSubViews {
 
@@ -29,7 +56,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.rowHeight = 60.f;
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MEUserViewCellId];
     [self.view addSubview:tableView];
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -94,29 +121,46 @@
     
 }
 #pragma mark UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    return 1;
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 1;
+    return [self.dataArray count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.textLabel.text = @"离线管理";
-    [cell.imageView setImage:[UIImage imageNamed:@"self_offline"] ];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MEUserViewCellId];
+    UserCellModel *model = [self.dataArray safeObjectAtIndex:indexPath.row];
+    cell.textLabel.text = model.title;
+    if (indexPath.row == 1) {
+        CGFloat cacheSize = [[SDImageCache sharedImageCache] getSize] / 1024 / 1024;
+        NSString *cacheTitle = cacheSize >= 1 ? [NSString stringWithFormat:@"清理缓存(%.2fM)",cacheSize] : [NSString stringWithFormat:@"清理缓存(%.2fK)",cacheSize * 1024];
+        cell.textLabel.text = cacheTitle;
+    }
+    [cell.imageView setImage:[UIImage imageNamed:model.imageName] ];
     return cell;
 }
 #pragma mark UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    return 0;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-
-    return 0;
+    __weak typeof(self)weakSelf = self;
+    if (indexPath.row == 1) {
+        [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+            [UIAlertView alertWithCallBackBlock:^(NSInteger buttonIndex) {
+                [weakSelf.mainTableView reloadData];
+            } title:@"清除缓存完成" message:nil cancelButtonName:@"确定" otherButtonTitles: nil];
+        }];
+    }
+    if (indexPath.row == 0) {
+        MEOffLineViewController *VC = [[MEOffLineViewController alloc] init];
+        VC.hidesBottomBarWhenPushed = YES;
+        MMDrawerController *rootVC = (MMDrawerController *)[[[UIApplication sharedApplication].delegate window] rootViewController];
+        [rootVC closeDrawerAnimated:YES completion:^(BOOL finished) {
+            
+        }];
+        UITabBarController *tabBarVC = (UITabBarController *)rootVC.centerViewController;
+        
+        UINavigationController *firstVC = [tabBarVC.viewControllers objectAtIndex:tabBarVC.selectedIndex];
+        [firstVC pushViewController:VC animated:YES];
+    }
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
@@ -129,6 +173,17 @@
     oldRect.size.width = CGRectGetWidth(self.view.frame) - y;
     self.headerBGImagView.frame = oldRect;
     
+}
+- (NSArray *)dataArray {
+
+    if (!_dataArray) {
+        UserCellModel *model0 = [UserCellModel modelWithDic:@{@"title":@"离线管理",@"imageName":@"self_offline"}];
+        CGFloat cacheSize = [[SDImageCache sharedImageCache] getSize] / 1024 / 1024;
+        NSString *cacheTitle = cacheSize >= 1 ? [NSString stringWithFormat:@"清理缓存(%.2fM)",cacheSize] : [NSString stringWithFormat:@"清理缓存(%.2fK)",cacheSize * 1024];
+        UserCellModel *model1 = [UserCellModel modelWithDic:@{@"title":cacheTitle,@"imageName":@"self_offline"}];
+        _dataArray = @[model0,model1];
+    }
+    return _dataArray;
 }
 #pragma mark Helper 
 - (void)requestDataFromServer {
