@@ -20,3 +20,13 @@ NSString *const ChannerInfo = @"channel/info";
 NSString *const SoundInfo = @"sound/info";
 
 NSString *const UserInfo = @"user/info";
+
+
+NSString *const SoundSearch = @"search/sound";
+
+/*
+ keyword=faded <用户输入>
+ page=1 <动态增加>
+ src=1 <写死>
+ with_channel_user=1 <第一次搜索为1, 分页加载为0>
+ */
