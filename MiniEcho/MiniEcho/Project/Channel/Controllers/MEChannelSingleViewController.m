@@ -66,6 +66,7 @@ static CGFloat headerImageHeight = 270 ;
     // Do any additional setup after loading the view.
     self.page = 1;
     self.order = @"recommend";
+    self.navigationController.fd_fullscreenPopGestureRecognizer.enabled = NO;
     [self initWithSubViews];
     [self requestInitDataFromServer];
 }

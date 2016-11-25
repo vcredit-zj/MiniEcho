@@ -11,4 +11,6 @@
 @interface MEOffLinePlayMusicController : UIViewController
 
 @property (nonatomic,assign) NSInteger index;
+
++ (instancetype)sharePlayMusicController;
 @end

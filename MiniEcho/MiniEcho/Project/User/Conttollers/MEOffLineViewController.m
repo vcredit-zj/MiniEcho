@@ -57,7 +57,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     [MEPlayer shareMEPlayer].onlineMusicData = self.offLineMusicData;
-    MEOffLinePlayMusicController *playVC = [[MEOffLinePlayMusicController alloc] init];
+    MEOffLinePlayMusicController *playVC = [MEOffLinePlayMusicController sharePlayMusicController];
     playVC.index = indexPath.row;
     [self.navigationController pushViewController:playVC animated:YES];
 }
@@ -67,10 +67,6 @@
         NSMutableArray *tempArrayM = [NSMutableArray array];
         RLMResults<MELocalSound *> *results = [MELocalSound allObjects];
         for (MELocalSound *localSound in results) {
-            NSLog(@"%@",localSound.name);
-            NSLog(@"%@",localSound.singer);
-            NSLog(@"%@",localSound.source);
-            
             [tempArrayM safeAddObject:localSound];
         }
         _dataArray = [NSArray arrayWithArray:tempArrayM];
