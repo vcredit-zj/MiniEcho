@@ -74,7 +74,7 @@
 		F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10FA1DD5788700EBA25A /* SafeObject.m */; };
 		F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */; };
 		F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11171DD5C4A800EBA25A /* ViewController3.m */; };
-		F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E111A1DD5C4B200EBA25A /* ViewController4.m */; };
+		F756E3DC1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F756E3DB1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.m */; };
 		F75A32A21DE3D6D300E38AAF /* MERefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = F75A32A11DE3D6D300E38AAF /* MERefreshHeader.m */; };
 		F75A33191DE4444800E38AAF /* headerloading.gif in Resources */ = {isa = PBXBuildFile; fileRef = F75A33181DE4444800E38AAF /* headerloading.gif */; };
 		F75AEFA31DE68ADA00E05ED6 /* MEOffLinePlayMusicController.m in Sources */ = {isa = PBXBuildFile; fileRef = F75AEFA21DE68ADA00E05ED6 /* MEOffLinePlayMusicController.m */; };
@@ -249,8 +249,8 @@
 		F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelViewController.m; sourceTree = "<group>"; };
 		F73E11161DD5C4A800EBA25A /* ViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
 		F73E11171DD5C4A800EBA25A /* ViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
-		F73E11191DD5C4B200EBA25A /* ViewController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController4.h; sourceTree = "<group>"; };
-		F73E111A1DD5C4B200EBA25A /* ViewController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController4.m; sourceTree = "<group>"; };
+		F756E3DA1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEOffLinePlayBottomBar.h; sourceTree = "<group>"; };
+		F756E3DB1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEOffLinePlayBottomBar.m; sourceTree = "<group>"; };
 		F75A32A01DE3D6D300E38AAF /* MERefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERefreshHeader.h; sourceTree = "<group>"; };
 		F75A32A11DE3D6D300E38AAF /* MERefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MERefreshHeader.m; sourceTree = "<group>"; };
 		F75A33181DE4444800E38AAF /* headerloading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = headerloading.gif; sourceTree = "<group>"; };
@@ -645,8 +645,6 @@
 		F73E10EF1DD56C9200EBA25A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F73E11191DD5C4B200EBA25A /* ViewController4.h */,
-				F73E111A1DD5C4B200EBA25A /* ViewController4.m */,
 				396896A81DDAF2990088191A /* PMHeaderView.h */,
 				396896A91DDAF2990088191A /* PMHeaderView.m */,
 			);
@@ -690,6 +688,8 @@
 				F76C0EC71DE297810072BEC3 /* MENavigationController.m */,
 				F75A32A01DE3D6D300E38AAF /* MERefreshHeader.h */,
 				F75A32A11DE3D6D300E38AAF /* MERefreshHeader.m */,
+				F756E3DA1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.h */,
+				F756E3DB1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.m */,
 			);
 			path = MECustom;
 			sourceTree = "<group>";
@@ -1030,7 +1030,7 @@
 				396C4EC51DE4374F00E470FC /* MESoundsDownloader.m in Sources */,
 				39120B531DD45FE10052A234 /* NSDate+Extension.m in Sources */,
 				3957F83B1DDC0D9B004D8B5F /* PMChannel.m in Sources */,
-				F73E111B1DD5C4B200EBA25A /* ViewController4.m in Sources */,
+				F756E3DC1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.m in Sources */,
 				F718EC021DE597E700E0E742 /* MEOffLineSongTableViewCell.m in Sources */,
 				39120B571DD45FE10052A234 /* UIButton+Block.m in Sources */,
 				F75A32A21DE3D6D300E38AAF /* MERefreshHeader.m in Sources */,
@@ -1226,7 +1226,7 @@
 				INFOPLIST_FILE = MiniEcho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chao.MiniEcho;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Vcredit.MiniEcho;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1243,7 +1243,7 @@
 				INFOPLIST_FILE = MiniEcho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chao.MiniEcho;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Vcredit.MiniEcho;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

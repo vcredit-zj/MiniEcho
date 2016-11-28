@@ -8,13 +8,15 @@
 
 #import "MEChannelViewController.h"
 #import "MEChannelCategoryViewController.h"
-#import "MEPlayer.h"
-
 #import "MEChannelSingleViewController.h"
+
+#import "MEPlayer.h"
+#import "MERefreshHeader.h"
+
 #import "MEChannelCollectionViewCell.h"
 #import "MEchannelCollectionViewAnotherCell.h"
 #import "MEChannelCollectionReusableHeaderView.h"
-#import "MERefreshHeader.h"
+
 #import "DataModels.h"
 static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryViewCellID";
 @interface MEChannelViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>

@@ -12,14 +12,13 @@
 #import "LocalSoundsInfo.h"
 #import "MESoundsDownloader.h"
 #import "MELocalSound.h"
-static NSInteger BottomPlayBtnTag = 111;
-static NSInteger BottomNextBtnTag = 121;
-static NSInteger BottomPrevBtnTag = 131;
 
+#import "MEOffLinePlayBottomBar.h"
 static NSInteger TopNavBarSongNameLabelTag = 120;
 static NSInteger TopNavBarSongSingleLabelTag = 130;
 @interface MEOffLinePlayMusicController ()<MEPlayerDelegate,UITextViewDelegate>
 @property (nonatomic,strong) UIView *topNavigationBar;
+@property (nonatomic,strong) MEOffLinePlayBottomBar *bottomBar;
 @property (nonatomic,assign) NSInteger currentIndex;
 @property (nonatomic,strong) UITextView *lyricsTextView;
 @property (nonatomic,strong) NSArray *dataArray;
@@ -98,9 +97,8 @@ static NSInteger TopNavBarSongSingleLabelTag = 130;
     [topNavBar addSubview:BackBtn];
     [BackBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(topNavBar).with.offset(15);
-        make.bottom.equalTo(topNavBar.mas_bottom).with.offset(-20);;
-        make.height.equalTo(@25);
-        make.width.equalTo(@14);
+        make.centerY.equalTo(topNavBar).with.offset(5);
+        make.size.mas_equalTo(CGSizeMake(14, 25));
     }];
     _topNavigationBar = topNavBar;
     
@@ -126,71 +124,54 @@ static NSInteger TopNavBarSongSingleLabelTag = 130;
         make.right.equalTo(self.view);
     }];
     
-    UIView *bottomBar = [[UIView alloc] init];
+    MEOffLinePlayBottomBar *bottomBar = [[MEOffLinePlayBottomBar alloc] initWithFrame:CGRectZero];
+    _bottomBar = bottomBar;
+    bottomBar.btnClickCallBcak = ^(BottomBarBtnType btnType, BOOL selected){
+    
+        switch (btnType) {
+            case BottomBarBtnTypePlay:
+            {
+                DLog(@"play");
+                if (selected) {
+                    [weakSelf pauseMusic];
+                } else {
+                
+                    [weakSelf playMusic];
+                }
+                
+            }
+                break;
+            case BottomBarBtnTypeNext:
+            {
+                [weakSelf nextMusic];
+                DLog(@"next");
+                
+            }
+                break;
+            case BottomBarBtnTypePrev:
+            {
+                [weakSelf previousMusic];
+                DLog(@"prev");
+            }
+                break;
+            case BottomBarBtnTypeList:
+            {
+                [weakSelf showList];
+                DLog(@"list");
+            }
+                break;
+                
+            default:
+                break;
+        }
+    };
     [self.view addSubview:bottomBar];
     [bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view.mas_bottom).with.offset(-18);
         make.left.equalTo(self.view);
         make.right.equalTo(self.view);
-        make.height.equalTo(@50);
+        make.height.equalTo(@75);
     }];
-    UIButton *playBtn = [[UIButton alloc] init];
-    [bottomBar addSubview:playBtn];
-    [playBtn setImage:[UIImage imageNamed:@"cm2_fm_btn_pause"] forState:UIControlStateNormal];
-    [playBtn setImage:[UIImage imageNamed:@"cm2_btn_play"] forState:UIControlStateSelected];
-    [playBtn addTarget:self action:@selector(bottomBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    playBtn.tag = BottomPlayBtnTag;
-    [playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(bottomBar);
-        make.top.equalTo(bottomBar);
-        make.size.mas_equalTo(CGSizeMake(50, 50));
-    }];
-    UIButton *nextBtn = [[UIButton alloc] init];
-    [bottomBar addSubview:nextBtn];
-    UIImage *oriImage = [UIImage imageNamed:@"cm2_fm_btn_next"];
-    [oriImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [nextBtn setImage:[oriImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-
-    [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(playBtn.mas_right).with.offset(10);
-        make.centerY.equalTo(playBtn);
-        make.size.mas_equalTo(CGSizeMake(35, 35));
-    }];
-    [nextBtn addTarget:self action:@selector(bottomBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    nextBtn.tag = BottomNextBtnTag;
-    UIButton *prevBtn = [[UIButton alloc] init];
-    [bottomBar addSubview:prevBtn];
-    [prevBtn setImage:[[UIImage imageNamed:@"cm2_play_btn_prev"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ] forState:UIControlStateNormal];
-    [prevBtn addTarget:self action:@selector(bottomBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    prevBtn.tag = BottomPrevBtnTag;
-    [prevBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(playBtn.mas_left).with.offset(-10);
-        make.centerY.equalTo(playBtn);
-        make.size.mas_equalTo(CGSizeMake(35, 35));
-    }];
-}
-#pragma mark - BottomBtnAction
-- (void)bottomBtnClick:(UIButton *)sender {
-
-    if (sender.tag == BottomPlayBtnTag) {
-        DLog(@"play");
-        sender.selected = !sender.isSelected;
-        if (!sender.selected) {
-            [self playMusic];
-        }else {
-        
-            [self pauseMusic];
-        }
-    }else if (sender.tag == BottomPrevBtnTag) {
-    
-        [self previousMusic];
-        DLog(@"prev");
-    } else if (sender.tag == BottomNextBtnTag) {
-    
-        [self nextMusic];
-        DLog(@"next");
-    }
-    
 }
 #pragma mark - Lazy load
 - (NSArray *)dataArray {
@@ -227,7 +208,13 @@ static NSInteger TopNavBarSongSingleLabelTag = 130;
 }
 
 #pragma mark - Public Methods
+- (void)showList {
 
+    
+}
+- (void)hiddenList {
+
+}
 + (instancetype)sharePlayMusicController
 {
     return [[self alloc] init];

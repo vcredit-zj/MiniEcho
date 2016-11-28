@@ -7,12 +7,14 @@
 //
 
 #import "MEChannelSingleViewController.h"
+#import "MEOffLineViewController.h"
+#import "MEPlayMusicController.h"
 
 #import "MESingleChannelCollectionCell.h"
 #import "MEPlayer.h"
-#import "MEPlayMusicController.h"
+
 #import "DataModels.h"
-#import "MEOffLineViewController.h"
+
 static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryViewCellID";
 static NSInteger backBtnTag = 110;
 static NSInteger rightBtnTag = 120;
