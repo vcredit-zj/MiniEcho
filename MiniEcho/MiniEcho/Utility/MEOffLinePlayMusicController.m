@@ -12,16 +12,21 @@
 #import "LocalSoundsInfo.h"
 #import "MESoundsDownloader.h"
 #import "MELocalSound.h"
-
+#import "MEOffLineSongTableViewCell.h"
 #import "MEOffLinePlayBottomBar.h"
 static NSInteger TopNavBarSongNameLabelTag = 120;
 static NSInteger TopNavBarSongSingleLabelTag = 130;
-@interface MEOffLinePlayMusicController ()<MEPlayerDelegate,UITextViewDelegate>
+static NSInteger BottomSheetViewBgViewTag = 140;
+static NSInteger BottomSheetViewMainViewTag = 150;
+@interface MEOffLinePlayMusicController ()<MEPlayerDelegate,UITextViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UIView *topNavigationBar;
 @property (nonatomic,strong) MEOffLinePlayBottomBar *bottomBar;
+@property (nonatomic,strong) UIView *bottomSheetView;
 @property (nonatomic,assign) NSInteger currentIndex;
 @property (nonatomic,strong) UITextView *lyricsTextView;
 @property (nonatomic,strong) NSArray *dataArray;
+@property (nonatomic,strong) UIView *bottomSheetViewBgView;
+@property (nonatomic,strong) UIView *bottomSheetViewMainView;
 @end
 
 @implementation MEOffLinePlayMusicController
@@ -44,6 +49,13 @@ static NSInteger TopNavBarSongSingleLabelTag = 130;
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     _currentIndex = self.index;
+
+    NSMutableArray *tempArrayM = [NSMutableArray array];
+    RLMResults<MELocalSound *> *results = [MELocalSound allObjects];
+    for (MELocalSound *localSound in results) {
+        [tempArrayM safeAddObject:localSound];
+    }
+    self.dataArray = [NSArray arrayWithArray:tempArrayM];
     // 加载歌曲信息
     [self playOffLineMusic];
 }
@@ -160,6 +172,12 @@ static NSInteger TopNavBarSongSingleLabelTag = 130;
                 DLog(@"list");
             }
                 break;
+            case BottomBarBtnTypeModel:
+            {
+                [weakSelf changePlaymodel];
+                DLog(@"list");
+            }
+                break;
                 
             default:
                 break;
@@ -173,20 +191,6 @@ static NSInteger TopNavBarSongSingleLabelTag = 130;
         make.height.equalTo(@75);
     }];
 }
-#pragma mark - Lazy load
-- (NSArray *)dataArray {
-    
-    if (!_dataArray) {
-        NSMutableArray *tempArrayM = [NSMutableArray array];
-        RLMResults<MELocalSound *> *results = [MELocalSound allObjects];
-        for (MELocalSound *localSound in results) {
-            [tempArrayM safeAddObject:localSound];
-        }
-        _dataArray = [NSArray arrayWithArray:tempArrayM];
-    }
-    return _dataArray;
-}
-
 #pragma mark - UITextViewDelegate
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
 
@@ -208,12 +212,138 @@ static NSInteger TopNavBarSongSingleLabelTag = 130;
 }
 
 #pragma mark - Public Methods
+- (UIView *)bottomSheetView {
+
+    if (!_bottomSheetView) {
+        UIView *bottomSheetView = [[UIView alloc] initWithFrame:self.view.bounds];
+        [self.view addSubview:bottomSheetView];
+        _bottomSheetView = bottomSheetView;
+        UIView *bgview = [[UIView alloc] initWithFrame:bottomSheetView.bounds];
+        bgview.tag = BottomSheetViewBgViewTag;
+        _bottomSheetViewBgView = bgview;
+        bgview.backgroundColor = [UIColor grayColor];
+        bgview.alpha = 0;
+        [bottomSheetView addSubview:bgview];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenList)];
+        [bgview addGestureRecognizer:tap];
+        
+        UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(bottomSheetView.frame), CGRectGetWidth(bottomSheetView.frame), 350)];
+        mainView.tag = BottomSheetViewMainViewTag;
+        mainView.alpha = 0.88;
+        _bottomSheetViewMainView = mainView;
+        mainView.backgroundColor = [UIColor clearColor];
+        [bottomSheetView addSubview:mainView];
+
+        UIButton *closeBtn = [[UIButton alloc] init];
+        closeBtn.backgroundColor = [UIColor whiteColor];
+        [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
+        [closeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [mainView addSubview:closeBtn];
+        [closeBtn addTarget:self action:@selector(hiddenList) forControlEvents:UIControlEventTouchUpInside];
+        [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(mainView);
+            make.left.equalTo(mainView);
+            make.right.equalTo(mainView);
+            make.height.equalTo(@55);
+        }];
+        UIView *linegrayView = [[UIView alloc] init];
+        linegrayView.backgroundColor = [UIColor grayColor];
+        [mainView addSubview:linegrayView];
+        [linegrayView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(closeBtn.mas_top);
+            make.left.equalTo(mainView);
+            make.right.equalTo(mainView);
+            make.height.equalTo(@(1/[UIScreen mainScreen].scale));
+        }];
+        
+        
+        UITableView *mainTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        mainTableView.delegate = self;
+        mainTableView.dataSource = self;
+        mainTableView.rowHeight = 60.f;
+        [mainTableView registerNib:[MEOffLineSongTableViewCell nib] forCellReuseIdentifier:MEOffLineSongTableViewCellID];
+        [mainView addSubview:mainTableView];
+        [mainTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(closeBtn.mas_top);
+            make.left.equalTo(mainView);
+            make.right.equalTo(mainView);
+            make.height.equalTo(@225);
+        }];
+        mainTableView.tableFooterView = ({
+        
+            UIView *view = [[UIView alloc] init];
+            view.backgroundColor = [UIColor clearColor];
+            view;
+        });
+        
+        UIView *headerView = [[UIView alloc] init];
+        headerView.backgroundColor = [UIColor whiteColor];
+        [mainView addSubview:headerView];
+        [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(mainTableView.mas_top);
+            make.left.equalTo(mainView);
+            make.right.equalTo(mainView);
+            make.height.equalTo(@50);
+        }];
+        UILabel *songNumberLabel = [[UILabel alloc] init];
+        songNumberLabel.text = [NSString stringWithFormat:@"播放列表(%ld)",[self.dataArray count] ];
+        songNumberLabel.font = [UIFont systemFontOfSize:12.f];
+        [songNumberLabel setTextAlignment:NSTextAlignmentCenter];
+        [headerView addSubview:songNumberLabel];
+        [songNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(headerView);
+            make.top.equalTo(headerView);
+            make.bottom.equalTo(headerView);
+            make.width.equalTo(@100);
+        }];
+        UIView *lineGrayView = [[UIView alloc] init];
+        lineGrayView.backgroundColor = [UIColor grayColor];
+        [mainView addSubview:lineGrayView];
+        [lineGrayView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(songNumberLabel.mas_bottom);
+            make.left.equalTo(mainView);
+            make.right.equalTo(mainView);
+            make.height.equalTo(@(1/[UIScreen mainScreen].scale));
+        }];
+
+    }
+    return _bottomSheetView;
+}
 - (void)showList {
 
+    if (self.bottomSheetView) {
+        _bottomSheetView.hidden = NO;
+//        UIView *bottomMainView = [_bottomSheetView viewWithTag:BottomSheetViewBgViewTag];
+//        UIView *bottomBgView = [_bottomSheetView viewWithTag:BottomSheetViewMainViewTag];
+        CGRect oldFrame = _bottomSheetViewMainView.frame;
+        oldFrame.origin.y = CGRectGetHeight(_bottomSheetView.frame) - oldFrame.size.height;
+        _bottomSheetViewBgView.alpha = 0;
+        [UIView animateWithDuration:0.8f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            _bottomSheetViewMainView.frame = oldFrame;
+            _bottomSheetViewBgView.alpha = 0.5;
+
+        } completion:^(BOOL finished) {
+            _bottomSheetViewMainView.frame = oldFrame;
+            _bottomSheetViewBgView.alpha = 0.5;
+        }];
+        
+    }
+    
     
 }
 - (void)hiddenList {
-
+//    UIView *bottomMainView = [_bottomSheetView viewWithTag:BottomSheetViewBgViewTag];
+//    UIView *bottomBgView = [_bottomSheetView viewWithTag:BottomSheetViewMainViewTag];
+    CGRect oldFrame = _bottomSheetViewMainView.frame;
+    oldFrame.origin.y = CGRectGetHeight(_bottomSheetView.frame);
+    [UIView animateWithDuration:0.8f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        _bottomSheetViewMainView.frame = oldFrame;
+        _bottomSheetViewBgView.alpha = 0;
+    } completion:^(BOOL finished) {
+        _bottomSheetViewMainView.frame = oldFrame;
+        _bottomSheetViewBgView.alpha = 0;
+        _bottomSheetView.hidden = YES;
+    }];
 }
 + (instancetype)sharePlayMusicController
 {
@@ -227,6 +357,14 @@ static NSInteger TopNavBarSongSingleLabelTag = 130;
         playVC = [super allocWithZone:zone];
     });
     return playVC;
+}
+- (void)changePlaymodel {
+
+    if (MEPlayModeRandom != [MEPlayer shareMEPlayer].playMode) {
+        [MEPlayer shareMEPlayer].playMode = MEPlayModeRandom;
+    }else {
+        [MEPlayer shareMEPlayer].playMode = MEPlayModeDefault;
+    }
 }
 - (void)playMusic
 {
@@ -304,6 +442,29 @@ static NSInteger TopNavBarSongSingleLabelTag = 130;
     }
 }
 
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return [self.dataArray count];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    MEOffLineSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MEOffLineSongTableViewCellID];
+    cell.model = [self.dataArray safeObjectAtIndex:indexPath.row];
+//    if (_currentIndex == indexPath.row) {
+//        [cell setSelected:YES animated:YES];
+//    }
+    return cell;
+}
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (_currentIndex == indexPath.row) return;
+    DLog(@"click");
+    _currentIndex = indexPath.row;
+//    [tableView reloadData];
+    [self playOffLineMusic];
+}
 
 #pragma mark - Util
 
@@ -321,7 +482,4 @@ static NSInteger TopNavBarSongSingleLabelTag = 130;
     [self configLockedScreenPlayingInfo];
    [[MEPlayer shareMEPlayer] me_playMusicWithOnlineURL:songPath];
 }
-
-
-
 @end

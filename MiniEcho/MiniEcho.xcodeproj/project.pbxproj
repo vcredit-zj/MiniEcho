@@ -73,7 +73,6 @@
 		F73E10F71DD5773600EBA25A /* MEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10F61DD5773600EBA25A /* MEUtil.m */; };
 		F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E10FA1DD5788700EBA25A /* SafeObject.m */; };
 		F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */; };
-		F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E11171DD5C4A800EBA25A /* ViewController3.m */; };
 		F756E3DC1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F756E3DB1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.m */; };
 		F75A32A21DE3D6D300E38AAF /* MERefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = F75A32A11DE3D6D300E38AAF /* MERefreshHeader.m */; };
 		F75A33191DE4444800E38AAF /* headerloading.gif in Resources */ = {isa = PBXBuildFile; fileRef = F75A33181DE4444800E38AAF /* headerloading.gif */; };
@@ -247,8 +246,6 @@
 		F73E10FA1DD5788700EBA25A /* SafeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeObject.m; sourceTree = "<group>"; };
 		F73E11011DD5BC7000EBA25A /* MEChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelViewController.h; sourceTree = "<group>"; };
 		F73E11021DD5BC7000EBA25A /* MEChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelViewController.m; sourceTree = "<group>"; };
-		F73E11161DD5C4A800EBA25A /* ViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
-		F73E11171DD5C4A800EBA25A /* ViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
 		F756E3DA1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEOffLinePlayBottomBar.h; sourceTree = "<group>"; };
 		F756E3DB1DEC06F60096A4E5 /* MEOffLinePlayBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEOffLinePlayBottomBar.m; sourceTree = "<group>"; };
 		F75A32A01DE3D6D300E38AAF /* MERefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERefreshHeader.h; sourceTree = "<group>"; };
@@ -636,8 +633,6 @@
 			children = (
 				03C6A0D61DDBE9E3000EF49F /* HXTagsView.h */,
 				03C6A0D71DDBE9E3000EF49F /* HXTagsView.m */,
-				F73E11161DD5C4A800EBA25A /* ViewController3.h */,
-				F73E11171DD5C4A800EBA25A /* ViewController3.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1046,7 +1041,6 @@
 				F78FB5071DDAD6EB0080D0CE /* MEChannelCategoryModel.m in Sources */,
 				396C4EC21DE436B400E470FC /* LocalSoundsInfo.m in Sources */,
 				03C6A0D21DDBE95E000EF49F /* MEChannelCategoryViewController.m in Sources */,
-				F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */,
 				396896AA1DDAF2990088191A /* PMHeaderView.m in Sources */,
 				39120B5B1DD45FE10052A234 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				396C4EC81DE4415500E470FC /* MELocalSound.m in Sources */,

@@ -13,7 +13,8 @@ typedef NS_ENUM(NSInteger,BottomBarBtnType) {
     BottomBarBtnTypePlay = 0,
     BottomBarBtnTypeNext,
     BottomBarBtnTypePrev,
-    BottomBarBtnTypeList
+    BottomBarBtnTypeList,
+    BottomBarBtnTypeModel
 };
 
 typedef void(^BottomBarBtnCallBack)(BottomBarBtnType btnType,BOOL isSelected);

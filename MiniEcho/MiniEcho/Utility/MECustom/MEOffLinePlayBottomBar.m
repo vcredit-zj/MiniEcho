@@ -85,7 +85,7 @@
         }];
         UIButton *listBtn = [[UIButton alloc] init];
         [self addSubview:listBtn];
-        [listBtn setImage:[[UIImage imageNamed:@"cm2_icn_list_prs"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ] forState:UIControlStateNormal];
+        [listBtn setImage:[[UIImage imageNamed:@"cm2_icn_list"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ] forState:UIControlStateNormal];
         [listBtn addTarget:self action:@selector(bottomBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         listBtn.tag = BottomBarBtnTypeList;
         [listBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -93,13 +93,26 @@
             make.centerY.equalTo(playBtn);
             make.size.mas_equalTo(CGSizeMake(39, 39));
         }];
+        //cm2_play_btn_loop
+        UIButton *playModelBtn = [[UIButton alloc] init];
+        [self addSubview:playModelBtn];
+        [playModelBtn setImage:[[UIImage imageNamed:@"cm2_icn_loop"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ] forState:UIControlStateNormal];
+        [playModelBtn setImage:[[UIImage imageNamed:@"cm2_icn_shuffle"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ] forState:UIControlStateSelected];
+        [playModelBtn addTarget:self action:@selector(bottomBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        playModelBtn.tag = BottomBarBtnTypeModel;
+        [playModelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).with.offset(15);
+            make.centerY.equalTo(playBtn);
+            make.size.mas_equalTo(CGSizeMake(56, 56));
+        }];
+
 
     }
     return self;
 }
 - (void)bottomBtnClick:(UIButton *)sender {
     if (!_btnClickCallBcak) return;
-    if (sender.tag == BottomBarBtnTypePlay) {
+    if (sender.tag == BottomBarBtnTypePlay || sender.tag == BottomBarBtnTypeModel) {
         DLog(@"play");
         sender.selected = !sender.isSelected;
     }
