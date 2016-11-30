@@ -7,12 +7,14 @@
 //
 
 #import "MEChannelSingleViewController.h"
+#import "MEOffLineViewController.h"
+#import "MEPlayMusicController.h"
 
 #import "MESingleChannelCollectionCell.h"
 #import "MEPlayer.h"
-#import "MEPlayMusicController.h"
+
 #import "DataModels.h"
-#import "MEOffLineViewController.h"
+
 static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryViewCellID";
 static NSInteger backBtnTag = 110;
 static NSInteger rightBtnTag = 120;
@@ -66,6 +68,7 @@ static CGFloat headerImageHeight = 270 ;
     // Do any additional setup after loading the view.
     self.page = 1;
     self.order = @"recommend";
+    self.navigationController.fd_fullscreenPopGestureRecognizer.enabled = NO;
     [self initWithSubViews];
     [self requestInitDataFromServer];
 }

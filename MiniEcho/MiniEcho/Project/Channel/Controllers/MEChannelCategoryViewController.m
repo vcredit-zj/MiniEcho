@@ -57,7 +57,7 @@ static NSString *fCellID = @"fCellIdentifier";
     _collectionView.backgroundColor = [UIColor whiteColor];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
-    [_collectionView registerNib:[MEChannelCollectionViewCell nib] forCellWithReuseIdentifier:fCellID];
+    [_collectionView registerNib:[MEChannelCollectionViewCell nib] forCellWithReuseIdentifier:MEChannelCollectionViewCellID];
     [_collectionView registerClass:[CategoryCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerID];
     [self.view addSubview:_collectionView];        
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -70,19 +70,26 @@ static NSString *fCellID = @"fCellIdentifier";
 
 #pragma mark UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat width = (kScreenWidth - 40) / 2;
-    return CGSizeMake(width, 80.f);
+
+    return CGSizeMake((CGRectGetWidth(self.view.frame) - 24)/2, 80 * kScreenWidth/320);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    
-    return UIEdgeInsetsMake(0, 10, 10, 10);
+
+    return UIEdgeInsetsMake(10, 8, 0, 8);
 }
 
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return 14.f;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    
+    return 8.f;
+}
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     
     return CGSizeMake(kScreenWidth, 170.f);
 }
-
 #pragma mark UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
@@ -93,8 +100,12 @@ static NSString *fCellID = @"fCellIdentifier";
     return self.dataArrayM.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    MEChannelCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:fCellID forIndexPath:indexPath];
+    MEChannelCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MEChannelCollectionViewCellID forIndexPath:indexPath];
     cell.model = [self.dataArrayM safeObjectAtIndex:indexPath.item];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(5, 5)];
+    CAShapeLayer *shapeLayer = [[CAShapeLayer alloc] init];
+    shapeLayer.path = path.CGPath;
+    cell.layer.mask = shapeLayer;
     return cell;
 }
 
