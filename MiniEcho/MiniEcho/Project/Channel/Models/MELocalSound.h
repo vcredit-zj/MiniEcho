@@ -18,6 +18,9 @@
 /** 歌曲名称 */
 @property NSString *name;
 
+/** 歌曲歌词 */
+@property NSString *lyric;
+
 /** 歌手 */
 @property NSString *singer;
 

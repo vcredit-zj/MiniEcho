@@ -31,5 +31,7 @@ extern NSString *const UserInfo;
 
 /** 搜索对应的回声 */
 extern NSString *const SoundSearch;
+/** 搜索热门列表 */
+extern NSString *const SearchHotList;
 
 //echo ios 5.7.3 2016102902;(iPhone,iPhone OS10.1.1);IDFA 7A28AF26-2BC8-4CE9-BC54-F6E453CD3F37

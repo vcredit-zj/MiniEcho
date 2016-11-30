@@ -24,6 +24,8 @@ NSString *const UserInfo = @"user/info";
 
 NSString *const SoundSearch = @"search/sound";
 
+NSString *const SearchHotList = @"search/hot-keywords?version=1478674607";
+
 /*
  keyword=faded <用户输入>
  page=1 <动态增加>

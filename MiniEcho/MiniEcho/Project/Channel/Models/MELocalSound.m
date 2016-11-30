@@ -19,6 +19,7 @@
     sound.name = model.name;
     sound.singer = model.user.name;
     sound.source = model.source;
+    sound.lyric = model.info;
     return sound;
 }
 

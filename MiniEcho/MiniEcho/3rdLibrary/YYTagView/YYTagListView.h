@@ -10,7 +10,17 @@
 #import <Foundation/Foundation.h>
 #import "YYTagViewLayout.h"
 
+@protocol YYTagListViewDelegate <NSObject>
+
+@optional
+- (void)didSelectedTagAtIndex:(NSInteger)index;
+
+@end
+
 @interface YYTagListView : UIView
+
+/** 代理 */
+@property (nonatomic, weak) id <YYTagListViewDelegate> delegate;
 
 /** 颜色 */
 @property (nonatomic, strong) UIColor *tintColor; 

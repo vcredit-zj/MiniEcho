@@ -10,6 +10,7 @@
 #import "MEResult.h"
 #import <AFNetworking/AFNetworking.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <AdSupport/AdSupport.h> // 系统自带的广告库头文件
 
 
 @implementation MEHttpUtil
@@ -64,7 +65,13 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [manager.requestSerializer setValue:@"echo ios 5.7.3 2016102902;" forHTTPHeaderField:@"User-Agent"];
+    
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    NSString *ua = [NSString stringWithFormat:@"echo ios 5.8 2016111903;(iPhone,iPhone OS10.0.2);IDFA %@;",idfa];
+    
+//    NSString *ua = @"echo ios 5.8 2016111903;(iPhone,iPhone OS10.0.2);IDFA F0A81261-96A9-4370-BD1B-E98C88B6D7EA";
+//    [manager.requestSerializer setValue:@"echo ios 5.7.3 2016102902;" forHTTPHeaderField:@"User-Agent"];
+     [manager.requestSerializer setValue:ua forHTTPHeaderField:@"User-Agent"];
     manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone] ;
     manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json",

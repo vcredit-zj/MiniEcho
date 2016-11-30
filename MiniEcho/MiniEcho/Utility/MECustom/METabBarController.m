@@ -10,6 +10,7 @@
 #import "MEChannelViewController.h"
 #import "MENavigationController.h"
 #import "ViewController3.h"
+#import "SearchHomeController.h"
 @interface METabBarController ()
 
 @end
@@ -22,7 +23,7 @@
         NSArray *titleArray = @[@"动态",@"频道",@"回声",@"echoTV",@"名人"];
         NSArray *normalImageNameArray = @[@"icon_feed_normal",@"icon_channel_normal",@"icon_echo_normal",@"icon_live_default",@"icon_famous_normal"];
         NSArray *selectedImageNameArray = @[@"icon_feed_selected",@"icon_channel_selected",@"icon_echo_selected",@"icon_live_selected",@"icon_famous_selected"];
-        NSArray *classArray = @[NSStringFromClass([UIViewController class]),
+        NSArray *classArray = @[NSStringFromClass([SearchHomeController class]),
                                 NSStringFromClass([MEChannelViewController class]),
                                 NSStringFromClass([ViewController3 class]),
                                 NSStringFromClass([UIViewController class]),

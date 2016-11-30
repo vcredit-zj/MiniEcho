@@ -110,7 +110,10 @@
         }
     }];
     
-    NSLog(@"~~~~~~~%zd~~~~~~~",index);
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedTagAtIndex:)])
+    {
+        [self.delegate didSelectedTagAtIndex:index];
+    }
 }
 
 #pragma mark - Util

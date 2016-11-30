@@ -63,6 +63,14 @@
 		3978165C1DD5C4D900A698DC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3978165B1DD5C4D900A698DC /* MediaPlayer.framework */; };
 		3978165E1DD5C4E500A698DC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3978165D1DD5C4E500A698DC /* AudioToolbox.framework */; };
 		39C369881DDD5AA20039D22C /* NavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C369871DDD5AA20039D22C /* NavigationTitleView.m */; };
+		39C806711DE7E4A500EE0C54 /* YYTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C8066C1DE7E4A500EE0C54 /* YYTagListView.m */; };
+		39C806721DE7E4A500EE0C54 /* YYTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C8066E1DE7E4A500EE0C54 /* YYTagView.m */; };
+		39C806731DE7E4A500EE0C54 /* YYTagViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C806701DE7E4A500EE0C54 /* YYTagViewLayout.m */; };
+		39C8067A1DE7E59B00EE0C54 /* SearchHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C806791DE7E59B00EE0C54 /* SearchHomeController.m */; };
+		39C8067D1DE7E92200EE0C54 /* SearchHotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C8067C1DE7E92200EE0C54 /* SearchHotModel.m */; };
+		39C806811DE807EB00EE0C54 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C8067F1DE807EB00EE0C54 /* SearchResultCell.m */; };
+		39C806821DE807EB00EE0C54 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39C806801DE807EB00EE0C54 /* SearchResultCell.xib */; };
+		39C806851DE818EA00EE0C54 /* HotSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C806841DE818EA00EE0C54 /* HotSearchResultController.m */; };
 		6F7B5D9BE19A0EE99EA7B906 /* libPods-MiniEcho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4F0BA9905B6A405F7082C8 /* libPods-MiniEcho.a */; };
 		BAEAC2469244A0E077225F7D /* libPods-MiniEchoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD61098290DFBA8CA2E626F0 /* libPods-MiniEchoTests.a */; };
 		C232F2463DC443BAAA0CBF47 /* libPods-MiniEchoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340B96218A5A8FB7AEDA22FE /* libPods-MiniEchoUITests.a */; };
@@ -227,6 +235,22 @@
 		3978165D1DD5C4E500A698DC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		39C369861DDD5AA20039D22C /* NavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationTitleView.h; sourceTree = "<group>"; };
 		39C369871DDD5AA20039D22C /* NavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationTitleView.m; sourceTree = "<group>"; };
+		39C8066A1DE7E4A500EE0C54 /* YYTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTag.h; sourceTree = "<group>"; };
+		39C8066B1DE7E4A500EE0C54 /* YYTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTagListView.h; sourceTree = "<group>"; };
+		39C8066C1DE7E4A500EE0C54 /* YYTagListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTagListView.m; sourceTree = "<group>"; };
+		39C8066D1DE7E4A500EE0C54 /* YYTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTagView.h; sourceTree = "<group>"; };
+		39C8066E1DE7E4A500EE0C54 /* YYTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTagView.m; sourceTree = "<group>"; };
+		39C8066F1DE7E4A500EE0C54 /* YYTagViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTagViewLayout.h; sourceTree = "<group>"; };
+		39C806701DE7E4A500EE0C54 /* YYTagViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTagViewLayout.m; sourceTree = "<group>"; };
+		39C806781DE7E59B00EE0C54 /* SearchHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHomeController.h; sourceTree = "<group>"; };
+		39C806791DE7E59B00EE0C54 /* SearchHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHomeController.m; sourceTree = "<group>"; };
+		39C8067B1DE7E92200EE0C54 /* SearchHotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHotModel.h; sourceTree = "<group>"; };
+		39C8067C1DE7E92200EE0C54 /* SearchHotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHotModel.m; sourceTree = "<group>"; };
+		39C8067E1DE807EB00EE0C54 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
+		39C8067F1DE807EB00EE0C54 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		39C806801DE807EB00EE0C54 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
+		39C806831DE818EA00EE0C54 /* HotSearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSearchResultController.h; sourceTree = "<group>"; };
+		39C806841DE818EA00EE0C54 /* HotSearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSearchResultController.m; sourceTree = "<group>"; };
 		42CEE12E794E47CBEDA884EC /* Pods-MiniEchoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoTests/Pods-MiniEchoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56380AC7F2BB829580B01F5D /* Pods-MiniEchoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEchoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEchoTests/Pods-MiniEchoTests.release.xcconfig"; sourceTree = "<group>"; };
 		68C60E08E09CC6B8C7EE6BDD /* Pods-MiniEcho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniEcho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniEcho/Pods-MiniEcho.debug.xcconfig"; sourceTree = "<group>"; };
@@ -447,6 +471,7 @@
 		39120B611DD45FE60052A234 /* 3rdLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				39C806691DE7E4A500EE0C54 /* YYTagView */,
 				39C369851DDD5AA20039D22C /* NavigationTitleView */,
 				39120B621DD45FE60052A234 /* HYFileManager */,
 			);
@@ -480,6 +505,60 @@
 				39C369871DDD5AA20039D22C /* NavigationTitleView.m */,
 			);
 			path = NavigationTitleView;
+			sourceTree = "<group>";
+		};
+		39C806691DE7E4A500EE0C54 /* YYTagView */ = {
+			isa = PBXGroup;
+			children = (
+				39C8066A1DE7E4A500EE0C54 /* YYTag.h */,
+				39C8066B1DE7E4A500EE0C54 /* YYTagListView.h */,
+				39C8066C1DE7E4A500EE0C54 /* YYTagListView.m */,
+				39C8066D1DE7E4A500EE0C54 /* YYTagView.h */,
+				39C8066E1DE7E4A500EE0C54 /* YYTagView.m */,
+				39C8066F1DE7E4A500EE0C54 /* YYTagViewLayout.h */,
+				39C806701DE7E4A500EE0C54 /* YYTagViewLayout.m */,
+			);
+			path = YYTagView;
+			sourceTree = "<group>";
+		};
+		39C806741DE7E57000EE0C54 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				39C806751DE7E57000EE0C54 /* Controllers */,
+				39C806761DE7E57000EE0C54 /* Model */,
+				39C806771DE7E57000EE0C54 /* Views */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		39C806751DE7E57000EE0C54 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				39C806781DE7E59B00EE0C54 /* SearchHomeController.h */,
+				39C806791DE7E59B00EE0C54 /* SearchHomeController.m */,
+				39C806831DE818EA00EE0C54 /* HotSearchResultController.h */,
+				39C806841DE818EA00EE0C54 /* HotSearchResultController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		39C806761DE7E57000EE0C54 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39C8067B1DE7E92200EE0C54 /* SearchHotModel.h */,
+				39C8067C1DE7E92200EE0C54 /* SearchHotModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39C806771DE7E57000EE0C54 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				39C8067E1DE807EB00EE0C54 /* SearchResultCell.h */,
+				39C8067F1DE807EB00EE0C54 /* SearchResultCell.m */,
+				39C806801DE807EB00EE0C54 /* SearchResultCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		702A1A104C483B6960C387FE /* Frameworks */ = {
@@ -523,6 +602,7 @@
 		F73E10E91DD56AD800EBA25A /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				39C806741DE7E57000EE0C54 /* Search */,
 				F7A3429A1DDDC76500DEB06B /* User */,
 				F73E10EA1DD56C9200EBA25A /* Channel */,
 			);
@@ -835,6 +915,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3968969D1DDAF1540088191A /* PMChannelInfoCell.xib in Resources */,
+				39C806821DE807EB00EE0C54 /* SearchResultCell.xib in Resources */,
 				F7773D371DDC0A2800F88AEE /* MESingleChannelCollectionCell.xib in Resources */,
 				396896A71DDAF1DB0088191A /* PMUserInfoCell.xib in Resources */,
 				396896A21DDAF1970088191A /* PMSoundIntroductionCell.xib in Resources */,
@@ -1010,6 +1091,7 @@
 			files = (
 				F718EBFA1DE5820400E0E742 /* MEOffLineViewController.m in Sources */,
 				F78FB5191DDAF8840080D0CE /* MEChannelCategrayBaseModel.m in Sources */,
+				39C806731DE7E4A500EE0C54 /* YYTagViewLayout.m in Sources */,
 				F76C0EC81DE297810072BEC3 /* MENavigationController.m in Sources */,
 				F78FB5181DDAF8520080D0CE /* MEChannelHotData.m in Sources */,
 				3957F8321DDC04F4004D8B5F /* PMRootModel.m in Sources */,
@@ -1024,6 +1106,7 @@
 				396896931DDAE7760088191A /* MEPlayToolBar.m in Sources */,
 				03C6A0D51DDBE9C3000EF49F /* CategoryCollectionReusableView.m in Sources */,
 				F73E10FB1DD5788700EBA25A /* SafeObject.m in Sources */,
+				39C806711DE7E4A500EE0C54 /* YYTagListView.m in Sources */,
 				F7773D441DDC317500F88AEE /* MESingleChannelData.m in Sources */,
 				39120B561DD45FE10052A234 /* UIBarButtonItem+Action.m in Sources */,
 				396896971DDAF1030088191A /* PMRecommendCell.m in Sources */,
@@ -1046,11 +1129,13 @@
 				F78FB5071DDAD6EB0080D0CE /* MEChannelCategoryModel.m in Sources */,
 				396C4EC21DE436B400E470FC /* LocalSoundsInfo.m in Sources */,
 				03C6A0D21DDBE95E000EF49F /* MEChannelCategoryViewController.m in Sources */,
+				39C806721DE7E4A500EE0C54 /* YYTagView.m in Sources */,
 				F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */,
 				396896AA1DDAF2990088191A /* PMHeaderView.m in Sources */,
 				39120B5B1DD45FE10052A234 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				396C4EC81DE4415500E470FC /* MELocalSound.m in Sources */,
 				F78FB4F11DDAAA720080D0CE /* MEChannelCollectionViewCell.m in Sources */,
+				39C806851DE818EA00EE0C54 /* HotSearchResultController.m in Sources */,
 				39120B321DD45FC20052A234 /* AppDelegate.m in Sources */,
 				F7773D461DDC317500F88AEE /* MESingleChannelUser.m in Sources */,
 				396896A11DDAF1970088191A /* PMSoundIntroductionCell.m in Sources */,
@@ -1067,6 +1152,7 @@
 				F7773D451DDC317500F88AEE /* MESingleChannelSounds.m in Sources */,
 				39120B651DD45FE60052A234 /* HYFileManager.m in Sources */,
 				39C369881DDD5AA20039D22C /* NavigationTitleView.m in Sources */,
+				39C806811DE807EB00EE0C54 /* SearchResultCell.m in Sources */,
 				F73E11031DD5BC7000EBA25A /* MEChannelViewController.m in Sources */,
 				3957F8351DDC0827004D8B5F /* MEUser.m in Sources */,
 				39120AFE1DD45F7A0052A234 /* main.m in Sources */,
@@ -1077,6 +1163,8 @@
 				3957F83E1DDC0FF7004D8B5F /* PMHerderModel.m in Sources */,
 				39120B581DD45FE10052A234 /* UIButton+CountDown.m in Sources */,
 				F78FB5111DDADB1F0080D0CE /* MEChannelCategrayData.m in Sources */,
+				39C8067D1DE7E92200EE0C54 /* SearchHotModel.m in Sources */,
+				39C8067A1DE7E59B00EE0C54 /* SearchHomeController.m in Sources */,
 				3957F8381DDC0CB6004D8B5F /* PMSimilarSubSound.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
