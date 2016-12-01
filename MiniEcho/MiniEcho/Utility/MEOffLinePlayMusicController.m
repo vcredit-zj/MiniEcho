@@ -122,6 +122,7 @@ static NSInteger BottomSheetViewMainViewTag = 150;
     lyricsTextView.textAlignment = NSTextAlignmentCenter;
     lyricsTextView.textContainerInset = UIEdgeInsetsMake(30, 0, 10, 0);
     [self.view addSubview:lyricsTextView];
+    _lyricsTextView = lyricsTextView;
     NSString *lyric = @"Remembering me discover and see\nAll over the world she's known as a girl\nTo those who are free their minds shall be keep\nForgotten as the past 'cause history will last\nGod is a girl wherever you are\nDo you believe it can you receive it\nGod is a girl whatever you say\nDo you believe it can you receive it\nGod is a girl however you live\nDo you believe it can you receive it\nGod is a girl she's only a girl\nDo you believe it can you receive it\nShe wants to shine forever in time\nShe is so driven she's always mine\nClearly and free she wants you to be\nA part of the future a girl like me\nThere is a sky illuminating us\nSomeone is out there that we truly trust\nThere is a rainbow for you and me\nA beautiful sunrise eternally\nGod is a girl wherever you are\nDo you believe it can you receive it\nGod is a girl whatever you say\nDo you believe it can you receive it\nGod is a girl however you live\nDo you believe it can you receive it\nGod is a girl she's only a girl\nDo you believe it can you receive it\nGod is a girl wherever you are\nDo you believe it can you receive it\nGod is a girl whatever you say\nDo you believe it can you receive it\nGod is a girl however you live\nDo you believe it can you receive it\nGod is a girl she's only a girl\nDo you believe it can you receive it\nGod is a girl";
     NSMutableAttributedString *lyricAttr = [[NSMutableAttributedString alloc] initWithString:lyric];
     lyricAttr.yy_font = [UIFont systemFontOfSize:14.0];
@@ -479,7 +480,16 @@ static NSInteger BottomSheetViewMainViewTag = 150;
     songNameLabel.text = songModel.name;
     UILabel *songSingleLabel = [_topNavigationBar viewWithTag:TopNavBarSongSingleLabelTag];
     songSingleLabel.text = songModel.singer;
+    NSMutableAttributedString *lyricAttr = [[NSMutableAttributedString alloc] initWithString:@"缺少歌词信息"];
+    if (songModel.lyric && [songModel.lyric length] > 0) {
+        lyricAttr = [[NSMutableAttributedString alloc] initWithString:songModel.lyric];
+    }
+    lyricAttr.yy_font = [UIFont systemFontOfSize:14.0];
+    lyricAttr.yy_color = [UIColor whiteColor];
+    lyricAttr.yy_lineSpacing = 15.f;
+    lyricAttr.yy_alignment = NSTextAlignmentCenter;
+    _lyricsTextView.attributedText = lyricAttr;
     [self configLockedScreenPlayingInfo];
-   [[MEPlayer shareMEPlayer] me_playMusicWithOnlineURL:songPath];
+    [[MEPlayer shareMEPlayer] me_playMusicWithOnlineURL:songPath];
 }
 @end
