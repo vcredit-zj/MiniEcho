@@ -34,7 +34,8 @@ NSString *MEOffLineSongTableViewCellID = @"MEOffLineSongTableViewCellID";
     [_rightImageView setAnimationImages:tempArrayM];
     [_rightImageView setAnimationDuration:2.5];
     [_rightImageView setAnimationRepeatCount:0];
-    [_rightImageView startAnimating];
+    
+    _rightImageView.hidden = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -44,11 +45,13 @@ NSString *MEOffLineSongTableViewCellID = @"MEOffLineSongTableViewCellID";
     if (selected) {
         [_songSingleLabel setTextColor:[UIColor colorWithHexString:@"#6ed56c"] ];
         [_songNameLabel setTextColor:[UIColor colorWithHexString:@"#6ed56c"] ];
+        [_rightImageView startAnimating];
         _rightImageView.hidden = NO;
     } else {
     
         [_songSingleLabel setTextColor:[UIColor colorWithHexString:@"#999999"] ];
         [_songNameLabel setTextColor:[UIColor colorWithHexString:@"#666666"] ];
+        [_rightImageView stopAnimating];
         _rightImageView.hidden = YES;
         
     }

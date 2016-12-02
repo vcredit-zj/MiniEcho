@@ -18,6 +18,8 @@ static NSInteger TopNavBarSongNameLabelTag = 120;
 static NSInteger TopNavBarSongSingleLabelTag = 130;
 static NSInteger BottomSheetViewBgViewTag = 140;
 static NSInteger BottomSheetViewMainViewTag = 150;
+static NSInteger BottomSheetViewTableViewTag = 160;
+static CGFloat   BottomSheetViewTableViewCellHeight = 60.f;
 @interface MEOffLinePlayMusicController ()<MEPlayerDelegate,UITextViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UIView *topNavigationBar;
 @property (nonatomic,strong) MEOffLinePlayBottomBar *bottomBar;
@@ -261,7 +263,8 @@ static NSInteger BottomSheetViewMainViewTag = 150;
         UITableView *mainTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         mainTableView.delegate = self;
         mainTableView.dataSource = self;
-        mainTableView.rowHeight = 60.f;
+        mainTableView.rowHeight = BottomSheetViewTableViewCellHeight;
+        mainTableView.tag = BottomSheetViewTableViewTag;
         [mainTableView registerNib:[MEOffLineSongTableViewCell nib] forCellReuseIdentifier:MEOffLineSongTableViewCellID];
         [mainView addSubview:mainTableView];
         [mainTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -314,6 +317,9 @@ static NSInteger BottomSheetViewMainViewTag = 150;
 
     if (self.bottomSheetView) {
         _bottomSheetView.hidden = NO;
+        UITableView *mainTableView = [_bottomSheetViewMainView viewWithTag:BottomSheetViewTableViewTag];
+        [mainTableView reloadData];
+        [mainTableView setContentOffset:CGPointMake(0, _currentIndex * BottomSheetViewTableViewCellHeight) animated:YES];
 //        UIView *bottomMainView = [_bottomSheetView viewWithTag:BottomSheetViewBgViewTag];
 //        UIView *bottomBgView = [_bottomSheetView viewWithTag:BottomSheetViewMainViewTag];
         CGRect oldFrame = _bottomSheetViewMainView.frame;
@@ -452,13 +458,18 @@ static NSInteger BottomSheetViewMainViewTag = 150;
     
     MEOffLineSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MEOffLineSongTableViewCellID];
     cell.model = [self.dataArray safeObjectAtIndex:indexPath.row];
-//    if (_currentIndex == indexPath.row) {
-//        [cell setSelected:YES animated:YES];
-//    }
+    
     return cell;
 }
-#pragma mark UITableViewDelegate
 
+#pragma mark UITableViewDelegate
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (_currentIndex == indexPath.row) {
+        [cell setSelected:YES animated:YES];
+        cell.selected = YES;
+    }
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    if (_currentIndex == indexPath.row) return;
     DLog(@"click");
