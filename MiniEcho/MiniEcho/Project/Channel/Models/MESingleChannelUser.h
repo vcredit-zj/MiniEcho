@@ -9,7 +9,7 @@
 
 
 
-@interface MESingleChannelUser : NSObject <NSCoding, NSCopying>
+@interface MESingleChannelUser : NSObject
 
 @property (nonatomic, strong) NSString *userIdentifier;
 @property (nonatomic, strong) NSString *status;
@@ -24,9 +24,4 @@
 @property (nonatomic, strong) NSString *followedCount;
 @property (nonatomic, strong) NSString *photo;
 @property (nonatomic, strong) NSString *name;
-
-+ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
-- (NSDictionary *)dictionaryRepresentation;
-
 @end

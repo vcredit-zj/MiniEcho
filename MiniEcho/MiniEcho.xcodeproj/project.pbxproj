@@ -99,7 +99,6 @@
 		F78FB4F61DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB4F41DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.m */; };
 		F78FB4F71DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F78FB4F51DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib */; };
 		F78FB5031DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */; };
-		F78FB5071DDAD6EB0080D0CE /* MEChannelCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5061DDAD6EB0080D0CE /* MEChannelCategoryModel.m */; };
 		F78FB5101DDADB1F0080D0CE /* MEChannelCategrayChildren.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB50C1DDADB1F0080D0CE /* MEChannelCategrayChildren.m */; };
 		F78FB5111DDADB1F0080D0CE /* MEChannelCategrayData.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB50E1DDADB1F0080D0CE /* MEChannelCategrayData.m */; };
 		F78FB5161DDAE4310080D0CE /* MEChannelHotBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F78FB5131DDAE4310080D0CE /* MEChannelHotBaseModel.m */; };
@@ -302,8 +301,6 @@
 		F78FB4F51DDAAF8E0080D0CE /* MEchannelCollectionViewAnotherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEchannelCollectionViewAnotherCell.xib; sourceTree = "<group>"; };
 		F78FB5001DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCollectionReusableHeaderView.h; sourceTree = "<group>"; };
 		F78FB5011DDABAE30080D0CE /* MEChannelCollectionReusableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCollectionReusableHeaderView.m; sourceTree = "<group>"; };
-		F78FB5051DDAD6EB0080D0CE /* MEChannelCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCategoryModel.h; sourceTree = "<group>"; };
-		F78FB5061DDAD6EB0080D0CE /* MEChannelCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCategoryModel.m; sourceTree = "<group>"; };
 		F78FB5081DDADB1F0080D0CE /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
 		F78FB5091DDADB1F0080D0CE /* MEChannelCategrayBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEChannelCategrayBaseModel.h; sourceTree = "<group>"; };
 		F78FB50A1DDADB1F0080D0CE /* MEChannelCategrayBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEChannelCategrayBaseModel.m; sourceTree = "<group>"; };
@@ -690,8 +687,6 @@
 				F78FB50C1DDADB1F0080D0CE /* MEChannelCategrayChildren.m */,
 				F78FB50D1DDADB1F0080D0CE /* MEChannelCategrayData.h */,
 				F78FB50E1DDADB1F0080D0CE /* MEChannelCategrayData.m */,
-				F78FB5051DDAD6EB0080D0CE /* MEChannelCategoryModel.h */,
-				F78FB5061DDAD6EB0080D0CE /* MEChannelCategoryModel.m */,
 				3957F8301DDC04F4004D8B5F /* PMRootModel.h */,
 				3957F8311DDC04F4004D8B5F /* PMRootModel.m */,
 				3957F8331DDC0827004D8B5F /* MEUser.h */,
@@ -1121,12 +1116,9 @@
 				3968969C1DDAF1540088191A /* PMChannelInfoCell.m in Sources */,
 				396896901DDABAFC0088191A /* MEPlayMusicController.m in Sources */,
 				39106A0B1DD9BB7B008E5CF7 /* MEResult.m in Sources */,
-				F78FB5071DDAD6EB0080D0CE /* MEChannelCategoryModel.m in Sources */,
 				396C4EC21DE436B400E470FC /* LocalSoundsInfo.m in Sources */,
 				03C6A0D21DDBE95E000EF49F /* MEChannelCategoryViewController.m in Sources */,
 				39C806721DE7E4A500EE0C54 /* YYTagView.m in Sources */,
-				F73E11181DD5C4A800EBA25A /* ViewController3.m in Sources */,
-
 				396896AA1DDAF2990088191A /* PMHeaderView.m in Sources */,
 				39120B5B1DD45FE10052A234 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				396C4EC81DE4415500E470FC /* MELocalSound.m in Sources */,

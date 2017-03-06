@@ -194,7 +194,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 
     MEChannelHotData *model = [self.dataArrayM safeObjectAtIndex:indexPath.item];
     MEChannelSingleViewController *singleChannelVC = [[MEChannelSingleViewController alloc] init];
-    singleChannelVC.identifi = [NSString stringWithFormat:@"%d",(int)model.dataIdentifier];
+    singleChannelVC.identifi = [NSString stringWithFormat:@"%d",[model.dataIdentifier intValue]];
     singleChannelVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:singleChannelVC animated:YES];
     NSLog(@"selected %ld",indexPath.item);
@@ -207,7 +207,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
     __weak typeof(self)WeakSelf = self;
     [MEHttpUtil get:ChannelCategory parameters:nil success:^(id result) {
 //        NSLog(@"result == %@", result);
-        MEChannelCategrayBaseModel *baseModel = [MEChannelCategrayBaseModel modelObjectWithDictionary:result];
+        MEChannelCategrayBaseModel *baseModel = [MEChannelCategrayBaseModel mj_objectWithKeyValues:result];
         WeakSelf.categrayBaseModel = baseModel;
         
     } failure:^(NSError *error) {
@@ -221,7 +221,7 @@ static NSString *MEChannelSupplementaryViewCellID = @"MEChannelSupplementaryView
 
     __weak typeof(self)WeakSelf = self;
     [MEHttpUtil get:ChannerType parameters:parame showLoading:YES success:^(id result) {
-        MEChannelHotBaseModel *baseModel = [MEChannelHotBaseModel modelObjectWithDictionary:result];
+        MEChannelHotBaseModel *baseModel = [MEChannelHotBaseModel mj_objectWithKeyValues:result];
         if (WeakSelf.page > 1) {
             [WeakSelf.dataArrayM addObjectsFromArray:baseModel.data];
         } else {

@@ -9,21 +9,15 @@
 
 
 
-@interface MEChannelCategrayChildren : NSObject <NSCoding, NSCopying>
+@interface MEChannelCategrayChildren : NSObject
 
-@property (nonatomic, strong) NSString *icoUrl;
-@property (nonatomic, strong) NSString *enName;
+@property (nonatomic, strong) NSString *ico_url;
+@property (nonatomic, strong) NSString *en_name;
 @property (nonatomic, assign) double childrenIdentifier;
-@property (nonatomic, strong) NSString *createdAt;
-@property (nonatomic, strong) NSString *krName;
-@property (nonatomic, strong) NSArray *children;
-@property (nonatomic, assign) double fid;
-@property (nonatomic, strong) NSString *updatedAt;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *jpName;
 
-+ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
-- (NSDictionary *)dictionaryRepresentation;
+@property (nonatomic, strong) NSArray *children;
+
+@property (nonatomic, strong) NSString *name;
+
 
 @end

@@ -187,12 +187,5 @@ static NSString *MEUserViewCellId = @"MEUserViewControllerID";
 }
 #pragma mark Helper 
 - (void)requestDataFromServer {
-
-    NSDictionary *parame = @{@"user_id":@"19814940"};
-    [MEHttpUtil get:UserInfo parameters:parame showLoading:NO success:^(id result) {
-        NSLog(@"%@",result);
-    } failure:^(NSError *error) {
-        DLog(@"%@",error.localizedDescription);
-    }];
 }
 @end

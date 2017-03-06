@@ -57,7 +57,7 @@ NSString *MESingleChannelCollectionCellID = @"MESingleChannelCollectionCellID";
 
     _model = model;
     
-    [_bgImageView sd_setImageWithURL:[NSURL URLWithString:model.pic640] placeholderImage:nil];
+    [_bgImageView sd_setImageWithURL:[NSURL URLWithString:model.pic_640] placeholderImage:nil];
     [_label setText:[NSString stringWithFormat:@"%d",(int)model.likeCount]];
     
     [_describeLabel setText:model.name];

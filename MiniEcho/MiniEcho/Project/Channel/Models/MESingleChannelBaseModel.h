@@ -9,12 +9,9 @@
 
 @class MESingleChannelData;
 
-@interface MESingleChannelBaseModel : NSObject <NSCoding, NSCopying>
+@interface MESingleChannelBaseModel : NSObject
 
 @property (nonatomic, strong) MESingleChannelData *data;
 
-+ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
-- (NSDictionary *)dictionaryRepresentation;
 
 @end

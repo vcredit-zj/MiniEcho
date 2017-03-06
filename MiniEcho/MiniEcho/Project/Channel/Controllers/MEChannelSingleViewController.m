@@ -333,11 +333,11 @@ static CGFloat headerImageHeight = 270 ;
     __weak typeof(self)WeakSelf = self;
     NSDictionary *parametDic = @{@"id":_identifi,@"page":@"1",@"list_order":@"recommend",@"with_sound":@"0"};
     [MEHttpUtil get:ChannerInfo parameters:parametDic showLoading:YES success:^(id result) {
-        MESingleChannelBaseModel *baseModel = [MESingleChannelBaseModel modelObjectWithDictionary:result];
+        MESingleChannelBaseModel *baseModel = [MESingleChannelBaseModel mj_objectWithKeyValues:result];
         WeakSelf.dataArrayM = [NSMutableArray arrayWithArray:baseModel.data.sounds];
         UILabel *centerLabel = [WeakSelf.topNavigationBar viewWithTag:centerLabelTag];
         [centerLabel setText:[baseModel.data.channel name] ];
-        [WeakSelf.topImageView sd_setImageWithURL:[NSURL URLWithString:baseModel.data.channel.pic640] placeholderImage:nil];
+        [WeakSelf.topImageView sd_setImageWithURL:[NSURL URLWithString:baseModel.data.channel.pic_640] placeholderImage:nil];
         [WeakSelf.collectionView reloadData];
     } failure:^(NSError *error) {
         
@@ -348,7 +348,7 @@ static CGFloat headerImageHeight = 270 ;
     
     __weak typeof(self)WeakSelf = self;
     [MEHttpUtil get:ChannerInfo parameters:parame showLoading:YES success:^(id result) {
-        MESingleChannelBaseModel *baseModel = [MESingleChannelBaseModel modelObjectWithDictionary:result];
+        MESingleChannelBaseModel *baseModel = [MESingleChannelBaseModel mj_objectWithKeyValues:result];
         if (WeakSelf.page > 1) {
             [WeakSelf.dataArrayM addObjectsFromArray:[NSMutableArray arrayWithArray:baseModel.data.sounds] ];
         } else {

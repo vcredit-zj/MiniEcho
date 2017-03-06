@@ -143,7 +143,7 @@ static NSString *fCellID = @"fCellIdentifier";
     NSDictionary *parametDic = @{@"order":@"hot",@"page ":@"1",@"tag":_categoryData,@"with_sound":@"0"};
     [MEHttpUtil get:ChannerType parameters:parametDic success:^(id result) {
         NSLog(@"~~~~~~result = %@", result);
-        MEChannelHotBaseModel *baseModel = [MEChannelHotBaseModel modelObjectWithDictionary:result];
+        MEChannelHotBaseModel *baseModel = [MEChannelHotBaseModel mj_objectWithKeyValues:result];
         weakSelf.dataArrayM = [NSMutableArray arrayWithArray:baseModel.data];
 
         

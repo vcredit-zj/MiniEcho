@@ -9,9 +9,9 @@
 
 
 
-@interface MEChannelCategrayData : NSObject <NSCoding, NSCopying>
+@interface MEChannelCategrayData : NSObject
 
-@property (nonatomic, strong) NSString *icoUrl;
+@property (nonatomic, strong) NSString *ico_url;
 @property (nonatomic, strong) NSString *enName;
 @property (nonatomic, assign) double dataIdentifier;
 @property (nonatomic, strong) NSString *createdAt;
@@ -21,9 +21,5 @@
 @property (nonatomic, strong) NSString *updatedAt;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *jpName;
-
-+ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
-- (NSDictionary *)dictionaryRepresentation;
 
 @end

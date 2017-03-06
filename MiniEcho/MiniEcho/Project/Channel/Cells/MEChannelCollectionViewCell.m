@@ -24,7 +24,7 @@ NSString *MEChannelCollectionViewCellID = @"MEChannelCollectionViewCellID";
 
     _model = model;
     
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:model.pic640] placeholderImage:nil];
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:model.pic_640] placeholderImage:nil];
     _label.text = model.name;
 }
 @end

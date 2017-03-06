@@ -9,13 +9,9 @@
 
 
 
-@interface MEChannelHotBaseModel : NSObject <NSCoding, NSCopying>
+@interface MEChannelHotBaseModel : NSObject
 
 @property (nonatomic, assign) double totalCount;
 @property (nonatomic, strong) NSArray *data;
-
-+ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
-- (NSDictionary *)dictionaryRepresentation;
 
 @end

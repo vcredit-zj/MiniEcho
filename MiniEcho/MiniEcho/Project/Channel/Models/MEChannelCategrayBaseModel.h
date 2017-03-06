@@ -9,13 +9,9 @@
 
 
 
-@interface MEChannelCategrayBaseModel : NSObject <NSCoding, NSCopying>
+@interface MEChannelCategrayBaseModel : NSObject
 
 @property (nonatomic, strong) NSString *version;
 @property (nonatomic, strong) NSArray *data;
-
-+ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
-- (NSDictionary *)dictionaryRepresentation;
 
 @end

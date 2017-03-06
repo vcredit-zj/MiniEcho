@@ -110,7 +110,7 @@
     [_tagID safeInsertObject:[NSString stringWithFormat:@"%zd", (NSInteger)model.dataIdentifier] atIndex:0];
     [_tagsView setTagAry:_array delegate:self];
     
-    NSURL *url = [NSURL URLWithString:model.icoUrl];
+    NSURL *url = [NSURL URLWithString:model.ico_url];
     [_leftImage sd_setImageWithURL:url];
     
     NSString *str = [NSString stringWithFormat:@"共%zd个频道", model.children.count + 1];

@@ -9,34 +9,24 @@
 
 
 
-@interface MEChannelHotData : NSObject <NSCoding, NSCopying>
+@interface MEChannelHotData : NSObject
 
-@property (nonatomic, strong) NSString *pic750;
-@property (nonatomic, assign) double status;
-@property (nonatomic, assign) double userId;
-@property (nonatomic, assign) double createTime;
+@property (nonatomic, strong) NSString *pic_750;
+
 @property (nonatomic, strong) NSString *desp;
-@property (nonatomic, assign) double likeCount;
-@property (nonatomic, assign) double listOrder;
-@property (nonatomic, assign) double followCount;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *pic200;
-@property (nonatomic, assign) double type;
-@property (nonatomic, strong) NSString *info;
-@property (nonatomic, assign) double dataIdentifier;
-@property (nonatomic, strong) NSString *pic500;
-@property (nonatomic, assign) double tagId;
-@property (nonatomic, strong) NSString *pic;
-@property (nonatomic, assign) double shareCount;
-@property (nonatomic, strong) NSString *pic1080;
-@property (nonatomic, strong) NSString *pic100;
-@property (nonatomic, strong) NSString *pic640;
-@property (nonatomic, assign) double updateTime;
-@property (nonatomic, assign) double soundCount;
-@property (nonatomic, assign) double updateUserId;
 
-+ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
-- (NSDictionary *)dictionaryRepresentation;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *pic_200;
+
+@property (nonatomic, strong) NSString *info;
+@property (nonatomic, strong) NSNumber *dataIdentifier;
+@property (nonatomic, strong) NSString *pic_500;
+
+@property (nonatomic, strong) NSString *pic;
+
+@property (nonatomic, strong) NSString *pic_1080;
+@property (nonatomic, strong) NSString *pic_100;
+@property (nonatomic, strong) NSString *pic_640;
+
 
 @end
